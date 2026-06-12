@@ -1,803 +1,2721 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Siteup | Websites and Digital Systems</title>
-    <meta
-      name="description"
-      content="Siteup builds professional websites, online presence setups, custom apps, and practical AI workflows for local businesses."
-    />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%2343e88d' stroke-width='2.4'/%3E%3Cpath d='M20.5 12.2c-.8-1-2.2-1.6-3.9-1.6-2.4 0-4.1 1.2-4.1 3 0 3.7 8.3 1.9 8.3 5.7 0 1.9-1.8 3.3-4.4 3.3-2 0-3.7-.8-4.6-2' stroke='%2343e88d' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css?v=3" />
-  </head>
-  <body>
-    <div class="page-glow" aria-hidden="true"></div>
-    <div class="motion-rails" aria-hidden="true">
-      <span></span>
-      <span></span>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Siteup | Websites and Digital Systems</title>
+<meta name="description" content="Siteup builds professional websites, online presence setups, custom apps, and practical AI workflows for local businesses." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='4' width='24' height='24' fill='none' stroke='%2349e08b' stroke-width='2'/%3E%3Cpath d='M20.5 12.2c-.8-1-2.2-1.6-3.9-1.6-2.4 0-4.1 1.2-4.1 3 0 3.7 8.3 1.9 8.3 5.7 0 1.9-1.8 3.3-4.4 3.3-2 0-3.7-.8-4.6-2' stroke='%2349e08b' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   SITEUP v2 — "Precision Studio"
+   Quiet, technical, premium. Geist + Geist Mono + Instrument Serif.
+   ============================================================ */
+
+:root {
+  --bg: #0a100d;
+  --bg-2: #111814;
+  --ink: #f3f8f4;
+  --dim: #a9bab0;
+  --faint: #6e7f75;
+  --hair: rgba(238, 242, 239, 0.1);
+  --hair-strong: rgba(238, 242, 239, 0.17);
+  --green: #49e08b;
+  --cyan: #3ddbd0;
+  --violet: #a78bfa;
+  --amber: #ffc06e;
+  --green-dim: rgba(73, 224, 139, 0.14);
+  --grad: linear-gradient(115deg, #49e08b, #3ddbd0);
+  --sans: "Geist", sans-serif;
+  --mono: "Geist Mono", monospace;
+  --serif: "Instrument Serif", serif;
+  --max: 1200px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: rgba(73, 224, 139, 0.25); }
+
+a { color: inherit; text-decoration: none; }
+svg { display: block; }
+:focus-visible { outline: 1.5px solid var(--green); outline-offset: 3px; }
+
+/* blueprint grid — barely there */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(238, 242, 239, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 242, 239, 0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(1200px 800px at 50% 0%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(1200px 800px at 50% 0%, #000 30%, transparent 80%);
+}
+
+.glow-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(820px 520px at 50% -10%, rgba(33, 110, 68, 0.6), transparent 65%),
+    radial-gradient(700px 480px at 90% 10%, rgba(124, 95, 211, 0.18), transparent 60%),
+    radial-gradient(760px 520px at 2% 75%, rgba(43, 154, 145, 0.16), transparent 60%),
+    radial-gradient(620px 420px at 94% 94%, rgba(224, 158, 80, 0.09), transparent 60%),
+    var(--bg);
+}
+
+/* ---------- type helpers ---------- */
+
+.label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.serif-accent {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  background: linear-gradient(100deg, #49e08b 5%, #3ddbd0 55%, #a78bfa 105%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; }
+
+/* ---------- header ---------- */
+
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  border-bottom: 1px solid transparent;
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+header.scrolled {
+  background: rgba(8, 10, 9, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: var(--hair);
+}
+
+.header-in {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+.logo-mark {
+  width: 30px; height: 30px;
+  display: grid; place-items: center;
+  border: 1.5px solid var(--green);
+  color: var(--green);
+}
+
+.logo-mark svg { width: 16px; height: 16px; }
+
+.logo .tld {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--faint);
+  margin-left: 2px;
+}
+
+nav.main-nav { display: flex; gap: 32px; }
+
+nav.main-nav a {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  transition: color 0.25s ease;
+  position: relative;
+}
+
+nav.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 0; height: 1px;
+  background: var(--green);
+  transition: width 0.3s var(--ease);
+}
+
+nav.main-nav a:hover { color: var(--ink); }
+nav.main-nav a:hover::after { width: 100%; }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-switch {
+  display: flex;
+  border: 1px solid var(--hair-strong);
+  background: rgba(7, 10, 8, 0.72);
+}
+
+.lang-btn {
+  border: 0;
+  border-right: 1px solid var(--hair);
+  background: transparent;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  padding: 11px 9px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.lang-btn:last-child { border-right: 0; }
+
+.lang-btn:hover,
+.lang-btn.active {
+  background: var(--green-dim);
+  color: var(--green);
+}
+
+.header-cta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid var(--hair-strong);
+  padding: 11px 20px;
+  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+}
+
+.header-cta:hover {
+  border-color: var(--green);
+  background: var(--green-dim);
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px 28px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-solid {
+  background: var(--grad);
+  color: #06140c;
+}
+
+.btn-solid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(73, 224, 139, 0.3);
+}
+
+.btn-line {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--hair-strong);
+}
+
+.btn-line:hover {
+  border-color: var(--green);
+  background: var(--green-dim);
+  transform: translateY(-2px);
+}
+
+.btn .arr { transition: transform 0.3s var(--ease); }
+.btn:hover .arr { transform: translateX(4px); }
+
+/* ---------- hero ---------- */
+
+.hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 190px 28px 0;
+  position: relative;
+}
+
+/* crosshair corner ticks — blueprint detail */
+.tick {
+  position: absolute;
+  width: 14px; height: 14px;
+  opacity: 0.45;
+}
+.tick::before, .tick::after {
+  content: "";
+  position: absolute;
+  background: var(--faint);
+}
+.tick::before { left: 50%; top: 0; width: 1px; height: 100%; }
+.tick::after { top: 50%; left: 0; height: 1px; width: 100%; }
+.tick.tl { top: 160px; left: 28px; }
+.tick.tr { top: 160px; right: 28px; }
+
+.hero-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.hero-label .rule {
+  width: 48px; height: 1px;
+  background: var(--green);
+}
+
+h1.hero-h {
+  font-size: clamp(2.8rem, 7vw, 5.6rem);
+  font-weight: 600;
+  max-width: 13.5em;
+}
+
+h1 .serif-accent { font-size: 1.04em; }
+
+.hero-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: end;
+  margin-top: 44px;
+}
+
+.hero-sub {
+  color: var(--dim);
+  font-size: 1.05rem;
+  max-width: 480px;
+  font-weight: 300;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.hero-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--dim);
+  border: 1px solid var(--hair-strong);
+  padding: 16px 18px;
+  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease, transform 0.3s var(--ease);
+}
+
+.hero-call b {
+  color: var(--green);
+  font-weight: 500;
+}
+
+.hero-call:hover {
+  border-color: var(--green);
+  color: var(--ink);
+  background: var(--green-dim);
+  transform: translateY(-2px);
+}
+
+/* ---------- terminal — the one hero artifact ---------- */
+
+.term-wrap {
+  max-width: var(--max);
+  margin: 80px auto 0;
+  padding: 0 28px;
+}
+
+.terminal {
+  border: 1px solid var(--hair-strong);
+  background: linear-gradient(175deg, rgba(16, 21, 18, 0.92), rgba(9, 12, 10, 0.96));
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal::before {
+  /* top edge light */
+  content: "";
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(73, 224, 139, 0.5), transparent);
+}
+
+.term-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--hair);
+}
+
+.term-dots { display: flex; gap: 6px; }
+.term-dots i {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(238, 242, 239, 0.12);
+}
+
+.term-title {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--faint);
+  letter-spacing: 0.06em;
+}
+
+.term-status {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.term-status::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: blink 2.2s ease-in-out infinite;
+}
+
+@keyframes blink { 50% { opacity: 0.3; } }
+
+.term-body {
+  padding: 26px 24px 30px;
+  font-family: var(--mono);
+  font-size: clamp(0.72rem, 1.5vw, 0.86rem);
+  line-height: 2.1;
+  min-height: 240px;
+}
+
+.t-line { white-space: pre-wrap; opacity: 0; }
+.t-line.shown { opacity: 1; }
+.t-prompt { color: var(--faint); }
+.t-cmd { color: var(--ink); }
+.t-ok { color: var(--green); }
+.t-dim { color: var(--dim); }
+.t-num { color: #ffd479; }
+
+.t-caret {
+  display: inline-block;
+  width: 8px; height: 1.1em;
+  background: var(--green);
+  vertical-align: text-bottom;
+  animation: blink 1s steps(1) infinite;
+}
+
+/* ---------- stat strip ---------- */
+
+.stat-strip {
+  max-width: var(--max);
+  margin: 90px auto 0;
+  padding: 0 28px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+}
+
+.stat {
+  padding: 30px 24px;
+  border-left: 1px solid var(--hair);
+}
+
+.stat:first-child { border-left: none; }
+
+.stat b {
+  display: block;
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+}
+
+.stat span {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.stat:nth-child(1) b { color: var(--green); }
+.stat:nth-child(2) b { color: var(--cyan); }
+.stat:nth-child(3) b { color: var(--violet); }
+.stat:nth-child(4) b { color: var(--amber); }
+
+/* ---------- sections ---------- */
+
+section { max-width: var(--max); margin: 0 auto; padding: 130px 28px 0; }
+
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.sec-head .left { max-width: 640px; }
+
+.sec-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--faint);
+  letter-spacing: 0.14em;
+}
+
+.sec-head h2 {
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  margin-top: 14px;
+}
+
+.sec-head .note {
+  color: var(--dim);
+  font-size: 0.92rem;
+  max-width: 320px;
+  text-align: right;
+  font-weight: 300;
+}
+
+/* ---------- services: numbered ledger rows ---------- */
+
+.svc-list { border-top: 1px solid var(--hair); }
+
+.svc-row {
+  display: grid;
+  grid-template-columns: 80px 1.1fr 1.6fr 48px;
+  gap: 28px;
+  align-items: center;
+  padding: 34px 8px;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--hair);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  position: relative;
+  transition: padding 0.35s var(--ease);
+  cursor: pointer;
+}
+
+.svc-row::before {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -1px;
+  width: 0; height: 1px;
+  background: var(--grad);
+  transition: width 0.5s var(--ease);
+}
+
+.svc-row:hover::before { width: 100%; }
+.svc-row:hover { padding-left: 18px; }
+
+.svc-no {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--faint);
+}
+
+.svc-row:nth-child(1) .svc-no { color: var(--green); }
+.svc-row:nth-child(2) .svc-no { color: var(--cyan); }
+.svc-row:nth-child(3) .svc-no { color: var(--violet); }
+.svc-row:nth-child(4) .svc-no { color: var(--amber); }
+.svc-row:nth-child(5) .svc-no { color: var(--green); }
+.svc-row:nth-child(6) .svc-no { color: var(--cyan); }
+
+.svc-row h3 {
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  transition: color 0.3s ease;
+}
+
+.svc-row:hover h3 { color: var(--green); }
+
+.svc-row p {
+  color: var(--dim);
+  font-size: 0.93rem;
+  font-weight: 300;
+}
+
+.svc-arr {
+  color: var(--faint);
+  transition: color 0.3s ease, transform 0.35s var(--ease);
+}
+
+.svc-row:hover .svc-arr {
+  color: var(--green);
+  transform: translate(4px, -4px);
+}
+
+.svc-row:focus-visible {
+  outline: 1px solid var(--green);
+  outline-offset: -1px;
+}
+
+.svc-arr svg { width: 18px; height: 18px; }
+
+.svc-footnote {
+  margin-top: 36px;
+  color: var(--dim);
+  font-size: 0.92rem;
+  font-weight: 300;
+  max-width: 660px;
+}
+
+.svc-footnote em {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink);
+  font-size: 1.05em;
+}
+
+.service-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.service-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.service-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 4, 3, 0.68);
+  backdrop-filter: blur(9px);
+}
+
+.service-dialog {
+  position: relative;
+  width: min(100%, 560px);
+  border: 1px solid var(--hair-strong);
+  background:
+    radial-gradient(420px 220px at 8% 0%, rgba(73, 224, 139, 0.14), transparent 68%),
+    rgba(7, 10, 8, 0.96);
+  padding: 30px;
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.42);
+  transform: translateY(14px) scale(0.98);
+  transition: transform 0.35s var(--ease);
+}
+
+.service-modal.open .service-dialog { transform: none; }
+
+.service-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--hair);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.service-close:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.service-dialog h2 {
+  font-size: clamp(1.55rem, 5vw, 2.2rem);
+  margin: 14px 42px 12px 0;
+  letter-spacing: -0.035em;
+}
+
+.service-dialog p {
+  color: var(--dim);
+  font-weight: 300;
+}
+
+.service-detail-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin: 22px 0 26px;
+}
+
+.service-detail-list li {
+  position: relative;
+  padding-left: 22px;
+  color: #c4cfc8;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.service-detail-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  background: var(--green);
+}
+
+/* ---------- why siteup ---------- */
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--hair);
+  border: 1px solid var(--hair);
+}
+
+.why-cell {
+  background: var(--bg);
+  padding: 38px 30px;
+  position: relative;
+  transition: background 0.35s ease;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+}
+
+.why-cell:hover { background: var(--bg-2); }
+
+.why-cell.lead {
+  grid-row: span 2;
+  background: linear-gradient(170deg, rgba(30, 78, 50, 0.72), var(--bg-2));
+  justify-content: space-between;
+}
+
+/* soft color tints per cell for warmth */
+.why-cell:nth-child(2) {
+  background: radial-gradient(320px 220px at 88% -15%, rgba(61, 219, 208, 0.1), transparent 70%), var(--bg);
+}
+
+.why-cell:nth-child(3) {
+  background: radial-gradient(320px 220px at 88% -15%, rgba(167, 139, 250, 0.1), transparent 70%), var(--bg);
+}
+
+.why-cell:nth-child(4) {
+  background: radial-gradient(320px 220px at 88% -15%, rgba(255, 192, 110, 0.09), transparent 70%), var(--bg);
+}
+
+.why-cell:nth-child(5) {
+  background: radial-gradient(320px 220px at 88% -15%, rgba(73, 224, 139, 0.1), transparent 70%), var(--bg);
+}
+
+.why-cell:nth-child(2) .why-no { color: var(--cyan); }
+.why-cell:nth-child(3) .why-no { color: var(--violet); }
+.why-cell:nth-child(4) .why-no { color: var(--amber); }
+.why-cell:nth-child(5) .why-no { color: var(--green); }
+.why-cell.lead .why-no { color: var(--green); }
+
+.why-no {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  color: var(--faint);
+  margin-bottom: 22px;
+}
+
+.why-cell h3 {
+  font-size: 1.18rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 12px;
+}
+
+.why-cell p {
+  color: var(--dim);
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.why-cell.lead h3 { font-size: 1.5rem; }
+
+/* telegram phone vignette in lead cell */
+.tg-demo {
+  margin-top: 30px;
+  border: 1px solid var(--hair-strong);
+  background: rgba(8, 10, 9, 0.7);
+  padding: 16px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.9;
+}
+
+.tg-msg { display: flex; gap: 10px; align-items: flex-start; margin-top: 10px; }
+.tg-msg:first-child { margin-top: 0; }
+
+.tg-who {
+  flex: none;
+  width: 22px; height: 22px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  font-size: 0.58rem;
+  background: rgba(238, 242, 239, 0.1);
+  color: var(--dim);
+}
+
+.tg-msg.bot .tg-who { background: var(--green-dim); color: var(--green); }
+.tg-msg span { color: var(--dim); }
+.tg-msg.bot span { color: var(--ink); }
+.tg-msg .ok { color: var(--green); }
+
+/* ---------- packages ---------- */
+
+.pkg-note-top {
+  color: var(--dim);
+  font-size: 0.92rem;
+  font-weight: 300;
+  max-width: 640px;
+  margin: -36px 0 56px;
+}
+
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--hair);
+  border: 1px solid var(--hair);
+}
+
+.pkg {
+  background: var(--bg);
+  padding: 44px 34px 38px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: background 0.35s ease;
+}
+
+.pkg:hover { background: var(--bg-2); }
+
+.pkg.feat {
+  background:
+    radial-gradient(380px 260px at 50% -12%, rgba(73, 224, 139, 0.18), transparent 70%),
+    linear-gradient(175deg, rgba(28, 74, 48, 0.65), var(--bg-2));
+}
+
+.pkg-tag {
+  position: absolute;
+  top: 0; right: 0;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #06140c;
+  background: var(--green);
+  padding: 7px 14px;
+}
+
+.pkg-name {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 18px;
+}
+
+.pkg-price {
+  font-size: 3.2rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.pkg-price .cur {
+  font-size: 1.4rem;
+  color: var(--green);
+  vertical-align: 0.65em;
+  font-weight: 500;
+  margin-right: 2px;
+}
+
+.pkg-for {
+  margin-top: 14px;
+  color: var(--dim);
+  font-size: 0.9rem;
+  font-weight: 300;
+  min-height: 2.8em;
+}
+
+.pkg ul {
+  list-style: none;
+  margin: 30px 0;
+  flex: 1;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.pkg li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 0.88rem;
+  color: #c4cfc8;
+  font-weight: 300;
+}
+
+.pkg li::before {
+  content: "+";
+  position: absolute;
+  left: 0; top: 0;
+  font-family: var(--mono);
+  color: var(--green);
+}
+
+.pkg-fine {
+  font-size: 0.78rem;
+  color: var(--faint);
+  font-weight: 300;
+  border-left: 1px solid var(--green);
+  padding-left: 12px;
+  margin-bottom: 26px;
+}
+
+.pkg .btn { justify-content: center; }
+
+/* ---------- custom pricing ---------- */
+
+.custom-pricing {
+  max-width: none;
+  margin-top: 120px;
+  padding: 0;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  background:
+    radial-gradient(560px 260px at 16% 20%, rgba(73, 224, 139, 0.12), transparent 70%),
+    radial-gradient(620px 280px at 86% 65%, rgba(61, 219, 208, 0.1), transparent 72%),
+    linear-gradient(90deg, rgba(238, 242, 239, 0.025), rgba(73, 224, 139, 0.035), rgba(238, 242, 239, 0.018));
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-pricing::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(73, 224, 139, 0.16), transparent);
+  width: 260px;
+  transform: translateX(-120%);
+  animation: sweep 7s ease-in-out infinite;
+}
+
+@keyframes sweep {
+  0%, 100% { transform: translateX(-120%); opacity: 0; }
+  22%, 70% { opacity: 1; }
+  82% { transform: translateX(calc(100vw + 120%)); opacity: 0; }
+}
+
+.custom-pricing-in {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 72px 28px;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.95fr 1.1fr;
+  gap: 46px;
+  align-items: center;
+}
+
+.custom-pricing h2 {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  margin-top: 14px;
+  max-width: 600px;
+}
+
+.custom-pricing-copy p:not(.label),
+.custom-pricing-foot p {
+  color: var(--dim);
+  font-weight: 300;
+}
+
+.custom-price-list {
+  display: grid;
+  gap: 1px;
+  background: var(--hair);
+  border: 1px solid var(--hair);
+}
+
+.custom-price-item {
+  background: rgba(10, 16, 13, 0.82);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 18px;
+  transition: background 0.35s ease;
+}
+
+.custom-price-item:hover {
+  background: rgba(17, 24, 20, 0.92);
+}
+
+.custom-price-item span {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--green);
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+}
+
+.custom-price-item h3 {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+.custom-price-item p {
+  color: var(--dim);
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.custom-pricing-foot {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--hair);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.custom-pricing-foot p {
+  max-width: 720px;
+}
+
+/* ---------- projects ---------- */
+
+.proj-group { margin-bottom: 70px; }
+.proj-group:last-child { margin-bottom: 0; }
+
+.proj-group-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.proj-group-title h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.proj-group-title .count {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  color: var(--faint);
+}
+
+.proj-group-title .line {
+  flex: 1; height: 1px;
+  background: var(--hair);
+}
+
+.proj-grid { display: grid; gap: 1px; background: var(--hair); border: 1px solid var(--hair); }
+.proj-grid.c3 { grid-template-columns: repeat(3, 1fr); }
+.proj-grid.c2 { grid-template-columns: repeat(2, 1fr); }
+.proj-grid.c1 { grid-template-columns: 1fr; }
+
+.proj {
+  background: var(--bg);
+  padding: 30px;
+  transition: background 0.35s ease;
+  position: relative;
+}
+
+.proj:hover { background: var(--bg-2); }
+
+.proj.featured {
+  padding: 0;
+  overflow: hidden;
+}
+
+.proj-visual {
+  height: 150px;
+  border: 1px solid var(--hair);
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(238, 242, 239, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 242, 239, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  display: grid;
+  place-items: center;
+}
+
+.proj-video {
+  height: 250px;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid var(--hair);
+  background: #050705;
+}
+
+.proj-video video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.proj-image {
+  height: 250px;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid var(--hair);
+  background: #050705;
+}
+
+.proj-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.proj-video::after {
+  content: "Live site walkthrough";
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  padding: 6px 9px;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: rgba(5, 7, 5, 0.72);
+  border: 1px solid rgba(73, 224, 139, 0.25);
+}
+
+.proj-body {
+  padding: 26px 28px 30px;
+}
+
+.proj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.proj-tags span {
+  border: 1px solid var(--hair-strong);
+  color: #c5d3cb;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 7px 9px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.proj-link {
+  display: inline-flex;
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green);
+  border-bottom: 1px solid rgba(73, 224, 139, 0.42);
+}
+
+.proj-link:hover { color: var(--ink); border-color: var(--ink); }
+
+.proj-visual .pv-frame {
+  width: 70%;
+  border: 1px solid var(--hair-strong);
+  background: rgba(12, 15, 13, 0.9);
+  padding: 10px;
+  display: grid;
+  gap: 6px;
+  transition: transform 0.4s var(--ease), border-color 0.4s ease;
+}
+
+.proj:hover .pv-frame {
+  transform: translateY(-4px);
+  border-color: rgba(73, 224, 139, 0.4);
+}
+
+.pv-frame i {
+  display: block;
+  height: 7px;
+  background: rgba(238, 242, 239, 0.08);
+}
+
+.pv-frame i.hero-bar { height: 26px; background: linear-gradient(110deg, rgba(73, 224, 139, 0.35), rgba(61, 219, 208, 0.2)); }
+
+.proj-grid.c3 .proj:nth-child(2) .pv-frame i.hero-bar { background: linear-gradient(110deg, rgba(61, 219, 208, 0.35), rgba(167, 139, 250, 0.2)); }
+.proj-grid.c3 .proj:nth-child(3) .pv-frame i.hero-bar { background: linear-gradient(110deg, rgba(167, 139, 250, 0.35), rgba(255, 192, 110, 0.2)); }
+.proj-grid.c2 .proj:nth-child(2) .pv-frame i.hero-bar { background: linear-gradient(110deg, rgba(255, 192, 110, 0.35), rgba(73, 224, 139, 0.2)); }
+.pv-frame i.w60 { width: 60%; }
+.pv-frame i.w40 { width: 40%; }
+
+.pv-frame.phone {
+  width: 32%;
+  padding: 12px 8px;
+}
+
+.proj-meta {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+
+.proj h4 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+
+.proj p {
+  color: var(--dim);
+  font-size: 0.88rem;
+  font-weight: 300;
+}
+
+.proj .result {
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--green);
+}
+
+.proj.wide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.flow-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--dim);
+  border: 1px solid var(--hair);
+  padding: 34px 18px;
+  background:
+    linear-gradient(rgba(238, 242, 239, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 242, 239, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  flex-wrap: wrap;
+}
+
+.flow-step {
+  border: 1px solid var(--hair-strong);
+  padding: 9px 14px;
+  background: var(--bg-2);
+  white-space: nowrap;
+}
+
+.flow-step.hot {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.flow-dash {
+  color: var(--faint);
+  letter-spacing: -2px;
+}
+
+/* ---------- contact ---------- */
+
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 1px;
+  background: var(--hair);
+  border: 1px solid var(--hair);
+}
+
+.contact-left {
+  background:
+    radial-gradient(420px 300px at 12% -5%, rgba(61, 219, 208, 0.14), transparent 65%),
+    linear-gradient(170deg, rgba(30, 78, 50, 0.65), var(--bg-2));
+  padding: 50px 44px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-left h2 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  margin: 16px 0 18px;
+}
+
+.contact-phone {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+  color: var(--green);
+  border-bottom: 1px solid rgba(73, 224, 139, 0.45);
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.contact-phone:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.contact-left .pitch {
+  color: var(--dim);
+  font-weight: 300;
+  font-size: 0.96rem;
+  max-width: 400px;
+}
+
+.contact-meta {
+  margin-top: auto;
+  padding-top: 40px;
+  display: grid;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--dim);
+}
+
+.contact-meta span::before {
+  content: "— ";
+  color: var(--green);
+}
+
+.contact-form {
+  background: var(--bg);
+  padding: 50px 44px;
+  display: grid;
+  gap: 20px;
+}
+
+.cf-field { display: grid; gap: 8px; }
+
+.cf-field label {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.cf-field label .opt { color: var(--faint); }
+
+.cf-field input,
+.cf-field select,
+.cf-field textarea {
+  width: 100%;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--hair-strong);
+  padding: 10px 2px;
+  transition: border-color 0.3s ease;
+  border-radius: 0;
+}
+
+.cf-field input::placeholder,
+.cf-field textarea::placeholder { color: var(--faint); }
+
+.cf-field input:focus,
+.cf-field select:focus,
+.cf-field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--green);
+}
+
+.cf-field textarea { resize: vertical; min-height: 80px; }
+
+.cf-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.cf-select { position: relative; }
+
+.cf-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 30px;
+}
+
+.cf-select select:invalid { color: var(--faint); }
+.cf-select option { background: var(--bg-2); color: var(--ink); }
+
+.cf-select svg {
+  position: absolute;
+  right: 4px; top: 50%;
+  transform: translateY(-50%);
+  width: 14px; height: 14px;
+  color: var(--dim);
+  pointer-events: none;
+}
+
+.cf-note {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+  margin-top: -8px;
+}
+
+.cf-status {
+  font-size: 0.85rem;
+  min-height: 1.4em;
+  font-family: var(--mono);
+}
+
+.cf-status.ok { color: var(--green); }
+.cf-status.err { color: #ff9f9f; }
+
+.contact-form.is-sending .btn {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+/* ---------- footer ---------- */
+
+footer {
+  margin-top: 140px;
+  border-top: 1px solid var(--hair);
+}
+
+.foot-in {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 60px 28px 0;
+}
+
+.foot-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding-bottom: 50px;
+}
+
+.foot-word {
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  color: rgba(238, 242, 239, 0.1);
+  user-select: none;
+}
+
+.foot-word em {
+  font-family: var(--serif);
+  font-style: italic;
+  background: linear-gradient(100deg, rgba(73, 224, 139, 0.45), rgba(61, 219, 208, 0.4));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.foot-links {
+  display: grid;
+  gap: 12px;
+  padding-top: 12px;
+}
+
+.foot-links a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  transition: color 0.25s ease;
+}
+
+.foot-links a:hover { color: var(--green); }
+
+.foot-bottom {
+  border-top: 1px solid var(--hair);
+  padding: 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  flex-wrap: wrap;
+}
+
+/* ---------- reveal ---------- */
+
+.rv {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+
+.rv.on { opacity: 1; transform: none; }
+
+.rv[data-d="1"] { transition-delay: 0.1s; }
+.rv[data-d="2"] { transition-delay: 0.2s; }
+.rv[data-d="3"] { transition-delay: 0.3s; }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1000px) {
+  nav.main-nav { display: none; }
+  .hero-row { grid-template-columns: 1fr; gap: 30px; }
+  .hero-ctas { justify-content: flex-start; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(3) { border-left: none; }
+  .stat { border-top: 1px solid var(--hair); }
+  .stat:nth-child(-n+2) { border-top: none; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .why-cell.lead { grid-row: auto; grid-column: span 2; }
+  .pkg-grid { grid-template-columns: 1fr; }
+  .custom-pricing-in { grid-template-columns: 1fr; }
+  .custom-pricing-foot { flex-direction: column; align-items: flex-start; }
+  .proj-grid.c3, .proj-grid.c2 { grid-template-columns: 1fr 1fr; }
+  .contact-wrap { grid-template-columns: 1fr; }
+  .sec-head { flex-direction: column; align-items: flex-start; }
+  .sec-head .note { text-align: left; }
+}
+
+@media (max-width: 660px) {
+  .header-in { padding: 16px 18px; }
+  .svc-row { grid-template-columns: 44px 1fr 32px; }
+  .svc-row p { grid-column: 2 / -1; margin-top: -6px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .why-cell.lead { grid-column: auto; }
+  .proj-grid.c3, .proj-grid.c2 { grid-template-columns: 1fr; }
+  .proj.wide { grid-template-columns: 1fr; }
+  .custom-price-item { grid-template-columns: 1fr; }
+  .cf-split { grid-template-columns: 1fr; }
+  .hero { padding-top: 150px; }
+  .tick { display: none; }
+}
+
+@media (max-width: 520px) {
+  .logo .tld,
+  .header-cta { display: none; }
+  .lang-btn { padding: 10px 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .rv { opacity: 1; transform: none; }
+  .t-line { opacity: 1 !important; }
+}
+</style>
+</head>
+<body>
+<div class="glow-bg" aria-hidden="true"></div>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<header id="hd">
+  <div class="header-in">
+    <a class="logo" href="#top" aria-label="Siteup home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M16.5 8.2c-.7-.9-1.9-1.4-3.4-1.4-2.1 0-3.6 1-3.6 2.6 0 3.2 7.3 1.7 7.3 5 0 1.7-1.6 2.9-3.9 2.9-1.7 0-3.2-.7-4-1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </span>
+      siteup<span class="tld">/studio</span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#why">Why Siteup</a>
+      <a href="#packages">Packages</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch" aria-label="Choose language">
+        <button class="lang-btn active" type="button" data-lang="en">EN</button>
+        <button class="lang-btn" type="button" data-lang="ru">RU</button>
+        <button class="lang-btn" type="button" data-lang="uz">UZ</button>
+      </div>
+      <a class="header-cta" href="#contact">Free Consultation</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero">
+    <span class="tick tl" aria-hidden="true"></span>
+    <span class="tick tr" aria-hidden="true"></span>
+
+    <div class="hero-label rv" data-d="0">
+      <span class="rule" aria-hidden="true"></span>
+      <span class="label">Digital development studio</span>
     </div>
 
-    <!-- Transparent header, centered links, outlined pill CTA — like the reference -->
-    <header class="site-header" id="siteHeader">
-      <div class="header-inner">
-        <a class="brand" href="#top" aria-label="Siteup home">
-          <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="16" r="13.5" stroke="currentColor" stroke-width="2.2" />
-              <path
-                d="M20.5 12.2c-.8-1-2.2-1.6-3.9-1.6-2.4 0-4.1 1.2-4.1 3 0 3.7 8.3 1.9 8.3 5.7 0 1.9-1.8 3.3-4.4 3.3-2 0-3.7-.8-4.6-2"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-            </svg>
-          </span>
-          <span class="brand-name">siteup</span>
-        </a>
-        <nav class="nav-links" aria-label="Main navigation">
-          <a href="#services">Services</a>
-          <a href="#packages">Packages</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <a class="nav-cta" href="#contact">Request Free Consultation</a>
+    <h1 class="hero-h rv" data-d="1">
+      Websites and <span class="serif-accent">digital systems</span> for local businesses.
+    </h1>
+
+    <div class="hero-row">
+      <p class="hero-sub rv" data-d="2">
+        Siteup builds professional websites, online presence setups, custom
+        apps, and practical AI workflows for construction companies, service
+        businesses, and growing local brands.
+      </p>
+      <div class="hero-ctas rv" data-d="3">
+        <a class="btn btn-solid" href="#contact">Request Free Consultation <span class="arr">&rarr;</span></a>
+        <a class="btn btn-line" href="#packages">View Packages</a>
+        <a class="hero-call" href="tel:0405512447"><span>Call us</span><b>0405512447</b></a>
       </div>
-    </header>
+    </div>
+  </div>
 
-    <main id="top">
-      <!-- ============ HERO ============ -->
-      <section class="hero">
-        <div class="hero-aurora" aria-hidden="true">
-          <span class="aurora aurora-teal"></span>
-          <span class="aurora aurora-green"></span>
-          <span class="aurora aurora-purple"></span>
-        </div>
+  <!-- ============ TERMINAL ============ -->
+  <div class="term-wrap rv" id="termBlock">
+    <div class="terminal" role="img" aria-label="Terminal showing a client website launch">
+      <div class="term-bar">
+        <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="term-title">siteup — client launch</span>
+        <span class="term-status">Live</span>
+      </div>
+      <div class="term-body" id="termBody" aria-hidden="true"></div>
+    </div>
+  </div>
 
-        <div class="hero-inner">
-          <h1 class="hero-title reveal" data-stagger="0">
-            Websites and <span class="chip-word">digital systems</span><br />
-            for local businesses.
-          </h1>
+  <!-- ============ STATS ============ -->
+  <div class="stat-strip rv">
+    <div class="stat-grid">
+      <div class="stat"><b>1&ndash;2 wks</b><span>Typical launch</span></div>
+      <div class="stat"><b>100%</b><span>Mobile-friendly</span></div>
+      <div class="stat"><b>One-time</b><span>Prices, no subscriptions</span></div>
+      <div class="stat"><b>30 days</b><span>Post-launch bug fixes</span></div>
+    </div>
+  </div>
 
-          <p class="hero-sub reveal" data-stagger="1">
-            Siteup builds professional websites, online presence setups, custom
-            apps, and practical AI workflows for construction companies, service
-            businesses, and growing local brands.
+  <!-- ============ SERVICES ============ -->
+  <section id="services">
+    <div class="sec-head rv">
+      <div class="left">
+        <p class="sec-num">01 / Services</p>
+        <h2>Built like software.<br />Explained like business.</h2>
+      </div>
+      <p class="note">Everything your business needs to look professional and run smoother online.</p>
+    </div>
+
+    <div class="svc-list rv">
+      <button class="svc-row" type="button" data-service="websites">
+        <span class="svc-no">/01</span>
+        <h3>Websites</h3>
+        <p>Custom, mobile-friendly websites built around the business, services, and customer trust.</p>
+        <span class="svc-arr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M7 5h8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <button class="svc-row" type="button" data-service="presence">
+        <span class="svc-no">/02</span>
+        <h3>Online Presence Setup</h3>
+        <p>Google setup, indexing, Apple Maps, and business listing basics so customers can find correct information.</p>
+        <span class="svc-arr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M7 5h8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <button class="svc-row" type="button" data-service="leads">
+        <span class="svc-no">/03</span>
+        <h3>Lead Capture Systems</h3>
+        <p>Quote forms, contact flows, and email notifications that make customer requests easier to handle.</p>
+        <span class="svc-arr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M7 5h8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <button class="svc-row" type="button" data-service="apps">
+        <span class="svc-no">/04</span>
+        <h3>Custom Apps</h3>
+        <p>Dashboards, portals, and internal tools built around the way the business actually works.</p>
+        <span class="svc-arr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M7 5h8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <button class="svc-row" type="button" data-service="automation">
+        <span class="svc-no">/05</span>
+        <h3>Workflow Automation</h3>
+        <p>Automations that reduce repetitive tasks, organize information, and keep work moving.</p>
+        <span class="svc-arr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M7 5h8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+      <button class="svc-row" type="button" data-service="ai">
+        <span class="svc-no">/06</span>
+        <h3>Custom AI Agents</h3>
+        <p>Practical AI helpers for business tasks like summaries, drafts, organization, and repeatable processes.</p>
+        <span class="svc-arr" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M7 5h8v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+    </div>
+
+    <p class="svc-footnote rv">
+      <em>On automation:</em> we review how your business handles repetitive
+      tasks, then build custom automations and AI helpers to save time, reduce
+      manual work, and keep your team organized.
+    </p>
+  </section>
+
+  <!-- ============ WHY SITEUP ============ -->
+  <section id="why">
+    <div class="sec-head rv">
+      <div class="left">
+        <p class="sec-num">02 / Why Siteup</p>
+        <h2>Why businesses<br />choose us.</h2>
+      </div>
+      <p class="note">We are a tech development company. We build systems, not just pages.</p>
+    </div>
+
+    <div class="why-grid rv">
+      <div class="why-cell lead">
+        <div>
+          <p class="why-no">REASON / 01</p>
+          <h3>Update your website from Telegram</h3>
+          <p>
+            Every Siteup website ships with a Telegram manager. Change your
+            phone number, edit services, post new project photos, or turn a
+            banner on &mdash; from your phone, live in seconds. No logins, no
+            dashboards, no waiting on a developer.
           </p>
-
-          <div class="hero-actions reveal" data-stagger="2">
-            <a class="button button-light" href="#contact">Request Free Consultation</a>
-            <a class="button button-ghost" href="#packages">View Packages</a>
-          </div>
-
-          <svg class="hero-squiggle reveal" data-stagger="3" viewBox="0 0 90 50" fill="none" aria-hidden="true">
-            <path
-              class="squiggle-path"
-              d="M6 8c10 18 14 26 28 24 12-2 8-16 20-14 10 2 10 16 26 22"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-            />
-            <path
-              class="squiggle-tip"
-              d="M70 44l11-2-5 -10"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
         </div>
-
-        <!-- Floating dashboard cluster, composed like the reference:
-             small light cards beside a central dark chart panel,
-             then a row of three feature cards below -->
-        <div class="dash-cluster reveal" data-stagger="4" aria-label="Business dashboard mockup">
-          <div class="scene-orbit" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="dash-top">
-            <div class="dash-side dash-side-left">
-              <div class="float-card light fc-progress float-a">
-                <div class="fc-progress-row">
-                  <span class="fc-label">Website live</span>
-                  <strong><span data-count="100">0</span>%</strong>
-                </div>
-                <div class="fc-bar"><span class="fc-bar-fill"></span></div>
-              </div>
-
-              <div class="float-card light fc-bars float-b">
-                <span class="fc-label">Quote requests</span>
-                <div class="fc-bar-chart" aria-hidden="true">
-                  <i style="--h: 36%"></i><i style="--h: 58%"></i><i style="--h: 44%"></i><i style="--h: 72%"></i><i style="--h: 56%"></i><i style="--h: 88%"></i><i style="--h: 64%"></i>
-                </div>
-              </div>
-            </div>
-
-            <div class="dash-panel float-slow">
-              <span class="panel-scan" aria-hidden="true"></span>
-              <div class="dash-panel-head">
-                <p>Leads</p>
-                <span class="dash-range">Last 30 days</span>
-                <span class="dash-menu" aria-hidden="true"><i></i><i></i><i></i></span>
-              </div>
-              <div class="dash-chart-wrap">
-                <svg class="dash-chart" viewBox="0 0 420 160" preserveAspectRatio="none" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="#43e88d" stop-opacity="0.28" />
-                      <stop offset="100%" stop-color="#43e88d" stop-opacity="0" />
-                    </linearGradient>
-                    <linearGradient id="chartStroke" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stop-color="#43e88d" />
-                      <stop offset="100%" stop-color="#38d9c8" />
-                    </linearGradient>
-                  </defs>
-                  <g class="chart-grid" stroke="rgba(255,255,255,0.06)">
-                    <line x1="0" y1="40" x2="420" y2="40" />
-                    <line x1="0" y1="80" x2="420" y2="80" />
-                    <line x1="0" y1="120" x2="420" y2="120" />
-                  </g>
-                  <path
-                    class="chart-area"
-                    d="M0 122 C40 110 60 128 95 118 C130 108 150 80 185 86 C220 92 240 60 275 56 C310 52 330 70 365 48 C390 33 405 30 420 24 L420 160 L0 160 Z"
-                    fill="url(#chartFill)"
-                  />
-                  <path
-                    class="chart-line"
-                    d="M0 122 C40 110 60 128 95 118 C130 108 150 80 185 86 C220 92 240 60 275 56 C310 52 330 70 365 48 C390 33 405 30 420 24"
-                    stroke="url(#chartStroke)"
-                    stroke-width="2.5"
-                    fill="none"
-                    stroke-linecap="round"
-                  />
-                  <circle class="chart-dot" cx="275" cy="56" r="4.5" fill="#43e88d" />
-                  <circle class="chart-dot-pulse" cx="275" cy="56" r="4.5" fill="none" stroke="#43e88d" stroke-width="1.5" />
-                </svg>
-                <span class="chart-tooltip">27 leads</span>
-              </div>
-              <div class="dash-axis" aria-hidden="true">
-                <span>W1</span><span>W2</span><span>W3</span><span>W4</span>
-              </div>
-            </div>
-
-            <div class="dash-side dash-side-right">
-              <div class="float-card light fc-spark float-c">
-                <span class="fc-label">New leads</span>
-                <div class="fc-spark-row">
-                  <strong><span data-count="27">0</span></strong>
-                  <svg viewBox="0 0 70 26" fill="none" aria-hidden="true">
-                    <path d="M2 20c6-2 8 3 13 1s6-9 12-8 7 6 12 4 6-10 12-11 9 5 17 2" stroke="#43e88d" stroke-width="2" stroke-linecap="round" />
-                  </svg>
-                </div>
-                <span class="fc-trend">&#8599; +18% this month</span>
-              </div>
-
-              <div class="float-card chip-card fc-verified float-d">
-                <span class="fc-check" aria-hidden="true">
-                  <svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                <div>
-                  <strong>Google Business</strong>
-                  <span>Verified</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- floating notification overlapping the panel, like the reference's cursor card -->
-          <div class="float-card light fc-note float-e">
-            <span class="fc-note-icon" aria-hidden="true">
-              <svg viewBox="0 0 18 18" fill="none"><path d="M3 5.5L9 10l6-4.5M3.5 4h11A1.5 1.5 0 0116 5.5v7a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 012 12.5v-7A1.5 1.5 0 013.5 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div>
-              <strong>New quote request</strong>
-              <span>Kitchen remodel &middot; 2 min ago</span>
-            </div>
-          </div>
-
-          <div class="dash-bottom">
-            <div class="feature-card fc-find">
-              <h4>Show up correctly on Google</h4>
-              <div class="mini-listing" aria-hidden="true">
-                <span class="mini-pin">
-                  <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
-                </span>
-                <div class="mini-listing-lines">
-                  <i class="w70"></i>
-                  <i class="w50"></i>
-                  <span class="mini-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="feature-card fc-overview">
-              <h4>Overview</h4>
-              <p class="fc-overview-sub">What owners see after launch.</p>
-              <div class="avatar-row" aria-hidden="true">
-                <span class="avatar av-1">JD</span>
-                <span class="avatar av-2">MR</span>
-                <span class="avatar av-3">AK</span>
-                <span class="avatar av-4">TS</span>
-                <span class="avatar av-more">+9</span>
-              </div>
-              <div class="overview-stats">
-                <div class="overview-stat">
-                  <span class="overview-stat-label">Leads this month</span>
-                  <span class="stat-chip chip-mint"><span data-count="27">0</span>+</span>
-                </div>
-                <div class="overview-stat">
-                  <span class="overview-stat-label">Avg. reply time</span>
-                  <span class="stat-chip chip-mint">4&nbsp;min</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="feature-card fc-speed">
-              <h4>Fast on every phone</h4>
-              <div class="fc-speed-body">
-                <svg class="ring" viewBox="0 0 64 64" aria-hidden="true">
-                  <circle class="ring-track" cx="32" cy="32" r="26" />
-                  <circle class="ring-fill" cx="32" cy="32" r="26" />
-                </svg>
-                <div class="fc-ring-text">
-                  <strong><span data-count="98">0</span></strong>
-                  <span class="fc-label">Mobile speed score</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ TICKER ============ -->
-      <div class="ticker" aria-hidden="true">
-        <div class="ticker-track">
-          <span>Websites</span><i>&#10022;</i>
-          <span>Online Presence</span><i>&#10022;</i>
-          <span>Lead Capture</span><i>&#10022;</i>
-          <span>Custom Apps</span><i>&#10022;</i>
-          <span>Workflow Automation</span><i>&#10022;</i>
-          <span>Custom AI Agents</span><i>&#10022;</i>
-          <span>Websites</span><i>&#10022;</i>
-          <span>Online Presence</span><i>&#10022;</i>
-          <span>Lead Capture</span><i>&#10022;</i>
-          <span>Custom Apps</span><i>&#10022;</i>
-          <span>Workflow Automation</span><i>&#10022;</i>
-          <span>Custom AI Agents</span><i>&#10022;</i>
+        <div class="tg-demo" aria-hidden="true">
+          <div class="tg-msg"><span class="tg-who">You</span><span>Add new project: kitchen remodel, Oakdale</span></div>
+          <div class="tg-msg bot"><span class="tg-who">S</span><span><span class="ok">&#10003;</span> Project published. Live on your site now.</span></div>
+          <div class="tg-msg"><span class="tg-who">You</span><span>Change phone number to (555) 014-0199</span></div>
+          <div class="tg-msg bot"><span class="tg-who">S</span><span><span class="ok">&#10003;</span> Updated everywhere on the site.</span></div>
         </div>
       </div>
 
-      <div class="motion-divider" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="why-cell">
+        <p class="why-no">REASON / 02</p>
+        <h3>Real development, not templates</h3>
+        <p>We build websites, apps, and automations as custom software &mdash; shaped around how your business actually works.</p>
       </div>
 
-      <!-- ============ SERVICES ============ -->
-      <section class="section" id="services">
-        <div class="section-heading heading-row reveal">
+      <div class="why-cell">
+        <p class="why-no">REASON / 03</p>
+        <h3>One-time prices</h3>
+        <p>You pay once, you own it. No monthly subscriptions. After launch, support is paid per request.</p>
+      </div>
+
+      <div class="why-cell">
+        <p class="why-no">REASON / 04</p>
+        <h3>Practical AI, plain language</h3>
+        <p>We look at your repetitive tasks and build automations that save time. No hype, no buzzwords.</p>
+      </div>
+
+      <div class="why-cell">
+        <p class="why-no">REASON / 05</p>
+        <h3>Found correctly online</h3>
+        <p>Google, Apple Maps, and business listings set up so customers always see the right information.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PACKAGES ============ -->
+  <section id="packages">
+    <div class="sec-head rv">
+      <div class="left">
+        <p class="sec-num">03 / Packages</p>
+        <h2>Website packages.<br />One-time prices.</h2>
+      </div>
+    </div>
+
+    <p class="pkg-note-top rv">
+      Launch, Growth, and Premium are only for website projects. Apps, AI
+      agents, custom systems, and workflow automations are priced after we
+      understand what needs to be built and how complex it is. Each website
+      package includes 30 days of post-launch bug fixes.
+    </p>
+
+    <div class="pkg-grid rv">
+      <article class="pkg">
+        <p class="pkg-name">Launch</p>
+        <p class="pkg-price"><span class="cur">$</span>700</p>
+        <p class="pkg-for">A website package for businesses that need a clean site they can manage.</p>
+        <ul>
+          <li>Custom business website</li>
+          <li>Mobile-friendly design</li>
+          <li>Contact form</li>
+          <li>Quote/request form</li>
+          <li>Reviews/testimonials section</li>
+          <li>Basic SEO setup</li>
+          <li>Telegram website manager</li>
+          <li>Project/gallery updates from Telegram</li>
+          <li>30 days post-launch bug fixes</li>
+        </ul>
+        <a class="btn btn-line" href="#contact">Request Free Consultation</a>
+      </article>
+
+      <article class="pkg feat">
+        <span class="pkg-tag">Popular</span>
+        <p class="pkg-name">Growth</p>
+        <p class="pkg-price"><span class="cur">$</span>1,100</p>
+        <p class="pkg-for">A website package for businesses that want to be easier to find online.</p>
+        <ul>
+          <li>Everything in Launch</li>
+          <li>Google Search setup</li>
+          <li>Google indexing basics</li>
+          <li>Google Business/Profile setup or connection</li>
+          <li>Apple Maps setup</li>
+          <li>Stronger online presence setup</li>
+          <li>Lead notifications by email</li>
+        </ul>
+        <p class="pkg-fine">We set up the basics so Google can find, index, and understand your business.</p>
+        <a class="btn btn-solid" href="#contact">Request Free Consultation</a>
+      </article>
+
+      <article class="pkg">
+        <p class="pkg-name">Premium</p>
+        <p class="pkg-price"><span class="cur">$</span>1,500</p>
+        <p class="pkg-for">A website package for businesses that want a sharper brand and stronger proof.</p>
+        <ul>
+          <li>Everything in Growth</li>
+          <li>Logo design</li>
+          <li>Brand colors and typography</li>
+          <li>Business card design</li>
+          <li>Flyer or door hanger design</li>
+          <li>Shirt/hoodie mockup</li>
+          <li>Truck decal mockup</li>
+          <li>Brand mini-guide</li>
+          <li>Approximate past-project map with clickable pins</li>
+        </ul>
+        <p class="pkg-fine">Premium includes design files and mockups only. Ordering clothes, cards, decals, or printed materials is the customer's responsibility.</p>
+        <a class="btn btn-line" href="#contact">Request Free Consultation</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ CUSTOM PRICING ============ -->
+  <section class="custom-pricing rv" id="custom-pricing">
+    <div class="custom-pricing-in">
+      <div class="custom-pricing-copy">
+        <p class="label">Apps / AI / Workflows</p>
+        <h2>Custom products are priced after we understand the build.</h2>
+        <p>
+          Website packages have fixed prices. Apps, AI agents, internal systems,
+          and automated workflows are different: the price depends on what the
+          product needs to do, how many steps it has, what tools it connects
+          with, and how complex the business process is.
+        </p>
+      </div>
+
+      <div class="custom-price-list">
+        <article class="custom-price-item">
+          <span>01</span>
           <div>
-            <p class="eyebrow">Services</p>
-            <h2>Everything your business needs to look professional<br class="br-wide" /> and run smoother online.</h2>
-          </div>
-          <div class="carousel-arrows" aria-hidden="false">
-            <button class="arrow-btn arrow-prev" type="button" aria-label="Previous services">
-              <svg viewBox="0 0 20 20" fill="none"><path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <button class="arrow-btn arrow-next filled" type="button" aria-label="Next services">
-              <svg viewBox="0 0 20 20" fill="none"><path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="service-track reveal" id="serviceTrack">
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.6"/><circle cx="6.2" cy="6.6" r="0.9" fill="currentColor"/><circle cx="9" cy="6.6" r="0.9" fill="currentColor"/><path d="M6.5 13.5h6M6.5 16.5h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            </span>
-            <h3>Websites</h3>
-            <p>Custom, mobile-friendly websites built around the business, services, and customer trust.</p>
-          </article>
-
-          <article class="service-card featured">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg>
-            </span>
-            <h3>Online Presence Setup</h3>
-            <p>Google setup, indexing, Apple Maps, and business listing basics so customers can find correct information.</p>
-          </article>
-
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16l-5.5 7v5.5L9.5 20v-8L4 5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            </span>
-            <h3>Lead Capture Systems</h3>
-            <p>Quote forms, contact flows, and email notifications that make customer requests easier to handle.</p>
-          </article>
-
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7.5" height="7.5" rx="3.75" stroke="currentColor" stroke-width="1.6"/></svg>
-            </span>
             <h3>Custom Apps</h3>
-            <p>Dashboards, portals, and internal tools built around the way the business actually works.</p>
-          </article>
+            <p>Dashboards, portals, mobile-friendly tools, and internal systems built around your workflow.</p>
+          </div>
+        </article>
+        <article class="custom-price-item">
+          <span>02</span>
+          <div>
+            <h3>AI Agents</h3>
+            <p>Practical AI helpers for summaries, drafts, organization, customer notes, and repeatable tasks.</p>
+          </div>
+        </article>
+        <article class="custom-price-item">
+          <span>03</span>
+          <div>
+            <h3>Automated Workflows</h3>
+            <p>Automations that connect steps, reduce manual work, send reminders, and keep operations moving.</p>
+          </div>
+        </article>
+      </div>
 
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h9M4 12h6M4 17h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M16 6l4 6-4 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <h3>Workflow Automation</h3>
-            <p>Automations that reduce repetitive tasks, organize information, and keep work moving.</p>
-          </article>
+      <div class="custom-pricing-foot">
+        <p>
+          First we review the idea, workflow, tools, and complexity. Then you
+          get a clear custom quote before anything is built.
+        </p>
+        <a class="btn btn-solid" href="#contact">Request Custom Quote <span class="arr">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
 
-          <article class="service-card">
-            <span class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M18.5 14.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9.9-2.1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-            </span>
-            <h3>Custom AI Agents</h3>
-            <p>Practical AI helpers for business tasks like summaries, drafts, organization, and repeatable processes.</p>
-          </article>
-        </div>
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects">
+    <div class="sec-head rv">
+      <div class="left">
+        <p class="sec-num">04 / Projects</p>
+        <h2>Projects built for<br />real businesses.</h2>
+      </div>
+      <p class="note">Live websites with the practical deliverables Siteup built around each business.</p>
+    </div>
 
-        <!-- Two-column block with accordion, like the reference's
-             "Simplified Process, Outstanding Results." section -->
-        <div class="process-block reveal">
-          <div class="process-visual" aria-hidden="true">
-            <div class="process-screen float-slow">
-              <div class="process-screen-head"><span></span><span></span><span></span></div>
-              <div class="process-screen-body">
-                <i class="w70"></i>
-                <i class="w50"></i>
-                <div class="process-pill"></div>
-              </div>
+    <div class="proj-group rv">
+      <div class="proj-group-title">
+        <h3>Websites</h3><span class="count">&times;2</span><span class="line" aria-hidden="true"></span>
+      </div>
+      <div class="proj-grid c2">
+        <article class="proj featured">
+          <div class="proj-visual proj-video">
+            <video src="V/2e3.mov" muted loop autoplay playsinline controls preload="metadata" aria-label="Turon Roofing website walkthrough"></video>
+          </div>
+          <div class="proj-body">
+            <p class="proj-meta">Project</p>
+            <h4>Turon Roofing</h4>
+            <p>We built a clean roofing website focused on service clarity, mobile trust, quote enquiries, and stronger local search basics.</p>
+            <p class="result">&rarr; special projects map added to show completed work by location</p>
+            <div class="proj-tags" aria-label="Project deliverables">
+              <span>Website</span>
+              <span>Google setup</span>
+              <span>Lead form</span>
+              <span>Projects map</span>
             </div>
-            <div class="float-card light process-chip float-b">
-              <span class="fc-check small" aria-hidden="true">
-                <svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span class="process-chip-text">Task done automatically</span>
+            <a class="proj-link" href="https://turonroofing.com.au" target="_blank" rel="noopener">View live site</a>
+          </div>
+        </article>
+        <article class="proj featured">
+          <div class="proj-visual proj-video">
+            <video src="V/2e4.mov" muted loop autoplay playsinline controls preload="metadata" aria-label="Black Star Roofing website walkthrough"></video>
+          </div>
+          <div class="proj-body">
+            <p class="proj-meta">Project</p>
+            <h4>Black Star Roofing</h4>
+            <p>We built a Sydney roofing site around Colorbond roofing, emergency repairs, guttering, reviews, project proof, and a fast quote flow.</p>
+            <p class="result">&rarr; business card and t-shirt designs completed for a consistent trade brand</p>
+            <div class="proj-tags" aria-label="Project deliverables">
+              <span>Website</span>
+              <span>Quote flow</span>
+              <span>Business card</span>
+              <span>T-shirt design</span>
+            </div>
+            <a class="proj-link" href="https://blackstarroofing.com.au" target="_blank" rel="noopener">View live site</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="proj-group rv">
+      <div class="proj-group-title">
+        <h3>Apps</h3><span class="count">&times;1</span><span class="line" aria-hidden="true"></span>
+      </div>
+      <div class="proj-grid c1">
+        <article class="proj featured">
+          <div class="proj-visual proj-video">
+            <video src="V/onepagegift.mp4" muted loop autoplay playsinline controls preload="metadata" aria-label="One Page Gift web app walkthrough"></video>
+          </div>
+          <div class="proj-body">
+            <p class="proj-meta">Web App</p>
+            <h4>One Page Gift</h4>
+            <p>We built a warm web app experience for creating personal one-page gift sites with photos, memories, AI-polished writing, previews, and one shareable link.</p>
+            <p class="result">&rarr; positioned the app for birthdays, anniversaries, love notes, invitations, and last-minute thoughtful gifts</p>
+            <div class="proj-tags" aria-label="Project deliverables">
+              <span>Web app</span>
+              <span>Create flow</span>
+              <span>AI writing</span>
+              <span>Shareable link</span>
+            </div>
+            <a class="proj-link" href="https://onepagegift.com" target="_blank" rel="noopener">View live app</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="proj-group rv">
+      <div class="proj-group-title">
+        <h3>Automations</h3><span class="count">&times;1</span><span class="line" aria-hidden="true"></span>
+      </div>
+      <div class="proj-grid c1">
+        <article class="proj featured">
+          <div class="proj-visual proj-image">
+            <img src="V/automation-lead-monitor.png" alt="Automation system scanning local social posts and sending Telegram lead alerts" loading="lazy" />
+          </div>
+          <div class="proj-body">
+            <p class="proj-meta">Automation</p>
+            <h4>Local job lead monitor</h4>
+            <p>We built an agent-style automation for a tradie who was spending too much time checking local Facebook community groups for people asking for service recommendations.</p>
+            <p>The workflow runs twice a day, checks the groups connected to the business profile, looks for posts where locals ask for services like roofing or plumbing, and sends a Telegram bot summary with the relevant posts found.</p>
+            <p class="result">&rarr; fewer manual group checks, faster response to local customers looking for recommendations</p>
+            <div class="proj-tags" aria-label="Project deliverables">
+              <span>Lead monitor</span>
+              <span>Keyword matching</span>
+              <span>Telegram bot</span>
+              <span>Twice daily</span>
             </div>
           </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-          <div class="process-copy">
-            <h3 class="process-title">Less manual work,<br />more time on the job.</h3>
-            <p class="process-sub">
-              We review how your business handles repetitive tasks, then build
-              custom automations and AI helpers to save time, reduce manual
-              work, and keep your team organized.
-            </p>
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <div class="sec-head rv">
+      <div class="left">
+        <p class="sec-num">05 / Contact</p>
+        <h2>Tell us what your business<br />needs <span class="serif-accent">online.</span></h2>
+      </div>
+    </div>
 
-            <div class="accordion" id="aiAccordion">
-              <div class="accordion-item open">
-                <button class="accordion-head" type="button" aria-expanded="true">
-                  <span>Organize incoming quote requests</span>
-                  <span class="accordion-chevron" aria-hidden="true">
-                    <svg viewBox="0 0 16 16" fill="none"><path d="M4 10l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </span>
-                </button>
-                <div class="accordion-body">
-                  <p>New requests are sorted automatically, job notes are created from form submissions, and tasks are routed to the right person.</p>
-                </div>
-              </div>
+    <div class="contact-wrap rv">
+      <div class="contact-left">
+        <p class="label">Free Consultation</p>
+        <a class="contact-phone" href="tel:0405512447">0405512447</a>
+        <h2>Plain answers. Real next steps.</h2>
+        <p class="pitch">
+          Get a clean website, show up correctly online, and make it easier for
+          customers to contact you. Send a quick request and we will review
+          your business and the best next step.
+        </p>
+        <div class="contact-meta">
+          <span>No pressure, no subscriptions</span>
+          <span>Plain answers about price and scope</span>
+          <span>Reply within one business day</span>
+          <span>admin@siteup.com.au</span>
+        </div>
+      </div>
 
-              <div class="accordion-item">
-                <button class="accordion-head" type="button" aria-expanded="false">
-                  <span>Summarize and draft</span>
-                  <span class="accordion-chevron" aria-hidden="true">
-                    <svg viewBox="0 0 16 16" fill="none"><path d="M4 10l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </span>
-                </button>
-                <div class="accordion-body">
-                  <p>Customer messages are summarized, replies are drafted, and project descriptions are generated from photos or notes.</p>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <button class="accordion-head" type="button" aria-expanded="false">
-                  <span>Keep follow-ups moving</span>
-                  <span class="accordion-chevron" aria-hidden="true">
-                    <svg viewBox="0 0 16 16" fill="none"><path d="M4 10l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </span>
-                </button>
-                <div class="accordion-body">
-                  <p>Owners get reminders to follow up, and spreadsheets or CRMs are updated automatically.</p>
-                </div>
-              </div>
-            </div>
+      <form class="contact-form" id="cForm" method="POST" action="https://formsubmit.co/admin@siteup.com.au" novalidate>
+        <input type="hidden" name="_subject" value="New Siteup consultation request" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <div class="cf-split">
+          <div class="cf-field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" type="text" name="name" autocomplete="name" required />
+          </div>
+          <div class="cf-field">
+            <label for="cf-biz">Business name</label>
+            <input id="cf-biz" type="text" name="business" autocomplete="organization" required />
           </div>
         </div>
-      </section>
-
-      <!-- ============ PACKAGES ============ -->
-      <section class="section" id="packages">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Packages</p>
-          <h2>Website packages. One-time prices.</h2>
-          <p class="section-sub">
-            Launch, Growth, and Premium are only for website projects. Apps,
-            AI agents, and workflow automations are priced after we understand
-            what needs to be built and how complex it is. After launch, website
-            support is paid per request. Each website package includes 30 days
-            of post-launch bug fixes.
-          </p>
-        </div>
-
-        <div class="package-grid">
-          <article class="package-card reveal" data-stagger="0">
-            <div class="package-head">
-              <p class="package-kicker">Launch</p>
-              <p class="package-price"><span class="currency">$</span>700</p>
-              <p class="package-desc">A website package for businesses that need a clean site they can manage.</p>
-            </div>
-            <ul class="package-list">
-              <li>Custom business website</li>
-              <li>Mobile-friendly design</li>
-              <li>Contact form</li>
-              <li>Quote/request form</li>
-              <li>Reviews/testimonials section</li>
-              <li>Basic SEO setup</li>
-              <li>Telegram website manager &mdash; update your site from your phone</li>
-              <li>Project/gallery updates from Telegram</li>
-              <li>30 days post-launch bug fixes</li>
-            </ul>
-            <a class="button button-ghost package-btn" href="#contact">Request Free Consultation</a>
-          </article>
-
-          <article class="package-card featured reveal" data-stagger="1">
-            <div class="package-badge">Popular</div>
-            <div class="package-head">
-              <p class="package-kicker">Growth</p>
-              <p class="package-price"><span class="currency">$</span>1,100</p>
-              <p class="package-desc">A website package for businesses that want to be easier to find online.</p>
-            </div>
-            <ul class="package-list">
-              <li>Everything in Launch</li>
-              <li>Google Search setup</li>
-              <li>Google indexing basics</li>
-              <li>Google Business/Profile setup or connection</li>
-              <li>Apple Maps setup</li>
-              <li>Stronger online presence setup</li>
-              <li>Lead notifications by email</li>
-            </ul>
-            <p class="package-note">
-              We set up the basics so Google can find, index, and understand your business.
-            </p>
-            <a class="button button-primary package-btn" href="#contact">Request Free Consultation</a>
-          </article>
-
-          <article class="package-card reveal" data-stagger="2">
-            <div class="package-head">
-              <p class="package-kicker">Premium</p>
-              <p class="package-price"><span class="currency">$</span>1,500</p>
-              <p class="package-desc">A website package for businesses that want a sharper brand and stronger proof.</p>
-            </div>
-            <ul class="package-list">
-              <li>Everything in Growth</li>
-              <li>Logo design</li>
-              <li>Brand colors and typography</li>
-              <li>Business card design</li>
-              <li>Flyer or door hanger design</li>
-              <li>Shirt/hoodie mockup</li>
-              <li>Truck decal mockup</li>
-              <li>Brand mini-guide</li>
-              <li>Approximate past-project map with clickable pins</li>
-            </ul>
-            <p class="package-note">
-              Premium includes design files and mockups only. Ordering clothes,
-              cards, decals, or printed materials is the customer's responsibility.
-            </p>
-            <a class="button button-ghost package-btn" href="#contact">Request Free Consultation</a>
-          </article>
-        </div>
-      </section>
-
-      <!-- ============ CUSTOM PRODUCT PRICING ============ -->
-      <section class="custom-pricing-section reveal" id="custom-pricing">
-        <div class="custom-pricing-inner">
-          <div class="custom-pricing-copy">
-            <p class="eyebrow">Apps, AI &amp; Workflows</p>
-            <h2>Custom products are priced after we understand the build.</h2>
-            <p>
-              Website packages have fixed prices. Apps, AI agents, internal
-              systems, and automated workflows are different: the price depends
-              on what the product needs to do, how many steps it has, what tools
-              it connects with, and how complex the business process is.
-            </p>
+        <div class="cf-split">
+          <div class="cf-field">
+            <label for="cf-phone">Phone</label>
+            <input id="cf-phone" type="tel" name="phone" autocomplete="tel" />
           </div>
-
-          <div class="custom-pricing-panel" aria-label="Custom product pricing examples">
-            <article>
-              <span>01</span>
-              <h3>Custom Apps</h3>
-              <p>Dashboards, portals, mobile-friendly tools, and internal systems built around your workflow.</p>
-            </article>
-            <article>
-              <span>02</span>
-              <h3>AI Agents</h3>
-              <p>Practical AI helpers for summaries, drafts, organization, customer notes, and repeatable tasks.</p>
-            </article>
-            <article>
-              <span>03</span>
-              <h3>Automated Workflows</h3>
-              <p>Automations that connect steps, reduce manual work, send reminders, and keep operations moving.</p>
-            </article>
-          </div>
-
-          <div class="custom-pricing-footer">
-            <p>
-              First we review the idea, workflow, tools, and complexity. Then
-              you get a clear custom quote before anything is built.
-            </p>
-            <a class="button button-light" href="#contact">Request Custom Quote</a>
+          <div class="cf-field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" type="email" name="email" autocomplete="email" />
           </div>
         </div>
-      </section>
-
-      <!-- ============ PROJECTS ============ -->
-      <section class="section" id="projects">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Projects</p>
-          <h2>Projects built for real businesses.</h2>
-          <p class="section-sub">
-            A mix of websites, apps, and automations showing the practical
-            digital work Siteup builds.
-          </p>
+        <p class="cf-note">// phone or email is required so we can contact you</p>
+        <div class="cf-field">
+          <label for="cf-type">Business type</label>
+          <input id="cf-type" type="text" name="businessType" placeholder="Construction company, cleaning service, restaurant..." required />
         </div>
-
-        <div class="project-group reveal">
-          <h3 class="group-title">Websites</h3>
-          <div class="project-grid cols-3">
-            <article class="project-card">
-              <div class="project-shot shot-site-a" aria-hidden="true">
-                <div class="shot-chrome"><span></span><span></span><span></span></div>
-                <div class="shot-body">
-                  <div class="shot-hero"></div>
-                  <div class="shot-row"><i></i><i></i><i></i></div>
-                  <div class="shot-line w70"></div>
-                  <div class="shot-line w45"></div>
-                </div>
-              </div>
-              <span class="project-tag">Website</span>
-              <h4>Construction company website</h4>
-              <p>A clean service website with project gallery, reviews, and quote request flow.</p>
-              <p class="project-result">Result: easier quote requests from mobile visitors.</p>
-            </article>
-
-            <article class="project-card">
-              <div class="project-shot shot-site-b" aria-hidden="true">
-                <div class="shot-chrome"><span></span><span></span><span></span></div>
-                <div class="shot-body">
-                  <div class="shot-split">
-                    <div class="shot-hero tall"></div>
-                    <div class="shot-stack"><i></i><i></i><i></i></div>
-                  </div>
-                  <div class="shot-line w60"></div>
-                </div>
-              </div>
-              <span class="project-tag">Website</span>
-              <h4>Local service website</h4>
-              <p>A mobile-first website built to make services, contact details, and trust signals clear.</p>
-              <p class="project-result">Result: correct business info everywhere customers look.</p>
-            </article>
-
-            <article class="project-card">
-              <div class="project-shot shot-site-c" aria-hidden="true">
-                <div class="shot-chrome"><span></span><span></span><span></span></div>
-                <div class="shot-body">
-                  <div class="shot-row tall"><i></i><i></i></div>
-                  <div class="shot-line w80"></div>
-                  <div class="shot-line w50"></div>
-                  <div class="shot-pill"></div>
-                </div>
-              </div>
-              <span class="project-tag">Website</span>
-              <h4>Business portfolio site</h4>
-              <p>A polished online presence for showcasing work, explaining services, and collecting requests.</p>
-            </article>
+        <div class="cf-field">
+          <label for="cf-need">What do you need?</label>
+          <div class="cf-select">
+            <select id="cf-need" name="need" required>
+              <option value="" selected disabled>Choose one</option>
+              <option>New Website</option>
+              <option>Online Presence / Leads</option>
+              <option>Website Redesign</option>
+              <option>App</option>
+              <option>Automated Workflow</option>
+              <option>Other</option>
+            </select>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
         </div>
-
-        <div class="project-group reveal">
-          <h3 class="group-title">Apps</h3>
-          <div class="project-grid cols-2">
-            <article class="project-card">
-              <div class="project-shot shot-app-a" aria-hidden="true">
-                <div class="shot-chrome"><span></span><span></span><span></span></div>
-                <div class="shot-body">
-                  <div class="shot-sidebar"></div>
-                  <div class="shot-main">
-                    <div class="shot-row"><i></i><i></i><i></i></div>
-                    <div class="shot-hero short"></div>
-                    <div class="shot-line w60"></div>
-                  </div>
-                </div>
-              </div>
-              <span class="project-tag">Web App</span>
-              <h4>Operations dashboard</h4>
-              <p>A custom dashboard for tracking requests, tasks, and business information in one place.</p>
-              <p class="project-result">Result: one place to see what needs attention.</p>
-            </article>
-
-            <article class="project-card">
-              <div class="project-shot shot-app-b" aria-hidden="true">
-                <div class="shot-phone">
-                  <div class="shot-notch"></div>
-                  <div class="shot-line w70"></div>
-                  <div class="shot-row"><i></i><i></i></div>
-                  <div class="shot-line w50"></div>
-                  <div class="shot-pill"></div>
-                </div>
-              </div>
-              <span class="project-tag">App</span>
-              <h4>Business management app</h4>
-              <p>An app experience shaped around a real business workflow instead of a generic template.</p>
-            </article>
-          </div>
+        <div class="cf-field">
+          <label for="cf-msg">Message <span class="opt">/ optional</span></label>
+          <textarea id="cf-msg" name="message" rows="3" placeholder="Write anything else you want us to know."></textarea>
         </div>
+        <button class="btn btn-solid" type="submit">Request Free Consultation <span class="arr">&rarr;</span></button>
+        <p class="cf-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
 
-        <div class="project-group reveal">
-          <h3 class="group-title">Automated Workflows</h3>
-          <div class="project-grid cols-1">
-            <article class="project-card project-wide">
-              <div class="project-shot shot-flow" aria-hidden="true">
-                <div class="flow-node">
-                  <span class="flow-icon">
-                    <svg viewBox="0 0 18 18" fill="none"><rect x="3" y="2.5" width="12" height="13" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M6 6.5h6M6 9.5h6M6 12.5h3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-                  </span>
-                  <strong>Form submitted</strong>
-                </div>
-                <span class="flow-link"><i></i></span>
-                <div class="flow-node flow-node-mid">
-                  <span class="flow-icon">
-                    <svg viewBox="0 0 18 18" fill="none"><path d="M9 2.5l1.3 3.2L13.5 7l-3.2 1.3L9 11.5 7.7 8.3 4.5 7l3.2-1.3L9 2.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M13.8 11l.7 1.6 1.6.7-1.6.7-.7 1.6-.7-1.6-1.6-.7 1.6-.7.7-1.6z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
-                  </span>
-                  <strong>AI summary drafted</strong>
-                </div>
-                <span class="flow-link"><i></i></span>
-                <div class="flow-node">
-                  <span class="flow-icon">
-                    <svg viewBox="0 0 18 18" fill="none"><path d="M9 15.5c3.6 0 6.5-2.7 6.5-6S12.6 3.5 9 3.5 2.5 6.2 2.5 9.5c0 1.3.4 2.4 1.2 3.4L3 15.5l2.8-.8c1 .5 2 .8 3.2.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-                  </span>
-                  <strong>Owner notified</strong>
-                </div>
-              </div>
-              <div class="project-wide-copy">
-                <span class="project-tag">Workflow Automation</span>
-                <h4>AI-assisted admin workflow</h4>
-                <p>
-                  A practical automation that organizes repetitive business
-                  tasks, prepares summaries, and keeps follow-up work easier to
-                  manage.
-                </p>
-                <p class="project-result">Result: less time on admin, faster follow-ups.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+  <div class="service-modal" id="serviceModal" aria-hidden="true">
+    <div class="service-modal-backdrop" data-close-service></div>
+    <section class="service-dialog" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
+      <button class="service-close" type="button" data-close-service aria-label="Close">×</button>
+      <p class="label" id="serviceModalKicker">Service detail</p>
+      <h2 id="serviceModalTitle">Websites</h2>
+      <p id="serviceModalText"></p>
+      <ul class="service-detail-list" id="serviceModalList"></ul>
+      <a class="btn btn-solid" href="#contact" id="serviceModalCta">Request Free Consultation <span class="arr">&rarr;</span></a>
+    </section>
+  </div>
+</main>
 
-      <!-- ============ CONTACT ============ -->
-      <section class="section" id="contact">
-        <div class="contact-panel reveal">
-          <div class="contact-copy">
-            <p class="eyebrow">Free Consultation</p>
-            <h2>Tell us what your business needs online.</h2>
-            <p class="section-sub">
-              Get a clean website, show up correctly online, and make it easier
-              for customers to contact you. Send a quick request and we will
-              review your business and the best next step.
-            </p>
-            <ul class="contact-points">
-              <li>No pressure, no subscriptions</li>
-              <li>Plain answers about price and scope</li>
-              <li>Reply within one business day</li>
-            </ul>
-          </div>
-
-          <form class="consultation-form" id="consultationForm" novalidate>
-            <div class="field">
-              <label for="f-name">Name</label>
-              <input id="f-name" type="text" name="name" autocomplete="name" required />
-            </div>
-            <div class="field">
-              <label for="f-business">Business name</label>
-              <input id="f-business" type="text" name="business" autocomplete="organization" required />
-            </div>
-            <div class="split-fields">
-              <div class="field">
-                <label for="f-phone">Phone</label>
-                <input id="f-phone" type="tel" name="phone" autocomplete="tel" />
-              </div>
-              <div class="field">
-                <label for="f-email">Email</label>
-                <input id="f-email" type="email" name="email" autocomplete="email" />
-              </div>
-            </div>
-            <p class="form-note">Phone or email is required so we can contact you.</p>
-            <div class="field">
-              <label for="f-type">Business type</label>
-              <input
-                id="f-type"
-                type="text"
-                name="businessType"
-                placeholder="Construction company, cleaning service, restaurant..."
-                required
-              />
-            </div>
-            <div class="field">
-              <label for="f-need">What do you need?</label>
-              <div class="select-wrap">
-                <select id="f-need" name="need" required>
-                  <option value="" selected disabled>Choose one</option>
-                  <option>New Website</option>
-                  <option>Online Presence / Leads</option>
-                  <option>Website Redesign</option>
-                  <option>App</option>
-                  <option>Automated Workflow</option>
-                  <option>Other</option>
-                </select>
-                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-            </div>
-            <div class="field">
-              <label for="f-message">Message <span class="optional">optional</span></label>
-              <textarea
-                id="f-message"
-                name="message"
-                rows="4"
-                placeholder="Write anything else you want us to know."
-              ></textarea>
-            </div>
-            <button class="button button-primary form-submit" type="submit">Request Free Consultation</button>
-            <p class="form-status" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <!-- ============ FOOTER ============ -->
-    <footer class="footer">
-      <a class="brand" href="#top" aria-label="Siteup home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="13.5" stroke="currentColor" stroke-width="2.2" />
-            <path
-              d="M20.5 12.2c-.8-1-2.2-1.6-3.9-1.6-2.4 0-4.1 1.2-4.1 3 0 3.7 8.3 1.9 8.3 5.7 0 1.9-1.8 3.3-4.4 3.3-2 0-3.7-.8-4.6-2"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-        </span>
-        <span class="brand-name">siteup</span>
-      </a>
-      <nav class="footer-links" aria-label="Footer navigation">
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-top">
+      <p class="foot-word">site<em>up</em></p>
+      <nav class="foot-links" aria-label="Footer navigation">
         <a href="#services">Services</a>
+        <a href="#why">Why Siteup</a>
         <a href="#packages">Packages</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
-      <div class="footer-bottom">
-        <span>Terms &amp; Agreements</span>
-        <p>&copy; 2026 Siteup. All rights reserved.</p>
-        <span>Privacy Policy</span>
-      </div>
-    </footer>
+    </div>
+    <div class="foot-bottom">
+      <span>Terms &amp; Agreements</span>
+      <span>&copy; 2026 Siteup &mdash; websites and digital systems for local businesses</span>
+      <span>Privacy Policy</span>
+    </div>
+  </div>
+</footer>
 
-    <script src="script.js?v=3"></script>
-  </body>
+<script>
+/* ---------- header scroll ---------- */
+const hd = document.getElementById("hd");
+function onScroll() { hd.classList.toggle("scrolled", window.scrollY > 10); }
+onScroll();
+window.addEventListener("scroll", onScroll, { passive: true });
+
+/* ---------- reveals ---------- */
+const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const rvs = document.querySelectorAll(".rv");
+
+if ("IntersectionObserver" in window && !reduced) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("on");
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+  rvs.forEach((el) => io.observe(el));
+} else {
+  rvs.forEach((el) => el.classList.add("on"));
+}
+
+/* ---------- terminal typing ---------- */
+const termBody = document.getElementById("termBody");
+const termBlock = document.getElementById("termBlock");
+
+const SCRIPT = [
+  { t: "<span class='t-prompt'>~/clients $</span> <span class='t-cmd'>siteup launch \"your-business\"</span>", d: 300 },
+  { t: "<span class='t-dim'>  building custom website ...</span> <span class='t-ok'>done</span>", d: 700 },
+  { t: "<span class='t-ok'>  &#10003;</span> <span class='t-cmd'>website</span> <span class='t-dim'>........... live &amp; mobile-friendly</span>", d: 450 },
+  { t: "<span class='t-ok'>  &#10003;</span> <span class='t-cmd'>google business</span> <span class='t-dim'>... found &amp; verified</span>", d: 450 },
+  { t: "<span class='t-ok'>  &#10003;</span> <span class='t-cmd'>lead capture</span> <span class='t-dim'>...... quote form connected</span>", d: 450 },
+  { t: "<span class='t-ok'>  &#10003;</span> <span class='t-cmd'>telegram manager</span> <span class='t-dim'>.. edit your site from your phone</span>", d: 450 },
+  { t: "<span class='t-dim'>  this month:</span> <span class='t-num'>27 leads</span> <span class='t-dim'>&middot; avg. reply</span> <span class='t-num'>4 min</span>", d: 600 },
+  { t: "<span class='t-prompt'>~/clients $</span> <span class='t-caret'></span>", d: 0 },
+];
+
+let termStarted = false;
+
+function runTerminal() {
+  if (termStarted) return;
+  termStarted = true;
+
+  if (reduced) {
+    termBody.innerHTML = SCRIPT.map((l) => `<div class="t-line shown">${l.t}</div>`).join("");
+    return;
+  }
+
+  let i = 0;
+  function next() {
+    if (i >= SCRIPT.length) return;
+    const line = document.createElement("div");
+    line.className = "t-line shown";
+    line.innerHTML = SCRIPT[i].t;
+    termBody.appendChild(line);
+    const delay = SCRIPT[i].d;
+    i += 1;
+    if (delay) setTimeout(next, delay);
+    else next();
+  }
+  setTimeout(next, 500);
+}
+
+if ("IntersectionObserver" in window) {
+  const tio = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        runTerminal();
+        tio.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  tio.observe(termBlock);
+} else {
+  runTerminal();
+}
+
+/* ---------- language + service details ---------- */
+const copy = {
+  en: {
+    nav: ["Services", "Why Siteup", "Packages", "Projects", "Contact"],
+    headerCta: "Free Consultation",
+    heroLabel: "Digital development studio",
+    heroTitle: 'Websites and <span class="serif-accent">digital systems</span> for local businesses.',
+    heroSub: "Siteup builds professional websites, online presence setups, custom apps, and practical AI workflows for construction companies, service businesses, and growing local brands.",
+    primaryCta: "Request Free Consultation",
+    packagesCta: "View Packages",
+    callCta: "Call us",
+    stats: [
+      ["1-2 wks", "Typical launch"],
+      ["100%", "Mobile-friendly"],
+      ["One-time", "Prices, no subscriptions"],
+      ["30 days", "Post-launch bug fixes"],
+    ],
+    servicesHead: "Built like software.<br />Explained like business.",
+    servicesNote: "Everything your business needs to look professional and run smoother online.",
+    servicesFoot: "<em>On automation:</em> we review how your business handles repetitive tasks, then build custom automations and AI helpers to save time, reduce manual work, and keep your team organized.",
+    serviceKicker: "Service detail",
+    serviceCta: "Request Free Consultation",
+    services: [
+      ["Websites", "Custom, mobile-friendly websites built around the business, services, and customer trust."],
+      ["Online Presence Setup", "Google setup, indexing, Apple Maps, and business listing basics so customers can find correct information."],
+      ["Lead Capture Systems", "Quote forms, contact flows, and email notifications that make customer requests easier to handle."],
+      ["Custom Apps", "Dashboards, portals, and internal tools built around the way the business actually works."],
+      ["Workflow Automation", "Automations that reduce repetitive tasks, organize information, and keep work moving."],
+      ["Custom AI Agents", "Practical AI helpers for business tasks like summaries, drafts, organization, and repeatable processes."],
+    ],
+    serviceDetails: {
+      websites: ["Websites", "A professional website that explains the business clearly, builds trust fast, and makes it easy for customers to request work.", ["Custom layout for your services", "Mobile-first design and fast contact flow", "Project gallery, reviews, and trust signals"]],
+      presence: ["Online Presence Setup", "We set up the basics that help customers find accurate business information on search and maps.", ["Google Search setup and indexing basics", "Google Business/Profile setup or connection", "Apple Maps and listing information cleanup"]],
+      leads: ["Lead Capture Systems", "A simple request system that turns website visitors into organized customer inquiries.", ["Quote and contact forms", "Email notifications with request details", "Clear routing so the owner can reply faster"]],
+      apps: ["Custom Apps", "Small business tools built around the actual workflow instead of forcing the business into a generic template.", ["Dashboards and portals", "Customer or staff tools", "Internal systems for tracking work"]],
+      automation: ["Workflow Automation", "We look at repetitive work and build automations that save time, reduce mistakes, and keep the operation moving.", ["Connect forms, emails, spreadsheets, and tools", "Automated reminders and follow-ups", "Cleaner admin processes for daily work"]],
+      ai: ["Custom AI Agents", "Practical AI workflows for tasks that can be summarized, drafted, organized, or repeated.", ["AI summaries and drafts", "Customer note organization", "Agentic workflows for repeatable business tasks"]],
+    },
+    whyHead: "Why businesses<br />choose us.",
+    whyNote: "We are a tech development company. We build systems, not just pages.",
+    why: [
+      ["Update your website from Telegram", "Every Siteup website ships with a Telegram manager. Change your phone number, edit services, post new project photos, or turn a banner on - from your phone, live in seconds. No logins, no dashboards, no waiting on a developer."],
+      ["Real development, not templates", "We build websites, apps, and automations as custom software - shaped around how your business actually works."],
+      ["One-time prices", "You pay once, you own it. No monthly subscriptions. After launch, support is paid per request."],
+      ["Practical AI, plain language", "We look at your repetitive tasks and build automations that save time. No hype, no buzzwords."],
+      ["Found correctly online", "Google, Apple Maps, and business listings set up so customers always see the right information."],
+    ],
+    packagesHead: "Website packages.<br />One-time prices.",
+    packageNote: "Launch, Growth, and Premium are only for website projects. Apps, AI agents, custom systems, and workflow automations are priced after we understand what needs to be built and how complex it is. Each website package includes 30 days of post-launch bug fixes.",
+    popular: "Popular",
+    packages: [
+      ["Launch", "A website package for businesses that need a clean site they can manage.", ["Custom business website", "Mobile-friendly design", "Contact form", "Quote/request form", "Reviews/testimonials section", "Basic SEO setup", "Telegram website manager", "Project/gallery updates from Telegram", "30 days post-launch bug fixes"], ""],
+      ["Growth", "A website package for businesses that want to be easier to find online.", ["Everything in Launch", "Google Search setup", "Google indexing basics", "Google Business/Profile setup or connection", "Apple Maps setup", "Stronger online presence setup", "Lead notifications by email"], "We set up the basics so Google can find, index, and understand your business."],
+      ["Premium", "A website package for businesses that want a sharper brand and stronger proof.", ["Everything in Growth", "Logo design", "Brand colors and typography", "Business card design", "Flyer or door hanger design", "Shirt/hoodie mockup", "Truck decal mockup", "Brand mini-guide", "Approximate past-project map with clickable pins"], "Premium includes design files and mockups only. Ordering clothes, cards, decals, or printed materials is the customer's responsibility."],
+    ],
+    custom: {
+      label: "Apps / AI / Workflows",
+      title: "Custom products are priced after we understand the build.",
+      body: "Website packages have fixed prices. Apps, AI agents, internal systems, and automated workflows are different: the price depends on what the product needs to do, how many steps it has, what tools it connects with, and how complex the business process is.",
+      items: [
+        ["Custom Apps", "Dashboards, portals, mobile-friendly tools, and internal systems built around your workflow."],
+        ["AI Agents", "Practical AI helpers for summaries, drafts, organization, customer notes, and repeatable tasks."],
+        ["Automated Workflows", "Automations that connect steps, reduce manual work, send reminders, and keep operations moving."],
+      ],
+      foot: "First we review the idea, workflow, tools, and complexity. Then you get a clear custom quote before anything is built.",
+      cta: "Request Custom Quote",
+    },
+    projectsHead: "Projects built for<br />real businesses.",
+    projectsNote: "Live websites with the practical deliverables Siteup built around each business.",
+    projectGroups: ["Websites", "Apps", "Automations"],
+    contactHead: 'Tell us what your business<br />needs <span class="serif-accent">online.</span>',
+    contactLabel: "Free Consultation",
+    contactTitle: "Plain answers. Real next steps.",
+    contactPitch: "Get a clean website, show up correctly online, and make it easier for customers to contact you. Send a quick request and we will review your business and the best next step.",
+    contactMeta: ["No pressure, no subscriptions", "Plain answers about price and scope", "Reply within one business day", "admin@siteup.com.au"],
+    form: {
+      labels: ["Name", "Business name", "Phone", "Email", "Business type", "What do you need?", "Message"],
+      optional: "/ optional",
+      note: "// phone or email is required so we can contact you",
+      typePlaceholder: "Construction company, cleaning service, restaurant...",
+      messagePlaceholder: "Write anything else you want us to know.",
+      options: ["Choose one", "New Website", "Online Presence / Leads", "Website Redesign", "App", "Automated Workflow", "Other"],
+      errors: {
+        required: "// please fill in your name, business name, business type, and what you need",
+        contact: "// please add either your phone number or email",
+        sending: "// sending your request...",
+        success: "// thanks - your request has been sent",
+        fail: "// sorry, something went wrong - please email us directly",
+      },
+    },
+    footer: "© 2026 Siteup - websites and digital systems for local businesses",
+  },
+  ru: {
+    nav: ["Услуги", "Почему Siteup", "Пакеты", "Проекты", "Контакты"],
+    headerCta: "Бесплатная консультация",
+    heroLabel: "Студия цифровой разработки",
+    heroTitle: 'Сайты и <span class="serif-accent">цифровые системы</span> для локального бизнеса.',
+    heroSub: "Siteup создает профессиональные сайты, онлайн-присутствие, приложения и практичные AI-воркфлоу для строительных компаний, сервисных бизнесов и локальных брендов.",
+    primaryCta: "Запросить консультацию",
+    packagesCta: "Посмотреть пакеты",
+    callCta: "Позвонить",
+    stats: [
+      ["1-2 нед.", "Обычный запуск"],
+      ["100%", "Удобно на телефоне"],
+      ["Разово", "Цены без подписок"],
+      ["30 дней", "Исправление багов после запуска"],
+    ],
+    servicesHead: "Сделано как софт.<br />Объяснено как бизнес.",
+    servicesNote: "Все, что нужно бизнесу, чтобы выглядеть профессионально и работать удобнее онлайн.",
+    servicesFoot: "<em>Про автоматизацию:</em> мы смотрим, какие задачи повторяются в вашем бизнесе, а затем строим автоматизации и AI-помощников, чтобы экономить время и держать работу организованной.",
+    serviceKicker: "Описание услуги",
+    serviceCta: "Запросить консультацию",
+    services: [
+      ["Сайты", "Индивидуальные сайты под бизнес, услуги и доверие клиентов."],
+      ["Настройка онлайн-присутствия", "Google, индексация, Apple Maps и базовые бизнес-листинги, чтобы клиенты видели правильную информацию."],
+      ["Система заявок", "Формы заявок, контактные сценарии и email-уведомления, чтобы запросы было проще обрабатывать."],
+      ["Custom apps", "Дашборды, порталы и внутренние инструменты под реальную работу бизнеса."],
+      ["Автоматизация процессов", "Автоматизации, которые уменьшают повторяющиеся задачи и помогают работе двигаться быстрее."],
+      ["Custom AI агенты", "Практичные AI-помощники для саммари, черновиков, организации и повторяемых процессов."],
+    ],
+    serviceDetails: {
+      websites: ["Сайты", "Профессиональный сайт ясно объясняет бизнес, быстро вызывает доверие и помогает клиентам отправить заявку.", ["Индивидуальный дизайн под услуги", "Мобильная версия и удобный контакт", "Галерея проектов, отзывы и доказательства доверия"]],
+      presence: ["Настройка онлайн-присутствия", "Мы настраиваем базу, чтобы клиенты находили правильную информацию о бизнесе в поиске и картах.", ["Google Search и базовая индексация", "Настройка или подключение Google Business/Profile", "Apple Maps и чистка информации в листингах"]],
+      leads: ["Система заявок", "Простая система превращает посетителей сайта в понятные клиентские запросы.", ["Формы заявки и контакта", "Email-уведомления с деталями запроса", "Удобный поток, чтобы владелец быстрее отвечал"]],
+      apps: ["Custom apps", "Инструменты для малого бизнеса, построенные вокруг реального процесса, а не шаблона.", ["Дашборды и порталы", "Инструменты для клиентов или сотрудников", "Внутренние системы для отслеживания работы"]],
+      automation: ["Автоматизация процессов", "Мы изучаем повторяющуюся работу и строим автоматизации, которые экономят время и уменьшают ошибки.", ["Связь форм, email, таблиц и инструментов", "Автоматические напоминания и follow-up", "Более чистые админ-процессы на каждый день"]],
+      ai: ["Custom AI агенты", "Практичные AI-воркфлоу для задач, которые можно суммировать, писать, организовывать или повторять.", ["AI-саммари и черновики", "Организация клиентских заметок", "Агентные workflows для повторяемых бизнес-задач"]],
+    },
+    whyHead: "Почему бизнес<br />выбирает нас.",
+    whyNote: "Мы tech development компания. Мы строим системы, а не просто страницы.",
+    why: [
+      ["Обновляйте сайт из Telegram", "Каждый сайт Siteup идет с Telegram-менеджером. Можно менять телефон, услуги, фото проектов или баннер прямо с телефона, и изменения появятся сразу."],
+      ["Реальная разработка, не шаблоны", "Мы создаем сайты, приложения и автоматизации как индивидуальный софт под то, как реально работает бизнес."],
+      ["Разовая оплата", "Вы платите один раз и владеете результатом. Без подписок. После запуска поддержка оплачивается за запрос."],
+      ["Практичный AI простым языком", "Мы смотрим повторяющиеся задачи и строим автоматизации, которые экономят время. Без хайпа."],
+      ["Вас правильно находят онлайн", "Google, Apple Maps и бизнес-листинги настроены так, чтобы клиенты видели правильную информацию."],
+    ],
+    packagesHead: "Пакеты сайтов.<br />Разовая оплата.",
+    packageNote: "Launch, Growth и Premium только для сайтов. Приложения, AI-агенты, custom systems и автоматизации оцениваются после того, как мы поймем задачу и сложность. Каждый сайт включает 30 дней исправления багов после запуска.",
+    popular: "Популярно",
+    packages: [
+      ["Launch", "Пакет сайта для бизнеса, которому нужен чистый сайт с управлением.", ["Индивидуальный сайт бизнеса", "Мобильный дизайн", "Контактная форма", "Форма заявки/quote", "Секция отзывов", "Базовая SEO-настройка", "Telegram-менеджер сайта", "Обновление проектов/галереи из Telegram", "30 дней исправления багов"], ""],
+      ["Growth", "Пакет сайта для бизнеса, который хочет, чтобы его легче находили онлайн.", ["Все из Launch", "Настройка Google Search", "Базовая индексация Google", "Настройка или подключение Google Business/Profile", "Настройка Apple Maps", "Усиленное онлайн-присутствие", "Email-уведомления о заявках"], "Мы настраиваем базу, чтобы Google мог найти, индексировать и понимать ваш бизнес."],
+      ["Premium", "Пакет сайта для бизнеса, которому нужен сильнее бренд и больше доверия.", ["Все из Growth", "Дизайн логотипа", "Цвета бренда и типографика", "Дизайн визитки", "Дизайн flyer или door hanger", "Mockup футболки/hoodie", "Mockup наклейки на truck", "Мини-гайд бренда", "Карта прошлых проектов с clickable pins"], "Premium включает только дизайн-файлы и mockups. Заказ одежды, визиток, наклеек и печатных материалов делает клиент."],
+    ],
+    custom: {
+      label: "Apps / AI / Workflows",
+      title: "Custom продукты оцениваются после понимания задачи.",
+      body: "У сайтов есть фиксированные пакеты. Приложения, AI-агенты, внутренние системы и автоматизации зависят от функций, количества шагов, подключенных инструментов и сложности процесса.",
+      items: [
+        ["Custom Apps", "Дашборды, порталы, mobile-friendly инструменты и внутренние системы под ваш workflow."],
+        ["AI Agents", "Практичные AI-помощники для саммари, черновиков, организации, клиентских заметок и повторяемых задач."],
+        ["Automated Workflows", "Автоматизации, которые соединяют шаги, уменьшают ручную работу, отправляют напоминания и двигают операции."],
+      ],
+      foot: "Сначала мы разбираем идею, workflow, инструменты и сложность. Затем вы получаете понятную custom quote до начала работы.",
+      cta: "Запросить custom quote",
+    },
+    projectsHead: "Проекты для<br />реального бизнеса.",
+    projectsNote: "Live сайты с практичными deliverables, которые Siteup построил вокруг каждого бизнеса.",
+    projectGroups: ["Websites", "Apps", "Automations"],
+    contactHead: 'Расскажите, что бизнесу<br />нужно <span class="serif-accent">онлайн.</span>',
+    contactLabel: "Бесплатная консультация",
+    contactTitle: "Простые ответы. Реальные шаги.",
+    contactPitch: "Получите чистый сайт, правильное онлайн-присутствие и более удобный способ для клиентов связаться с вами. Отправьте запрос, и мы посмотрим лучший следующий шаг.",
+    contactMeta: ["Без давления и подписок", "Понятные ответы по цене и объему", "Ответ в течение одного рабочего дня", "admin@siteup.com.au"],
+    form: {
+      labels: ["Имя", "Название бизнеса", "Телефон", "Email", "Тип бизнеса", "Что вам нужно?", "Сообщение"],
+      optional: "/ необязательно",
+      note: "// нужен телефон или email, чтобы мы могли связаться",
+      typePlaceholder: "Строительная компания, клининг, ресторан...",
+      messagePlaceholder: "Напишите все, что хотите добавить.",
+      options: ["Выберите", "Новый сайт", "Онлайн-присутствие / заявки", "Редизайн сайта", "Приложение", "Автоматизированный workflow", "Другое"],
+      errors: {
+        required: "// заполните имя, название бизнеса, тип бизнеса и что вам нужно",
+        contact: "// добавьте телефон или email",
+        sending: "// отправляем ваш запрос...",
+        success: "// спасибо - ваш запрос отправлен",
+        fail: "// что-то пошло не так - пожалуйста, напишите нам напрямую",
+      },
+    },
+    footer: "© 2026 Siteup - сайты и цифровые системы для локального бизнеса",
+  },
+  uz: {
+    nav: ["Xizmatlar", "Nega Siteup", "Paketlar", "Loyihalar", "Aloqa"],
+    headerCta: "Bepul konsultatsiya",
+    heroLabel: "Raqamli development studio",
+    heroTitle: 'Mahalliy bizneslar uchun saytlar va <span class="serif-accent">raqamli tizimlar</span>.',
+    heroSub: "Siteup qurilish kompaniyalari, xizmat bizneslari va o'sayotgan lokal brendlar uchun professional saytlar, online presence, custom app va amaliy AI workflowlar quradi.",
+    primaryCta: "Bepul konsultatsiya so'rash",
+    packagesCta: "Paketlarni ko'rish",
+    callCta: "Qo'ng'iroq qiling",
+    stats: [
+      ["1-2 hafta", "Odatdagi launch"],
+      ["100%", "Telefonga mos"],
+      ["Bir marta", "Obuna yo'q"],
+      ["30 kun", "Launchdan keyin bug fix"],
+    ],
+    servicesHead: "Software kabi quriladi.<br />Biznes kabi tushuntiriladi.",
+    servicesNote: "Biznesingiz professional ko'rinishi va online osonroq ishlashi uchun kerak bo'lgan narsalar.",
+    servicesFoot: "<em>Automation haqida:</em> biz biznesingizdagi takroriy ishlarni ko'rib chiqamiz, keyin vaqt tejaydigan, qo'l ishini kamaytiradigan va jamoani tartibda ushlaydigan automation va AI yordamchilar quramiz.",
+    serviceKicker: "Xizmat tafsiloti",
+    serviceCta: "Bepul konsultatsiya so'rash",
+    services: [
+      ["Saytlar", "Biznes, xizmatlar va mijoz ishonchi atrofida qurilgan custom, mobile-friendly saytlar."],
+      ["Online Presence Setup", "Google setup, indexing, Apple Maps va biznes listing asoslari, mijozlar to'g'ri ma'lumot topishi uchun."],
+      ["Lead Capture Systems", "Quote formalar, kontakt oqimlari va email bildirishnomalari, mijoz so'rovlarini boshqarishni osonlashtiradi."],
+      ["Custom Apps", "Biznes qanday ishlashiga mos dashboard, portal va ichki toolar."],
+      ["Workflow Automation", "Takroriy ishlarni kamaytiradigan, ma'lumotni tartiblaydigan va ishni yurgizadigan automationlar."],
+      ["Custom AI Agents", "Summary, draft, organization va repeatable processlar uchun amaliy AI yordamchilar."],
+    ],
+    serviceDetails: {
+      websites: ["Saytlar", "Professional sayt biznesni aniq tushuntiradi, tez ishonch beradi va mijozga request yuborishni oson qiladi.", ["Xizmatlaringiz uchun custom layout", "Mobile-first dizayn va tez kontakt flow", "Project gallery, review va trust signallar"]],
+      presence: ["Online Presence Setup", "Mijozlar search va maplarda biznesingiz haqida to'g'ri ma'lumot topishi uchun asosiy setup qilamiz.", ["Google Search setup va indexing asoslari", "Google Business/Profile setup yoki ulash", "Apple Maps va listing ma'lumotlarini tozalash"]],
+      leads: ["Lead Capture Systems", "Oddiy request system website visitorlarni tartibli mijoz so'rovlariga aylantiradi.", ["Quote va contact formalar", "Request detallari bilan email notification", "Owner tezroq javob berishi uchun aniq flow"]],
+      apps: ["Custom Apps", "Kichik biznes toolari real workflow atrofida quriladi, generic template emas.", ["Dashboard va portallar", "Customer yoki staff toolar", "Ishni tracking qilish uchun ichki systemlar"]],
+      automation: ["Workflow Automation", "Biz takroriy ishlarni ko'rib, vaqt tejaydigan, xatoni kamaytiradigan va operationni yurgizadigan automation quramiz.", ["Form, email, spreadsheet va toolarni ulash", "Avtomatik reminder va follow-up", "Kundalik ishlar uchun toza admin process"]],
+      ai: ["Custom AI Agents", "Summary, draft, organization yoki takroriy vazifalar uchun amaliy AI workflowlar.", ["AI summary va draftlar", "Customer note organization", "Repeatable business tasklar uchun agentic workflowlar"]],
+    },
+    whyHead: "Nega bizneslar<br />bizni tanlaydi.",
+    whyNote: "Biz tech development kompaniyamiz. Faqat page emas, system quramiz.",
+    why: [
+      ["Saytni Telegramdan yangilang", "Har bir Siteup sayti Telegram manager bilan keladi. Telefon raqam, xizmatlar, project fotolari yoki bannerlarni telefondan o'zgartirasiz, saytga darhol chiqadi."],
+      ["Template emas, real development", "Biz website, app va automationlarni biznesingiz qanday ishlashiga mos custom software sifatida quramiz."],
+      ["Bir martalik narxlar", "Bir marta to'laysiz, natija sizniki. Oylik obuna yo'q. Launchdan keyin support request bo'yicha pullik."],
+      ["Oddiy tilda amaliy AI", "Takroriy ishlaringizni ko'rib, vaqt tejaydigan automation quramiz. Shovqin emas, foyda."],
+      ["Online to'g'ri topilasiz", "Google, Apple Maps va business listinglar mijozlar to'g'ri ma'lumot ko'rishi uchun sozlanadi."],
+    ],
+    packagesHead: "Website paketlar.<br />Bir martalik narx.",
+    packageNote: "Launch, Growth va Premium faqat website projectlar uchun. App, AI agent, custom system va workflow automationlar nima qurilishi va murakkabligiga qarab baholanadi. Har bir website paketda launchdan keyin 30 kun bug fix bor.",
+    popular: "Tavsiya",
+    packages: [
+      ["Launch", "Boshqarish mumkin bo'lgan toza sayt kerak bizneslar uchun.", ["Custom business website", "Mobile-friendly design", "Contact form", "Quote/request form", "Reviews/testimonials section", "Basic SEO setup", "Telegram website manager", "Telegramdan project/gallery update", "30 kun post-launch bug fix"], ""],
+      ["Growth", "Online osonroq topilishni xohlaydigan bizneslar uchun.", ["Launch ichidagi hammasi", "Google Search setup", "Google indexing basics", "Google Business/Profile setup yoki connection", "Apple Maps setup", "Kuchliroq online presence setup", "Email orqali lead notification"], "Google biznesingizni topishi, indexing qilishi va tushunishi uchun asosiy setup qilamiz."],
+      ["Premium", "Kuchliroq brand va ko'proq proof xohlaydigan bizneslar uchun.", ["Growth ichidagi hammasi", "Logo design", "Brand color va typography", "Business card design", "Flyer yoki door hanger design", "Shirt/hoodie mockup", "Truck decal mockup", "Brand mini-guide", "Clickable pinlar bilan taxminiy past-project map"], "Premium faqat design file va mockuplarni o'z ichiga oladi. Kiyim, card, decal yoki print materiallarni buyurtma qilish mijozning o'zida."],
+    ],
+    custom: {
+      label: "Apps / AI / Workflows",
+      title: "Custom productlar vazifani tushunganimizdan keyin narxlanadi.",
+      body: "Website paketlarida fixed price bor. App, AI agent, ichki system va automated workflowlar esa product nima qilishi, qancha step borligi, qaysi toolarga ulanayotgani va business process qanchalik murakkabligiga bog'liq.",
+      items: [
+        ["Custom Apps", "Workflowingizga mos dashboard, portal, mobile-friendly tool va ichki systemlar."],
+        ["AI Agents", "Summary, draft, organization, customer note va repeatable tasklar uchun amaliy AI yordamchilar."],
+        ["Automated Workflows", "Step'larni ulaydigan, manual ishni kamaytiradigan, reminder yuboradigan va operationni yurgizadigan automationlar."],
+      ],
+      foot: "Avval idea, workflow, toolar va complexityni ko'rib chiqamiz. Keyin qurishdan oldin aniq custom quote beramiz.",
+      cta: "Custom quote so'rash",
+    },
+    projectsHead: "Real bizneslar uchun<br />qurilgan loyihalar.",
+    projectsNote: "Har bir biznes atrofida Siteup qurgan live website va amaliy deliverablelar.",
+    projectGroups: ["Websites", "Apps", "Automations"],
+    contactHead: 'Biznesingizga online nima<br />kerakligini ayting.',
+    contactLabel: "Bepul konsultatsiya",
+    contactTitle: "Oddiy javoblar. Aniq keyingi qadamlar.",
+    contactPitch: "Toza website oling, online to'g'ri ko'rining va mijozlar siz bilan bog'lanishini oson qiling. Qisqa request yuboring, biz biznesingizni ko'rib, eng yaxshi keyingi qadamni aytamiz.",
+    contactMeta: ["Bosimsiz, obunasiz", "Narx va scope bo'yicha oddiy javoblar", "Bir ish kuni ichida javob", "admin@siteup.com.au"],
+    form: {
+      labels: ["Ism", "Biznes nomi", "Telefon", "Email", "Biznes turi", "Nima kerak?", "Xabar"],
+      optional: "/ ixtiyoriy",
+      note: "// bog'lanishimiz uchun telefon yoki email kerak",
+      typePlaceholder: "Qurilish kompaniyasi, cleaning service, restoran...",
+      messagePlaceholder: "Yana nima bilishimiz kerak bo'lsa yozing.",
+      options: ["Tanlang", "Yangi website", "Online presence / leads", "Website redesign", "App", "Automated workflow", "Boshqa"],
+      errors: {
+        required: "// ism, biznes nomi, biznes turi va nima kerakligini to'ldiring",
+        contact: "// telefon yoki emaildan bittasini qo'shing",
+        sending: "// requestingiz yuborilyapti...",
+        success: "// rahmat - requestingiz yuborildi",
+        fail: "// nimadir xato ketdi - iltimos, emailga to'g'ridan-to'g'ri yozing",
+      },
+    },
+    footer: "© 2026 Siteup - lokal bizneslar uchun website va raqamli tizimlar",
+  },
+};
+
+const serviceKeys = ["websites", "presence", "leads", "apps", "automation", "ai"];
+const serviceModal = document.getElementById("serviceModal");
+const serviceTitle = document.getElementById("serviceModalTitle");
+const serviceText = document.getElementById("serviceModalText");
+const serviceList = document.getElementById("serviceModalList");
+const serviceKicker = document.getElementById("serviceModalKicker");
+const serviceCta = document.getElementById("serviceModalCta");
+let currentLang = localStorage.getItem("siteup-lang") || "en";
+if (!copy[currentLang]) currentLang = "en";
+
+function setText(selector, value) {
+  const el = document.querySelector(selector);
+  if (el) el.textContent = value;
+}
+
+function setHtml(selector, value) {
+  const el = document.querySelector(selector);
+  if (el) el.innerHTML = value;
+}
+
+function setList(container, items) {
+  if (!container) return;
+  container.innerHTML = items.map((item) => `<li>${item}</li>`).join("");
+}
+
+function applyLanguage(lang) {
+  const t = copy[lang] || copy.en;
+  currentLang = lang;
+  localStorage.setItem("siteup-lang", lang);
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.lang === lang);
+  });
+
+  document.querySelectorAll(".main-nav a").forEach((a, i) => { a.textContent = t.nav[i]; });
+  document.querySelectorAll(".foot-links a").forEach((a, i) => { a.textContent = t.nav[i]; });
+  document.querySelectorAll(".header-cta").forEach((a) => { a.textContent = t.headerCta; });
+  setText(".hero-label .label", t.heroLabel);
+  setHtml(".hero-h", t.heroTitle);
+  setText(".hero-sub", t.heroSub);
+  document.querySelector(".hero-ctas .btn-solid").innerHTML = `${t.primaryCta} <span class="arr">&rarr;</span>`;
+  setText(".hero-ctas .btn-line", t.packagesCta);
+  setText(".hero-call span", t.callCta);
+  document.querySelectorAll(".stat").forEach((stat, i) => {
+    stat.querySelector("b").textContent = t.stats[i][0];
+    stat.querySelector("span").textContent = t.stats[i][1];
+  });
+
+  setHtml("#services .sec-head h2", t.servicesHead);
+  setText("#services .sec-head .note", t.servicesNote);
+  document.querySelectorAll(".svc-row").forEach((row, i) => {
+    row.querySelector("h3").textContent = t.services[i][0];
+    row.querySelector("p").textContent = t.services[i][1];
+  });
+  setHtml(".svc-footnote", t.servicesFoot);
+  serviceKicker.textContent = t.serviceKicker;
+  serviceCta.innerHTML = `${t.serviceCta} <span class="arr">&rarr;</span>`;
+
+  setHtml("#why .sec-head h2", t.whyHead);
+  setText("#why .sec-head .note", t.whyNote);
+  document.querySelectorAll(".why-cell").forEach((cell, i) => {
+    cell.querySelector("h3").textContent = t.why[i][0];
+    cell.querySelector("p:not(.why-no)").textContent = t.why[i][1];
+  });
+
+  setHtml("#packages .sec-head h2", t.packagesHead);
+  setText(".pkg-note-top", t.packageNote);
+  const tag = document.querySelector(".pkg-tag");
+  if (tag) tag.textContent = t.popular;
+  document.querySelectorAll(".pkg").forEach((pkg, i) => {
+    pkg.querySelector(".pkg-name").textContent = t.packages[i][0];
+    pkg.querySelector(".pkg-for").textContent = t.packages[i][1];
+    setList(pkg.querySelector("ul"), t.packages[i][2]);
+    const fine = pkg.querySelector(".pkg-fine");
+    if (fine) fine.textContent = t.packages[i][3];
+    pkg.querySelector(".btn").textContent = t.primaryCta;
+  });
+
+  setText(".custom-pricing-copy .label", t.custom.label);
+  setText(".custom-pricing-copy h2", t.custom.title);
+  setText(".custom-pricing-copy p:not(.label)", t.custom.body);
+  document.querySelectorAll(".custom-price-item").forEach((item, i) => {
+    item.querySelector("h3").textContent = t.custom.items[i][0];
+    item.querySelector("p").textContent = t.custom.items[i][1];
+  });
+  setText(".custom-pricing-foot p", t.custom.foot);
+  document.querySelector(".custom-pricing-foot .btn").innerHTML = `${t.custom.cta} <span class="arr">&rarr;</span>`;
+
+  setHtml("#projects .sec-head h2", t.projectsHead);
+  setText("#projects .sec-head .note", t.projectsNote);
+  document.querySelectorAll(".proj-group-title h3").forEach((h3, i) => { h3.textContent = t.projectGroups[i]; });
+
+  setHtml("#contact .sec-head h2", t.contactHead);
+  setText(".contact-left .label", t.contactLabel);
+  setText(".contact-left h2", t.contactTitle);
+  setText(".contact-left .pitch", t.contactPitch);
+  document.querySelectorAll(".contact-meta span").forEach((span, i) => { span.textContent = t.contactMeta[i]; });
+  document.querySelectorAll(".cf-field label").forEach((label, i) => {
+    if (i === 6) label.innerHTML = `${t.form.labels[i]} <span class="opt">${t.form.optional}</span>`;
+    else label.textContent = t.form.labels[i];
+  });
+  setText(".cf-note", t.form.note);
+  document.getElementById("cf-type").placeholder = t.form.typePlaceholder;
+  document.getElementById("cf-msg").placeholder = t.form.messagePlaceholder;
+  document.querySelector("#cForm .btn").innerHTML = `${t.primaryCta} <span class="arr">&rarr;</span>`;
+  const need = document.getElementById("cf-need");
+  const selected = need.selectedIndex;
+  need.innerHTML = t.form.options.map((label, i) => {
+    const attrs = i === 0 ? ' value="" disabled' : "";
+    return `<option${attrs}>${label}</option>`;
+  }).join("");
+  need.selectedIndex = selected > 0 ? selected : 0;
+  setText(".foot-bottom span:nth-child(2)", t.footer);
+}
+
+function openService(key) {
+  const detail = copy[currentLang].serviceDetails[key];
+  if (!detail) return;
+  serviceTitle.textContent = detail[0];
+  serviceText.textContent = detail[1];
+  setList(serviceList, detail[2]);
+  serviceModal.classList.add("open");
+  serviceModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  serviceModal.querySelector(".service-close").focus();
+}
+
+function closeService() {
+  serviceModal.classList.remove("open");
+  serviceModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+document.querySelectorAll(".lang-btn").forEach((btn) => {
+  btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+});
+
+document.querySelectorAll(".svc-row").forEach((row) => {
+  row.addEventListener("click", () => openService(row.dataset.service));
+});
+
+document.querySelectorAll("[data-close-service]").forEach((el) => {
+  el.addEventListener("click", closeService);
+});
+
+serviceCta.addEventListener("click", closeService);
+document.addEventListener("keydown", (ev) => {
+  if (ev.key === "Escape" && serviceModal.classList.contains("open")) closeService();
+});
+
+applyLanguage(currentLang);
+
+/* ---------- form ---------- */
+const form = document.getElementById("cForm");
+const statusEl = form.querySelector(".cf-status");
+const submitBtn = form.querySelector('button[type="submit"]');
+const FORM_RECIPIENT = "admin@siteup.com.au";
+const FORM_ENDPOINT = `https://formsubmit.co/ajax/${FORM_RECIPIENT}`;
+form.action = `https://formsubmit.co/${FORM_RECIPIENT}`;
+
+function val(d, k) { return String(d.get(k) || "").trim(); }
+
+form.addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const d = new FormData(form);
+  const name = val(d, "name");
+  const business = val(d, "business");
+  const phone = val(d, "phone");
+  const email = val(d, "email");
+  const businessType = val(d, "businessType");
+  const need = val(d, "need");
+  const message = val(d, "message");
+
+  if (!name || !business || !businessType || !need) {
+    statusEl.textContent = copy[currentLang].form.errors.required;
+    statusEl.className = "cf-status err";
+    return;
+  }
+
+  if (!phone && !email) {
+    statusEl.textContent = copy[currentLang].form.errors.contact;
+    statusEl.className = "cf-status err";
+    return;
+  }
+
+  const details = [
+    "New Siteup consultation request",
+    "",
+    `Name: ${name}`,
+    `Business name: ${business}`,
+    `Phone: ${phone || "Not provided"}`,
+    `Email: ${email || "Not provided"}`,
+    `Business type: ${businessType}`,
+    `Need: ${need}`,
+    `Message: ${message || "Not provided"}`,
+  ].join("\n");
+
+  d.set("_subject", `Siteup consultation request from ${business || name}`);
+  d.set("Request details", details);
+
+  statusEl.textContent = copy[currentLang].form.errors.sending;
+  statusEl.className = "cf-status";
+  form.classList.add("is-sending");
+  submitBtn.disabled = true;
+
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: d,
+    });
+
+    if (!res.ok) throw new Error("Form submission failed");
+
+    form.reset();
+    statusEl.textContent = copy[currentLang].form.errors.success;
+    statusEl.className = "cf-status ok";
+  } catch (err) {
+    const subject = encodeURIComponent(`Siteup consultation request from ${business || name}`);
+    const body = encodeURIComponent(details);
+    statusEl.innerHTML = `${copy[currentLang].form.errors.fail}: <a href="mailto:${FORM_RECIPIENT}?subject=${subject}&body=${body}">${FORM_RECIPIENT}</a>`;
+    statusEl.className = "cf-status err";
+  } finally {
+    form.classList.remove("is-sending");
+    submitBtn.disabled = false;
+  }
+});
+</script>
+</body>
 </html>
