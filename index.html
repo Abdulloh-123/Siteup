@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siteup | Websites and Digital Systems</title>
+    <meta
+      name="description"
+      content="Siteup builds professional websites, online presence setups, custom apps, and practical AI workflows for local businesses."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%2343e88d' stroke-width='2.4'/%3E%3Cpath d='M20.5 12.2c-.8-1-2.2-1.6-3.9-1.6-2.4 0-4.1 1.2-4.1 3 0 3.7 8.3 1.9 8.3 5.7 0 1.9-1.8 3.3-4.4 3.3-2 0-3.7-.8-4.6-2' stroke='%2343e88d' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=3" />
+  </head>
+  <body>
+    <div class="page-glow" aria-hidden="true"></div>
+    <div class="motion-rails" aria-hidden="true">
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Transparent header, centered links, outlined pill CTA — like the reference -->
+    <header class="site-header" id="siteHeader">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="Siteup home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="13.5" stroke="currentColor" stroke-width="2.2" />
+              <path
+                d="M20.5 12.2c-.8-1-2.2-1.6-3.9-1.6-2.4 0-4.1 1.2-4.1 3 0 3.7 8.3 1.9 8.3 5.7 0 1.9-1.8 3.3-4.4 3.3-2 0-3.7-.8-4.6-2"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          <span class="brand-name">siteup</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#services">Services</a>
+          <a href="#packages">Packages</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="nav-cta" href="#contact">Request Free Consultation</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- ============ HERO ============ -->
+      <section class="hero">
+        <div class="hero-aurora" aria-hidden="true">
+          <span class="aurora aurora-teal"></span>
+          <span class="aurora aurora-green"></span>
+          <span class="aurora aurora-purple"></span>
+        </div>
+
+        <div class="hero-inner">
+          <h1 class="hero-title reveal" data-stagger="0">
+            Websites and <span class="chip-word">digital systems</span><br />
+            for local businesses.
+          </h1>
+
+          <p class="hero-sub reveal" data-stagger="1">
+            Siteup builds professional websites, online presence setups, custom
+            apps, and practical AI workflows for construction companies, service
+            businesses, and growing local brands.
+          </p>
+
+          <div class="hero-actions reveal" data-stagger="2">
+            <a class="button button-light" href="#contact">Request Free Consultation</a>
+            <a class="button button-ghost" href="#packages">View Packages</a>
+          </div>
+
+          <svg class="hero-squiggle reveal" data-stagger="3" viewBox="0 0 90 50" fill="none" aria-hidden="true">
+            <path
+              class="squiggle-path"
+              d="M6 8c10 18 14 26 28 24 12-2 8-16 20-14 10 2 10 16 26 22"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+            <path
+              class="squiggle-tip"
+              d="M70 44l11-2-5 -10"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+
+        <!-- Floating dashboard cluster, composed like the reference:
+             small light cards beside a central dark chart panel,
+             then a row of three feature cards below -->
+        <div class="dash-cluster reveal" data-stagger="4" aria-label="Business dashboard mockup">
+          <div class="scene-orbit" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="dash-top">
+            <div class="dash-side dash-side-left">
+              <div class="float-card light fc-progress float-a">
+                <div class="fc-progress-row">
+                  <span class="fc-label">Website live</span>
+                  <strong><span data-count="100">0</span>%</strong>
+                </div>
+                <div class="fc-bar"><span class="fc-bar-fill"></span></div>
+              </div>
+
+              <div class="float-card light fc-bars float-b">
+                <span class="fc-label">Quote requests</span>
+                <div class="fc-bar-chart" aria-hidden="true">
+                  <i style="--h: 36%"></i><i style="--h: 58%"></i><i style="--h: 44%"></i><i style="--h: 72%"></i><i style="--h: 56%"></i><i style="--h: 88%"></i><i style="--h: 64%"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-panel float-slow">
+              <span class="panel-scan" aria-hidden="true"></span>
+              <div class="dash-panel-head">
+                <p>Leads</p>
+                <span class="dash-range">Last 30 days</span>
+                <span class="dash-menu" aria-hidden="true"><i></i><i></i><i></i></span>
+              </div>
+              <div class="dash-chart-wrap">
+                <svg class="dash-chart" viewBox="0 0 420 160" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#43e88d" stop-opacity="0.28" />
+                      <stop offset="100%" stop-color="#43e88d" stop-opacity="0" />
+                    </linearGradient>
+                    <linearGradient id="chartStroke" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stop-color="#43e88d" />
+                      <stop offset="100%" stop-color="#38d9c8" />
+                    </linearGradient>
+                  </defs>
+                  <g class="chart-grid" stroke="rgba(255,255,255,0.06)">
+                    <line x1="0" y1="40" x2="420" y2="40" />
+                    <line x1="0" y1="80" x2="420" y2="80" />
+                    <line x1="0" y1="120" x2="420" y2="120" />
+                  </g>
+                  <path
+                    class="chart-area"
+                    d="M0 122 C40 110 60 128 95 118 C130 108 150 80 185 86 C220 92 240 60 275 56 C310 52 330 70 365 48 C390 33 405 30 420 24 L420 160 L0 160 Z"
+                    fill="url(#chartFill)"
+                  />
+                  <path
+                    class="chart-line"
+                    d="M0 122 C40 110 60 128 95 118 C130 108 150 80 185 86 C220 92 240 60 275 56 C310 52 330 70 365 48 C390 33 405 30 420 24"
+                    stroke="url(#chartStroke)"
+                    stroke-width="2.5"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                  <circle class="chart-dot" cx="275" cy="56" r="4.5" fill="#43e88d" />
+                  <circle class="chart-dot-pulse" cx="275" cy="56" r="4.5" fill="none" stroke="#43e88d" stroke-width="1.5" />
+                </svg>
+                <span class="chart-tooltip">27 leads</span>
+              </div>
+              <div class="dash-axis" aria-hidden="true">
+                <span>W1</span><span>W2</span><span>W3</span><span>W4</span>
+              </div>
+            </div>
+
+            <div class="dash-side dash-side-right">
+              <div class="float-card light fc-spark float-c">
+                <span class="fc-label">New leads</span>
+                <div class="fc-spark-row">
+                  <strong><span data-count="27">0</span></strong>
+                  <svg viewBox="0 0 70 26" fill="none" aria-hidden="true">
+                    <path d="M2 20c6-2 8 3 13 1s6-9 12-8 7 6 12 4 6-10 12-11 9 5 17 2" stroke="#43e88d" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <span class="fc-trend">&#8599; +18% this month</span>
+              </div>
+
+              <div class="float-card chip-card fc-verified float-d">
+                <span class="fc-check" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <div>
+                  <strong>Google Business</strong>
+                  <span>Verified</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- floating notification overlapping the panel, like the reference's cursor card -->
+          <div class="float-card light fc-note float-e">
+            <span class="fc-note-icon" aria-hidden="true">
+              <svg viewBox="0 0 18 18" fill="none"><path d="M3 5.5L9 10l6-4.5M3.5 4h11A1.5 1.5 0 0116 5.5v7a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 012 12.5v-7A1.5 1.5 0 013.5 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div>
+              <strong>New quote request</strong>
+              <span>Kitchen remodel &middot; 2 min ago</span>
+            </div>
+          </div>
+
+          <div class="dash-bottom">
+            <div class="feature-card fc-find">
+              <h4>Show up correctly on Google</h4>
+              <div class="mini-listing" aria-hidden="true">
+                <span class="mini-pin">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+                </span>
+                <div class="mini-listing-lines">
+                  <i class="w70"></i>
+                  <i class="w50"></i>
+                  <span class="mini-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card fc-overview">
+              <h4>Overview</h4>
+              <p class="fc-overview-sub">What owners see after launch.</p>
+              <div class="avatar-row" aria-hidden="true">
+                <span class="avatar av-1">JD</span>
+                <span class="avatar av-2">MR</span>
+                <span class="avatar av-3">AK</span>
+                <span class="avatar av-4">TS</span>
+                <span class="avatar av-more">+9</span>
+              </div>
+              <div class="overview-stats">
+                <div class="overview-stat">
+                  <span class="overview-stat-label">Leads this month</span>
+                  <span class="stat-chip chip-mint"><span data-count="27">0</span>+</span>
+                </div>
+                <div class="overview-stat">
+                  <span class="overview-stat-label">Avg. reply time</span>
+                  <span class="stat-chip chip-mint">4&nbsp;min</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card fc-speed">
+              <h4>Fast on every phone</h4>
+              <div class="fc-speed-body">
+                <svg class="ring" viewBox="0 0 64 64" aria-hidden="true">
+                  <circle class="ring-track" cx="32" cy="32" r="26" />
+                  <circle class="ring-fill" cx="32" cy="32" r="26" />
+                </svg>
+                <div class="fc-ring-text">
+                  <strong><span data-count="98">0</span></strong>
+                  <span class="fc-label">Mobile speed score</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TICKER ============ -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>Websites</span><i>&#10022;</i>
+          <span>Online Presence</span><i>&#10022;</i>
+          <span>Lead Capture</span><i>&#10022;</i>
+          <span>Custom Apps</span><i>&#10022;</i>
+          <span>Workflow Automation</span><i>&#10022;</i>
+          <span>Custom AI Agents</span><i>&#10022;</i>
+          <span>Websites</span><i>&#10022;</i>
+          <span>Online Presence</span><i>&#10022;</i>
+          <span>Lead Capture</span><i>&#10022;</i>
+          <span>Custom Apps</span><i>&#10022;</i>
+          <span>Workflow Automation</span><i>&#10022;</i>
+          <span>Custom AI Agents</span><i>&#10022;</i>
+        </div>
+      </div>
+
+      <div class="motion-divider" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- ============ SERVICES ============ -->
+      <section class="section" id="services">
+        <div class="section-heading heading-row reveal">
+          <div>
+            <p class="eyebrow">Services</p>
+            <h2>Everything your business needs to look professional<br class="br-wide" /> and run smoother online.</h2>
+          </div>
+          <div class="carousel-arrows" aria-hidden="false">
+            <button class="arrow-btn arrow-prev" type="button" aria-label="Previous services">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="arrow-btn arrow-next filled" type="button" aria-label="Next services">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="service-track reveal" id="serviceTrack">
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.6"/><circle cx="6.2" cy="6.6" r="0.9" fill="currentColor"/><circle cx="9" cy="6.6" r="0.9" fill="currentColor"/><path d="M6.5 13.5h6M6.5 16.5h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <h3>Websites</h3>
+            <p>Custom, mobile-friendly websites built around the business, services, and customer trust.</p>
+          </article>
+
+          <article class="service-card featured">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <h3>Online Presence Setup</h3>
+            <p>Google setup, indexing, Apple Maps, and business listing basics so customers can find correct information.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16l-5.5 7v5.5L9.5 20v-8L4 5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <h3>Lead Capture Systems</h3>
+            <p>Quote forms, contact flows, and email notifications that make customer requests easier to handle.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7.5" height="7.5" rx="3.75" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <h3>Custom Apps</h3>
+            <p>Dashboards, portals, and internal tools built around the way the business actually works.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h9M4 12h6M4 17h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M16 6l4 6-4 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3>Workflow Automation</h3>
+            <p>Automations that reduce repetitive tasks, organize information, and keep work moving.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M18.5 14.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9.9-2.1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            </span>
+            <h3>Custom AI Agents</h3>
+            <p>Practical AI helpers for business tasks like summaries, drafts, organization, and repeatable processes.</p>
+          </article>
+        </div>
+
+        <!-- Two-column block with accordion, like the reference's
+             "Simplified Process, Outstanding Results." section -->
+        <div class="process-block reveal">
+          <div class="process-visual" aria-hidden="true">
+            <div class="process-screen float-slow">
+              <div class="process-screen-head"><span></span><span></span><span></span></div>
+              <div class="process-screen-body">
+                <i class="w70"></i>
+                <i class="w50"></i>
+                <div class="process-pill"></div>
+              </div>
+            </div>
+            <div class="float-card light process-chip float-b">
+              <span class="fc-check small" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="process-chip-text">Task done automatically</span>
+            </div>
+          </div>
+
+          <div class="process-copy">
+            <h3 class="process-title">Less manual work,<br />more time on the job.</h3>
+            <p class="process-sub">
+              We review how your business handles repetitive tasks, then build
+              custom automations and AI helpers to save time, reduce manual
+              work, and keep your team organized.
+            </p>
+
+            <div class="accordion" id="aiAccordion">
+              <div class="accordion-item open">
+                <button class="accordion-head" type="button" aria-expanded="true">
+                  <span>Organize incoming quote requests</span>
+                  <span class="accordion-chevron" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="none"><path d="M4 10l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </button>
+                <div class="accordion-body">
+                  <p>New requests are sorted automatically, job notes are created from form submissions, and tasks are routed to the right person.</p>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>Summarize and draft</span>
+                  <span class="accordion-chevron" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="none"><path d="M4 10l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </button>
+                <div class="accordion-body">
+                  <p>Customer messages are summarized, replies are drafted, and project descriptions are generated from photos or notes.</p>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-head" type="button" aria-expanded="false">
+                  <span>Keep follow-ups moving</span>
+                  <span class="accordion-chevron" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="none"><path d="M4 10l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </button>
+                <div class="accordion-body">
+                  <p>Owners get reminders to follow up, and spreadsheets or CRMs are updated automatically.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PACKAGES ============ -->
+      <section class="section" id="packages">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Packages</p>
+          <h2>Website packages. One-time prices.</h2>
+          <p class="section-sub">
+            Launch, Growth, and Premium are only for website projects. Apps,
+            AI agents, and workflow automations are priced after we understand
+            what needs to be built and how complex it is. After launch, website
+            support is paid per request. Each website package includes 30 days
+            of post-launch bug fixes.
+          </p>
+        </div>
+
+        <div class="package-grid">
+          <article class="package-card reveal" data-stagger="0">
+            <div class="package-head">
+              <p class="package-kicker">Launch</p>
+              <p class="package-price"><span class="currency">$</span>700</p>
+              <p class="package-desc">A website package for businesses that need a clean site they can manage.</p>
+            </div>
+            <ul class="package-list">
+              <li>Custom business website</li>
+              <li>Mobile-friendly design</li>
+              <li>Contact form</li>
+              <li>Quote/request form</li>
+              <li>Reviews/testimonials section</li>
+              <li>Basic SEO setup</li>
+              <li>Telegram website manager &mdash; update your site from your phone</li>
+              <li>Project/gallery updates from Telegram</li>
+              <li>30 days post-launch bug fixes</li>
+            </ul>
+            <a class="button button-ghost package-btn" href="#contact">Request Free Consultation</a>
+          </article>
+
+          <article class="package-card featured reveal" data-stagger="1">
+            <div class="package-badge">Popular</div>
+            <div class="package-head">
+              <p class="package-kicker">Growth</p>
+              <p class="package-price"><span class="currency">$</span>1,100</p>
+              <p class="package-desc">A website package for businesses that want to be easier to find online.</p>
+            </div>
+            <ul class="package-list">
+              <li>Everything in Launch</li>
+              <li>Google Search setup</li>
+              <li>Google indexing basics</li>
+              <li>Google Business/Profile setup or connection</li>
+              <li>Apple Maps setup</li>
+              <li>Stronger online presence setup</li>
+              <li>Lead notifications by email</li>
+            </ul>
+            <p class="package-note">
+              We set up the basics so Google can find, index, and understand your business.
+            </p>
+            <a class="button button-primary package-btn" href="#contact">Request Free Consultation</a>
+          </article>
+
+          <article class="package-card reveal" data-stagger="2">
+            <div class="package-head">
+              <p class="package-kicker">Premium</p>
+              <p class="package-price"><span class="currency">$</span>1,500</p>
+              <p class="package-desc">A website package for businesses that want a sharper brand and stronger proof.</p>
+            </div>
+            <ul class="package-list">
+              <li>Everything in Growth</li>
+              <li>Logo design</li>
+              <li>Brand colors and typography</li>
+              <li>Business card design</li>
+              <li>Flyer or door hanger design</li>
+              <li>Shirt/hoodie mockup</li>
+              <li>Truck decal mockup</li>
+              <li>Brand mini-guide</li>
+              <li>Approximate past-project map with clickable pins</li>
+            </ul>
+            <p class="package-note">
+              Premium includes design files and mockups only. Ordering clothes,
+              cards, decals, or printed materials is the customer's responsibility.
+            </p>
+            <a class="button button-ghost package-btn" href="#contact">Request Free Consultation</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ CUSTOM PRODUCT PRICING ============ -->
+      <section class="custom-pricing-section reveal" id="custom-pricing">
+        <div class="custom-pricing-inner">
+          <div class="custom-pricing-copy">
+            <p class="eyebrow">Apps, AI &amp; Workflows</p>
+            <h2>Custom products are priced after we understand the build.</h2>
+            <p>
+              Website packages have fixed prices. Apps, AI agents, internal
+              systems, and automated workflows are different: the price depends
+              on what the product needs to do, how many steps it has, what tools
+              it connects with, and how complex the business process is.
+            </p>
+          </div>
+
+          <div class="custom-pricing-panel" aria-label="Custom product pricing examples">
+            <article>
+              <span>01</span>
+              <h3>Custom Apps</h3>
+              <p>Dashboards, portals, mobile-friendly tools, and internal systems built around your workflow.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>AI Agents</h3>
+              <p>Practical AI helpers for summaries, drafts, organization, customer notes, and repeatable tasks.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Automated Workflows</h3>
+              <p>Automations that connect steps, reduce manual work, send reminders, and keep operations moving.</p>
+            </article>
+          </div>
+
+          <div class="custom-pricing-footer">
+            <p>
+              First we review the idea, workflow, tools, and complexity. Then
+              you get a clear custom quote before anything is built.
+            </p>
+            <a class="button button-light" href="#contact">Request Custom Quote</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section class="section" id="projects">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Projects</p>
+          <h2>Projects built for real businesses.</h2>
+          <p class="section-sub">
+            A mix of websites, apps, and automations showing the practical
+            digital work Siteup builds.
+          </p>
+        </div>
+
+        <div class="project-group reveal">
+          <h3 class="group-title">Websites</h3>
+          <div class="project-grid cols-3">
+            <article class="project-card">
+              <div class="project-shot shot-site-a" aria-hidden="true">
+                <div class="shot-chrome"><span></span><span></span><span></span></div>
+                <div class="shot-body">
+                  <div class="shot-hero"></div>
+                  <div class="shot-row"><i></i><i></i><i></i></div>
+                  <div class="shot-line w70"></div>
+                  <div class="shot-line w45"></div>
+                </div>
+              </div>
+              <span class="project-tag">Website</span>
+              <h4>Construction company website</h4>
+              <p>A clean service website with project gallery, reviews, and quote request flow.</p>
+              <p class="project-result">Result: easier quote requests from mobile visitors.</p>
+            </article>
+
+            <article class="project-card">
+              <div class="project-shot shot-site-b" aria-hidden="true">
+                <div class="shot-chrome"><span></span><span></span><span></span></div>
+                <div class="shot-body">
+                  <div class="shot-split">
+                    <div class="shot-hero tall"></div>
+                    <div class="shot-stack"><i></i><i></i><i></i></div>
+                  </div>
+                  <div class="shot-line w60"></div>
+                </div>
+              </div>
+              <span class="project-tag">Website</span>
+              <h4>Local service website</h4>
+              <p>A mobile-first website built to make services, contact details, and trust signals clear.</p>
+              <p class="project-result">Result: correct business info everywhere customers look.</p>
+            </article>
+
+            <article class="project-card">
+              <div class="project-shot shot-site-c" aria-hidden="true">
+                <div class="shot-chrome"><span></span><span></span><span></span></div>
+                <div class="shot-body">
+                  <div class="shot-row tall"><i></i><i></i></div>
+                  <div class="shot-line w80"></div>
+                  <div class="shot-line w50"></div>
+                  <div class="shot-pill"></div>
+                </div>
+              </div>
+              <span class="project-tag">Website</span>
+              <h4>Business portfolio site</h4>
+              <p>A polished online presence for showcasing work, explaining services, and collecting requests.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="project-group reveal">
+          <h3 class="group-title">Apps</h3>
+          <div class="project-grid cols-2">
+            <article class="project-card">
+              <div class="project-shot shot-app-a" aria-hidden="true">
+                <div class="shot-chrome"><span></span><span></span><span></span></div>
+                <div class="shot-body">
+                  <div class="shot-sidebar"></div>
+                  <div class="shot-main">
+                    <div class="shot-row"><i></i><i></i><i></i></div>
+                    <div class="shot-hero short"></div>
+                    <div class="shot-line w60"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="project-tag">Web App</span>
+              <h4>Operations dashboard</h4>
+              <p>A custom dashboard for tracking requests, tasks, and business information in one place.</p>
+              <p class="project-result">Result: one place to see what needs attention.</p>
+            </article>
+
+            <article class="project-card">
+              <div class="project-shot shot-app-b" aria-hidden="true">
+                <div class="shot-phone">
+                  <div class="shot-notch"></div>
+                  <div class="shot-line w70"></div>
+                  <div class="shot-row"><i></i><i></i></div>
+                  <div class="shot-line w50"></div>
+                  <div class="shot-pill"></div>
+                </div>
+              </div>
+              <span class="project-tag">App</span>
+              <h4>Business management app</h4>
+              <p>An app experience shaped around a real business workflow instead of a generic template.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="project-group reveal">
+          <h3 class="group-title">Automated Workflows</h3>
+          <div class="project-grid cols-1">
+            <article class="project-card project-wide">
+              <div class="project-shot shot-flow" aria-hidden="true">
+                <div class="flow-node">
+                  <span class="flow-icon">
+                    <svg viewBox="0 0 18 18" fill="none"><rect x="3" y="2.5" width="12" height="13" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M6 6.5h6M6 9.5h6M6 12.5h3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  </span>
+                  <strong>Form submitted</strong>
+                </div>
+                <span class="flow-link"><i></i></span>
+                <div class="flow-node flow-node-mid">
+                  <span class="flow-icon">
+                    <svg viewBox="0 0 18 18" fill="none"><path d="M9 2.5l1.3 3.2L13.5 7l-3.2 1.3L9 11.5 7.7 8.3 4.5 7l3.2-1.3L9 2.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M13.8 11l.7 1.6 1.6.7-1.6.7-.7 1.6-.7-1.6-1.6-.7 1.6-.7.7-1.6z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+                  </span>
+                  <strong>AI summary drafted</strong>
+                </div>
+                <span class="flow-link"><i></i></span>
+                <div class="flow-node">
+                  <span class="flow-icon">
+                    <svg viewBox="0 0 18 18" fill="none"><path d="M9 15.5c3.6 0 6.5-2.7 6.5-6S12.6 3.5 9 3.5 2.5 6.2 2.5 9.5c0 1.3.4 2.4 1.2 3.4L3 15.5l2.8-.8c1 .5 2 .8 3.2.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                  </span>
+                  <strong>Owner notified</strong>
+                </div>
+              </div>
+              <div class="project-wide-copy">
+                <span class="project-tag">Workflow Automation</span>
+                <h4>AI-assisted admin workflow</h4>
+                <p>
+                  A practical automation that organizes repetitive business
+                  tasks, prepares summaries, and keeps follow-up work easier to
+                  manage.
+                </p>
+                <p class="project-result">Result: less time on admin, faster follow-ups.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section class="section" id="contact">
+        <div class="contact-panel reveal">
+          <div class="contact-copy">
+            <p class="eyebrow">Free Consultation</p>
+            <h2>Tell us what your business needs online.</h2>
+            <p class="section-sub">
+              Get a clean website, show up correctly online, and make it easier
+              for customers to contact you. Send a quick request and we will
+              review your business and the best next step.
+            </p>
+            <ul class="contact-points">
+              <li>No pressure, no subscriptions</li>
+              <li>Plain answers about price and scope</li>
+              <li>Reply within one business day</li>
+            </ul>
+          </div>
+
+          <form class="consultation-form" id="consultationForm" novalidate>
+            <div class="field">
+              <label for="f-name">Name</label>
+              <input id="f-name" type="text" name="name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="f-business">Business name</label>
+              <input id="f-business" type="text" name="business" autocomplete="organization" required />
+            </div>
+            <div class="split-fields">
+              <div class="field">
+                <label for="f-phone">Phone</label>
+                <input id="f-phone" type="tel" name="phone" autocomplete="tel" />
+              </div>
+              <div class="field">
+                <label for="f-email">Email</label>
+                <input id="f-email" type="email" name="email" autocomplete="email" />
+              </div>
+            </div>
+            <p class="form-note">Phone or email is required so we can contact you.</p>
+            <div class="field">
+              <label for="f-type">Business type</label>
+              <input
+                id="f-type"
+                type="text"
+                name="businessType"
+                placeholder="Construction company, cleaning service, restaurant..."
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="f-need">What do you need?</label>
+              <div class="select-wrap">
+                <select id="f-need" name="need" required>
+                  <option value="" selected disabled>Choose one</option>
+                  <option>New Website</option>
+                  <option>Online Presence / Leads</option>
+                  <option>Website Redesign</option>
+                  <option>App</option>
+                  <option>Automated Workflow</option>
+                  <option>Other</option>
+                </select>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-message">Message <span class="optional">optional</span></label>
+              <textarea
+                id="f-message"
+                name="message"
+                rows="4"
+                placeholder="Write anything else you want us to know."
+              ></textarea>
+            </div>
+            <button class="button button-primary form-submit" type="submit">Request Free Consultation</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <a class="brand" href="#top" aria-label="Siteup home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="13.5" stroke="currentColor" stroke-width="2.2" />
+            <path
+              d="M20.5 12.2c-.8-1-2.2-1.6-3.9-1.6-2.4 0-4.1 1.2-4.1 3 0 3.7 8.3 1.9 8.3 5.7 0 1.9-1.8 3.3-4.4 3.3-2 0-3.7-.8-4.6-2"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+        <span class="brand-name">siteup</span>
+      </a>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#services">Services</a>
+        <a href="#packages">Packages</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer-bottom">
+        <span>Terms &amp; Agreements</span>
+        <p>&copy; 2026 Siteup. All rights reserved.</p>
+        <span>Privacy Policy</span>
+      </div>
+    </footer>
+
+    <script src="script.js?v=3"></script>
+  </body>
+</html>
