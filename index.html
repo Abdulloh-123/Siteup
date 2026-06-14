@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 <style>
 /* ============================================================
-   SITEUP v2 — "Precision Studio"
+   SITEUP v2 — "Precision Development"
    Quiet, technical, premium. Geist + Geist Mono + Instrument Serif.
    ============================================================ */
 
@@ -204,6 +204,9 @@ nav.main-nav a:hover::after { width: 100%; }
   padding: 11px 9px;
   cursor: pointer;
   transition: background 0.25s ease, color 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .lang-btn:last-child { border-right: 0; }
@@ -657,6 +660,8 @@ section { max-width: var(--max); margin: 0 auto; padding: 130px 28px 0; }
 .service-dialog {
   position: relative;
   width: min(100%, 560px);
+  max-height: min(82vh, 760px);
+  overflow-y: auto;
   border: 1px solid var(--hair-strong);
   background:
     radial-gradient(420px 220px at 8% 0%, rgba(73, 224, 139, 0.14), transparent 68%),
@@ -724,6 +729,48 @@ section { max-width: var(--max); margin: 0 auto; padding: 130px 28px 0; }
   width: 7px;
   height: 7px;
   background: var(--green);
+}
+
+.project-detail-flow {
+  display: grid;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.project-detail-flow article {
+  border-top: 1px solid var(--hair);
+  padding-top: 16px;
+}
+
+.project-detail-flow h3 {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+
+.project-detail-flow p {
+  font-size: 0.92rem;
+}
+
+.project-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 22px 0 4px;
+}
+
+.project-detail-tags span {
+  border: 1px solid var(--hair-strong);
+  color: #c5d3cb;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 7px 9px;
+  background: rgba(255, 255, 255, 0.025);
 }
 
 /* ---------- why siteup ---------- */
@@ -1085,7 +1132,7 @@ section { max-width: var(--max); margin: 0 auto; padding: 130px 28px 0; }
   background: var(--hair);
 }
 
-.proj-grid { display: grid; gap: 1px; background: var(--hair); border: 1px solid var(--hair); }
+.proj-grid { display: grid; gap: 22px; }
 .proj-grid.c3 { grid-template-columns: repeat(3, 1fr); }
 .proj-grid.c2 { grid-template-columns: repeat(2, 1fr); }
 .proj-grid.c1 { grid-template-columns: 1fr; }
@@ -1095,9 +1142,12 @@ section { max-width: var(--max); margin: 0 auto; padding: 130px 28px 0; }
   padding: 30px;
   transition: background 0.35s ease;
   position: relative;
+  border: 1px solid var(--hair);
 }
 
 .proj:hover { background: var(--bg-2); }
+.proj[data-project] { cursor: pointer; }
+.proj[data-project]:focus-visible { outline: 1.5px solid var(--green); outline-offset: 4px; }
 
 .proj.featured {
   padding: 0;
@@ -1146,6 +1196,69 @@ section { max-width: var(--max); margin: 0 auto; padding: 130px 28px 0; }
   height: 100%;
   display: block;
   object-fit: cover;
+}
+
+.proj-image.app-icon {
+  background: #fbfefe;
+}
+
+.proj-image.app-icon img {
+  width: min(76%, 280px);
+  height: 76%;
+  object-fit: contain;
+}
+
+.workflow-visual {
+  height: 250px;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid var(--hair);
+  background:
+    radial-gradient(circle at 26% 22%, rgba(73, 224, 139, 0.18), transparent 28%),
+    linear-gradient(135deg, rgba(73, 224, 139, 0.08), rgba(61, 219, 208, 0.07)),
+    #050705;
+}
+
+.workflow-map {
+  width: min(86%, 420px);
+  display: grid;
+  grid-template-columns: 1fr auto 1.2fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.workflow-card {
+  border: 1px solid rgba(73, 224, 139, 0.28);
+  background: rgba(5, 7, 5, 0.82);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 18px 16px;
+  text-align: center;
+}
+
+.workflow-arrow {
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: 1.3rem;
+}
+
+.workflow-files {
+  display: grid;
+  gap: 8px;
+}
+
+.workflow-files span {
+  border: 1px solid var(--hair-strong);
+  background: rgba(255, 255, 255, 0.035);
+  color: #c5d3cb;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 12px;
 }
 
 .proj-video::after {
@@ -1197,6 +1310,32 @@ section { max-width: var(--max); margin: 0 auto; padding: 130px 28px 0; }
 }
 
 .proj-link:hover { color: var(--ink); border-color: var(--ink); }
+
+.proj-more {
+  display: inline-flex;
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.proj-more::after {
+  content: "\2197";
+  margin-left: 8px;
+  color: var(--green);
+}
+
+.proj-status {
+  display: inline-flex;
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c5d3cb;
+}
 
 .proj-visual .pv-frame {
   width: 70%;
@@ -1457,6 +1596,14 @@ section { max-width: var(--max); margin: 0 auto; padding: 130px 28px 0; }
   opacity: 0.72;
 }
 
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
 /* ---------- footer ---------- */
 
 footer {
@@ -1566,15 +1713,46 @@ footer {
 
 @media (max-width: 660px) {
   .header-in { padding: 16px 18px; }
+  section { padding: 96px 18px 0; }
+  .hero { padding: 136px 18px 0; }
+  .term-wrap,
+  .stat-strip { padding: 0 18px; }
+  .sec-head { margin-bottom: 38px; }
+  .sec-head h2 { font-size: 2rem; }
+  .hero-ctas,
+  .hero-call,
+  .btn { width: 100%; justify-content: center; }
+  .stat { padding: 24px 18px; }
   .svc-row { grid-template-columns: 44px 1fr 32px; }
   .svc-row p { grid-column: 2 / -1; margin-top: -6px; }
+  .pkg { padding: 34px 24px 30px; }
   .why-grid { grid-template-columns: 1fr; }
   .why-cell.lead { grid-column: auto; }
   .proj-grid.c3, .proj-grid.c2 { grid-template-columns: 1fr; }
   .proj.wide { grid-template-columns: 1fr; }
+  .proj-group { margin-bottom: 54px; }
+  .proj-group-title { gap: 12px; margin-bottom: 18px; }
+  .proj-video,
+  .proj-image,
+  .workflow-visual { height: 210px; }
+  .proj-body { padding: 24px 20px 26px; }
+  .proj-tags span { font-size: 0.58rem; padding: 7px 8px; }
+  .workflow-map {
+    width: min(88%, 330px);
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 10px;
+  }
+  .workflow-card,
+  .workflow-files {
+    width: 100%;
+  }
+  .workflow-arrow {
+    transform: rotate(90deg);
+    line-height: 1;
+  }
   .custom-price-item { grid-template-columns: 1fr; }
   .cf-split { grid-template-columns: 1fr; }
-  .hero { padding-top: 150px; }
   .tick { display: none; }
 }
 
@@ -1582,6 +1760,23 @@ footer {
   .logo .tld,
   .header-cta { display: none; }
   .lang-btn { padding: 10px 8px; }
+  h1.hero-h { font-size: 2.55rem; }
+  .hero-sub { font-size: 0.98rem; }
+  .term-body { padding: 22px 18px 24px; }
+  .stat-grid { grid-template-columns: 1fr; }
+  .stat,
+  .stat:nth-child(3) { border-left: none; }
+  .stat:nth-child(2) { border-top: 1px solid var(--hair); }
+  .proj-tags { gap: 7px; }
+  .proj-tags span,
+  .workflow-files span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .workflow-map { width: 88%; }
+  .custom-pricing-in,
+  .contact-wrap { padding: 28px 22px; }
+  .foot-bottom { align-items: flex-start; flex-direction: column; gap: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1606,7 +1801,7 @@ footer {
       <span class="logo-mark" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none"><path d="M16.5 8.2c-.7-.9-1.9-1.4-3.4-1.4-2.1 0-3.6 1-3.6 2.6 0 3.2 7.3 1.7 7.3 5 0 1.7-1.6 2.9-3.9 2.9-1.7 0-3.2-.7-4-1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       </span>
-      siteup<span class="tld">/studio</span>
+      siteup<span class="tld">development</span>
     </a>
     <nav class="main-nav" aria-label="Main navigation">
       <a href="#services">Services</a>
@@ -1617,9 +1812,9 @@ footer {
     </nav>
     <div class="header-actions">
       <div class="lang-switch" aria-label="Choose language">
-        <button class="lang-btn active" type="button" data-lang="en">EN</button>
-        <button class="lang-btn" type="button" data-lang="ru">RU</button>
-        <button class="lang-btn" type="button" data-lang="uz">UZ</button>
+        <button class="lang-btn active" type="button" data-lang="en"><span aria-hidden="true">🇬🇧</span><span>EN</span></button>
+        <button class="lang-btn" type="button" data-lang="ru"><span aria-hidden="true">🇷🇺</span><span>RU</span></button>
+        <button class="lang-btn" type="button" data-lang="uz"><span aria-hidden="true">🇺🇿</span><span>UZ</span></button>
       </div>
       <a class="header-cta" href="#contact">Free Consultation</a>
     </div>
@@ -1635,7 +1830,7 @@ footer {
 
     <div class="hero-label rv" data-d="0">
       <span class="rule" aria-hidden="true"></span>
-      <span class="label">Digital development studio</span>
+      <span class="label">Digital development</span>
     </div>
 
     <h1 class="hero-h rv" data-d="1">
@@ -1927,7 +2122,7 @@ footer {
         <h3>Websites</h3><span class="count">&times;2</span><span class="line" aria-hidden="true"></span>
       </div>
       <div class="proj-grid c2">
-        <article class="proj featured">
+        <article class="proj featured" data-project="turon" tabindex="0" role="button" aria-haspopup="dialog">
           <div class="proj-visual proj-video">
             <video src="V/2e3.mov" muted loop autoplay playsinline controls preload="metadata" aria-label="Turon Roofing website walkthrough"></video>
           </div>
@@ -1943,9 +2138,10 @@ footer {
               <span>Projects map</span>
             </div>
             <a class="proj-link" href="https://turonroofing.com.au" target="_blank" rel="noopener">View live site</a>
+            <span class="proj-more">Project details</span>
           </div>
         </article>
-        <article class="proj featured">
+        <article class="proj featured" data-project="blackstar" tabindex="0" role="button" aria-haspopup="dialog">
           <div class="proj-visual proj-video">
             <video src="V/2e4.mov" muted loop autoplay playsinline controls preload="metadata" aria-label="Black Star Roofing website walkthrough"></video>
           </div>
@@ -1961,6 +2157,7 @@ footer {
               <span>T-shirt design</span>
             </div>
             <a class="proj-link" href="https://blackstarroofing.com.au" target="_blank" rel="noopener">View live site</a>
+            <span class="proj-more">Project details</span>
           </div>
         </article>
       </div>
@@ -1968,10 +2165,10 @@ footer {
 
     <div class="proj-group rv">
       <div class="proj-group-title">
-        <h3>Apps</h3><span class="count">&times;1</span><span class="line" aria-hidden="true"></span>
+        <h3>Apps</h3><span class="count">&times;2</span><span class="line" aria-hidden="true"></span>
       </div>
-      <div class="proj-grid c1">
-        <article class="proj featured">
+      <div class="proj-grid c2">
+        <article class="proj featured" data-project="onepagegift" tabindex="0" role="button" aria-haspopup="dialog">
           <div class="proj-visual proj-video">
             <video src="V/onepagegift.mp4" muted loop autoplay playsinline controls preload="metadata" aria-label="One Page Gift web app walkthrough"></video>
           </div>
@@ -1987,6 +2184,26 @@ footer {
               <span>Shareable link</span>
             </div>
             <a class="proj-link" href="https://onepagegift.com" target="_blank" rel="noopener">View live app</a>
+            <span class="proj-more">Project details</span>
+          </div>
+        </article>
+        <article class="proj featured" data-project="keepsleep" tabindex="0" role="button" aria-haspopup="dialog">
+          <div class="proj-visual proj-image app-icon">
+            <img src="V/keepsleep.jpeg" alt="KeepSleep receipt saving app icon" loading="lazy" />
+          </div>
+          <div class="proj-body">
+            <p class="proj-meta">App</p>
+            <h4>KeepSleep</h4>
+            <p>We are building a receipt-saving app where people can create an account, scan paper receipts, upload photo or file receipts, and keep every receipt detail organized in one place.</p>
+            <p class="result">&rarr; users will be able to search saved receipt details and open the original receipt whenever they need proof of purchase</p>
+            <div class="proj-tags" aria-label="Project deliverables">
+              <span>Receipt scanning</span>
+              <span>File uploads</span>
+              <span>OCR details</span>
+              <span>Original receipt</span>
+            </div>
+            <span class="proj-status">In development</span>
+            <span class="proj-more">Project details</span>
           </div>
         </article>
       </div>
@@ -1994,10 +2211,10 @@ footer {
 
     <div class="proj-group rv">
       <div class="proj-group-title">
-        <h3>Automations</h3><span class="count">&times;1</span><span class="line" aria-hidden="true"></span>
+        <h3>Automations</h3><span class="count">&times;2</span><span class="line" aria-hidden="true"></span>
       </div>
-      <div class="proj-grid c1">
-        <article class="proj featured">
+      <div class="proj-grid c2">
+        <article class="proj featured" data-project="lead-monitor" tabindex="0" role="button" aria-haspopup="dialog">
           <div class="proj-visual proj-image">
             <img src="V/automation-lead-monitor.png" alt="Automation system scanning local social posts and sending Telegram lead alerts" loading="lazy" />
           </div>
@@ -2013,6 +2230,34 @@ footer {
               <span>Telegram bot</span>
               <span>Twice daily</span>
             </div>
+            <span class="proj-more">Project details</span>
+          </div>
+        </article>
+        <article class="proj featured" data-project="accounting-files" tabindex="0" role="button" aria-haspopup="dialog">
+          <div class="proj-visual workflow-visual" aria-label="Accounting workflow turning one uploaded PDF into three generated files">
+            <div class="workflow-map" aria-hidden="true">
+              <div class="workflow-card">Client PDF</div>
+              <div class="workflow-arrow">&rarr;</div>
+              <div class="workflow-files">
+                <span>File 1</span>
+                <span>File 2</span>
+                <span>File 3</span>
+              </div>
+            </div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-meta">Automation</p>
+            <h4>Accounting file generator</h4>
+            <p>We built a private workflow for an accounting firm that used to create three client files by hand. Their own system already produced one PDF with all the required details, so we turned that PDF into the single upload point.</p>
+            <p>The team now uploads the PDF once, and the workflow reads the details and generates all three files automatically.</p>
+            <p class="result">&rarr; hosted on a personal VPS so sensitive client data stays under the firm's full control</p>
+            <div class="proj-tags" aria-label="Project deliverables">
+              <span>PDF upload</span>
+              <span>Data extraction</span>
+              <span>File generation</span>
+              <span>Private VPS</span>
+            </div>
+            <span class="proj-more">Project details</span>
           </div>
         </article>
       </div>
@@ -2050,6 +2295,9 @@ footer {
         <input type="hidden" name="_subject" value="New Siteup consultation request" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_replyto" value="" />
+        <input type="hidden" name="_autoresponse" value="Thanks for contacting Siteup. We received your request and will reply soon." />
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot" />
         <div class="cf-split">
           <div class="cf-field">
             <label for="cf-name">Name</label>
@@ -2109,6 +2357,19 @@ footer {
       <p id="serviceModalText"></p>
       <ul class="service-detail-list" id="serviceModalList"></ul>
       <a class="btn btn-solid" href="#contact" id="serviceModalCta">Request Free Consultation <span class="arr">&rarr;</span></a>
+    </section>
+  </div>
+
+  <div class="service-modal" id="projectModal" aria-hidden="true">
+    <div class="service-modal-backdrop" data-close-project></div>
+    <section class="service-dialog" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+      <button class="service-close" type="button" data-close-project aria-label="Close">×</button>
+      <p class="label" id="projectModalKicker">Project detail</p>
+      <h2 id="projectModalTitle"></h2>
+      <p id="projectModalIntro"></p>
+      <div class="project-detail-flow" id="projectModalFlow"></div>
+      <div class="project-detail-tags" id="projectModalTags" aria-label="Project deliverables"></div>
+      <a class="btn btn-solid" href="#contact" id="projectModalCta">Request Similar Project <span class="arr">&rarr;</span></a>
     </section>
   </div>
 </main>
@@ -2219,7 +2480,7 @@ const copy = {
   en: {
     nav: ["Services", "Why Siteup", "Packages", "Projects", "Contact"],
     headerCta: "Free Consultation",
-    heroLabel: "Digital development studio",
+    heroLabel: "Digital development",
     heroTitle: 'Websites and <span class="serif-accent">digital systems</span> for local businesses.',
     heroSub: "Siteup builds professional websites, online presence setups, custom apps, and practical AI workflows for construction companies, service businesses, and growing local brands.",
     primaryCta: "Request Free Consultation",
@@ -2309,7 +2570,7 @@ const copy = {
   ru: {
     nav: ["Услуги", "Почему Siteup", "Пакеты", "Проекты", "Контакты"],
     headerCta: "Бесплатная консультация",
-    heroLabel: "Студия цифровой разработки",
+    heroLabel: "Цифровая разработка",
     heroTitle: 'Сайты и <span class="serif-accent">цифровые системы</span> для локального бизнеса.',
     heroSub: "Siteup создает профессиональные сайты, онлайн-присутствие, приложения и практичные AI-воркфлоу для строительных компаний, сервисных бизнесов и локальных брендов.",
     primaryCta: "Запросить консультацию",
@@ -2373,7 +2634,7 @@ const copy = {
     },
     projectsHead: "Проекты для<br />реального бизнеса.",
     projectsNote: "Live сайты с практичными deliverables, которые Siteup построил вокруг каждого бизнеса.",
-    projectGroups: ["Websites", "Apps", "Automations"],
+    projectGroups: ["Сайты", "Приложения", "Автоматизации"],
     contactHead: 'Расскажите, что бизнесу<br />нужно <span class="serif-accent">онлайн.</span>',
     contactLabel: "Бесплатная консультация",
     contactTitle: "Простые ответы. Реальные шаги.",
@@ -2399,7 +2660,7 @@ const copy = {
   uz: {
     nav: ["Xizmatlar", "Nega Siteup", "Paketlar", "Loyihalar", "Aloqa"],
     headerCta: "Bepul konsultatsiya",
-    heroLabel: "Raqamli development studio",
+    heroLabel: "Raqamli development",
     heroTitle: 'Mahalliy bizneslar uchun saytlar va <span class="serif-accent">raqamli tizimlar</span>.',
     heroSub: "Siteup qurilish kompaniyalari, xizmat bizneslari va o'sayotgan lokal brendlar uchun professional saytlar, online presence, custom app va amaliy AI workflowlar quradi.",
     primaryCta: "Bepul konsultatsiya so'rash",
@@ -2463,7 +2724,7 @@ const copy = {
     },
     projectsHead: "Real bizneslar uchun<br />qurilgan loyihalar.",
     projectsNote: "Har bir biznes atrofida Siteup qurgan live website va amaliy deliverablelar.",
-    projectGroups: ["Websites", "Apps", "Automations"],
+    projectGroups: ["Saytlar", "Applar", "Automationlar"],
     contactHead: 'Biznesingizga online nima<br />kerakligini ayting.',
     contactLabel: "Bepul konsultatsiya",
     contactTitle: "Oddiy javoblar. Aniq keyingi qadamlar.",
@@ -2488,6 +2749,197 @@ const copy = {
   },
 };
 
+const projectCopy = {
+  en: {
+    modalKicker: "Project detail",
+    modalCta: "Request Similar Project",
+    more: "Project details",
+    tagsLabel: "Project deliverables",
+    projects: {
+      turon: {
+        meta: "Project",
+        title: "Turon Roofing",
+        summary: "We built a clean roofing website focused on service clarity, mobile trust, quote enquiries, and stronger local search basics.",
+        extra: "",
+        result: "\u2192 special projects map added to show completed work by location",
+        tags: ["Website", "Google setup", "Lead form", "Projects map"],
+        link: "View live site",
+        detail: {
+          intro: "Turon Roofing needed a site that made the business look professional, explained the services clearly, and helped customers request quotes from a phone.",
+          sections: [
+            ["What we did", "We designed and built a custom roofing website with clear service sections, trust-focused copy, mobile-friendly contact paths, and a project gallery structure."],
+            ["How it works", "Customers can understand the roofing services quickly, send a quote enquiry, and view completed work by location through the project map."],
+            ["Result", "The site gives the business a cleaner online presence and makes it easier for local customers to see proof of work before contacting them."],
+          ],
+        },
+      },
+      blackstar: {
+        meta: "Project",
+        title: "Black Star Roofing",
+        summary: "We built a Sydney roofing site around Colorbond roofing, emergency repairs, guttering, reviews, project proof, and a fast quote flow.",
+        extra: "",
+        result: "\u2192 business card and t-shirt designs completed for a consistent trade brand",
+        tags: ["Website", "Quote flow", "Business card", "T-shirt design"],
+        link: "View live site",
+        detail: {
+          intro: "Black Star Roofing needed a sharper trade brand and a website that could turn roofing visitors into quote enquiries.",
+          sections: [
+            ["What we did", "We built a service-focused roofing website, shaped the content around key Sydney services, and added brand materials like business card and t-shirt designs."],
+            ["How it works", "Visitors can scan the core services, see trust signals, understand the offer, and move into a fast quote flow without digging around."],
+            ["Result", "The website and brand assets give the business a more consistent professional image online and offline."],
+          ],
+        },
+      },
+      onepagegift: {
+        meta: "Web App",
+        title: "One Page Gift",
+        summary: "We built a warm web app experience for creating personal one-page gift sites with photos, memories, AI-polished writing, previews, and one shareable link.",
+        extra: "",
+        result: "\u2192 positioned the app for birthdays, anniversaries, love notes, invitations, and last-minute thoughtful gifts",
+        tags: ["Web app", "Create flow", "AI writing", "Shareable link"],
+        link: "View live app",
+        detail: {
+          intro: "One Page Gift is a web app for creating a personal gift page that can be shared with one link.",
+          sections: [
+            ["What we did", "We built the app flow around photos, memories, personal messages, previews, and AI-assisted writing so users can create a polished page quickly."],
+            ["How it works", "A user enters the gift details, adds personal content, previews the page, and gets one shareable link for the recipient."],
+            ["Result", "The app is positioned for emotional, quick-to-create gifts like birthdays, anniversaries, love notes, invitations, and thoughtful last-minute surprises."],
+          ],
+        },
+      },
+      keepsleep: {
+        meta: "App",
+        title: "KeepSleep",
+        summary: "We are building a receipt-saving app where people can create an account, scan paper receipts, upload photo or file receipts, and keep every receipt detail organized in one place.",
+        extra: "",
+        result: "\u2192 users will be able to search saved receipt details and open the original receipt whenever they need proof of purchase",
+        tags: ["Receipt scanning", "File uploads", "OCR details", "Original receipt"],
+        status: "In development",
+        detail: {
+          intro: "KeepSleep is an app for saving receipts so users do not lose proof of purchase when they need it later.",
+          sections: [
+            ["What we are building", "Users will create an account, scan paper receipts, upload receipt photos, or upload receipt files."],
+            ["How it works", "The app reads the receipt, saves the important details, and keeps the original receipt available inside the account."],
+            ["Result", "When a user needs a receipt later, they can search the saved details and open the original file or image as proof."],
+          ],
+        },
+      },
+      "lead-monitor": {
+        meta: "Automation",
+        title: "Local job lead monitor",
+        summary: "We built an agent-style automation for a tradie who was spending too much time checking local Facebook community groups for people asking for service recommendations.",
+        extra: "The workflow runs twice a day, checks the groups connected to the business profile, looks for posts where locals ask for services like roofing or plumbing, and sends a Telegram bot summary with the relevant posts found.",
+        result: "\u2192 fewer manual group checks, faster response to local customers looking for recommendations",
+        tags: ["Lead monitor", "Keyword matching", "Telegram bot", "Twice daily"],
+        detail: {
+          intro: "This automation helps a local service business find relevant community posts without manually checking Facebook groups all day.",
+          sections: [
+            ["What we did", "We created an automated workflow that checks selected local community groups for posts where people ask for service recommendations."],
+            ["How it works", "Twice a day, the workflow scans connected groups, matches relevant wording, and sends a Telegram summary with the useful posts."],
+            ["Result", "The business spends less time manually checking groups and can respond faster when locals are already looking for help."],
+          ],
+        },
+      },
+      "accounting-files": {
+        meta: "Automation",
+        title: "Accounting file generator",
+        summary: "We built a private workflow for an accounting firm that used to create three client files by hand. Their own system already produced one PDF with all the required details, so we turned that PDF into the single upload point.",
+        extra: "The team now uploads the PDF once, and the workflow reads the details and generates all three files automatically.",
+        result: "\u2192 hosted on a personal VPS so sensitive client data stays under the firm's full control",
+        tags: ["PDF upload", "Data extraction", "File generation", "Private VPS"],
+        detail: {
+          intro: "This workflow replaced a slow manual process for an accounting firm that handles sensitive client data.",
+          sections: [
+            ["What we did", "We found that their existing system could export one PDF containing all the details needed for three separate files, then built an upload workflow around that PDF."],
+            ["How it works", "The team uploads one PDF. The workflow extracts the required information and automatically generates the three files they previously created by hand."],
+            ["Data control", "Because the workflow handles personal client information, we set it up on their own VPS so the firm keeps full control over the data."],
+          ],
+        },
+      },
+    },
+  },
+  ru: {
+    modalKicker: "Детали проекта",
+    modalCta: "Запросить похожий проект",
+    more: "Детали проекта",
+    tagsLabel: "Что было сделано",
+    projects: {
+      turon: {
+        meta: "Проект",
+        title: "Turon Roofing",
+        summary: "Мы сделали чистый сайт для roofing-бизнеса с понятными услугами, доверием на мобильном, формой заявки и базой для локального поиска.",
+        extra: "",
+        result: "\u2192 добавлена карта проектов, чтобы показывать выполненные работы по локациям",
+        tags: ["Сайт", "Google setup", "Форма заявки", "Карта проектов"],
+        link: "Открыть сайт",
+        detail: { intro: "Turon Roofing нужен был профессиональный сайт, который понятно объясняет услуги и помогает клиентам запросить quote с телефона.", sections: [["Что сделали", "Мы разработали custom сайт с понятными service-секциями, доверием, быстрым contact flow и структурой для галереи проектов."], ["Как работает", "Клиент быстро понимает услуги, отправляет заявку и смотрит выполненные работы по локациям на карте."], ["Результат", "Бизнес выглядит профессиональнее онлайн, а клиентам проще увидеть proof и связаться."]] },
+      },
+      blackstar: {
+        meta: "Проект",
+        title: "Black Star Roofing",
+        summary: "Мы сделали сайт для Sydney roofing вокруг Colorbond roofing, emergency repairs, guttering, отзывов, proof проектов и быстрого quote flow.",
+        extra: "",
+        result: "\u2192 также сделали дизайн визитки и футболки для цельного trade brand",
+        tags: ["Сайт", "Quote flow", "Визитка", "T-shirt design"],
+        link: "Открыть сайт",
+        detail: { intro: "Black Star Roofing нужен был более сильный trade brand и сайт, который превращает посетителей в заявки.", sections: [["Что сделали", "Мы построили сайт вокруг ключевых roofing-услуг, добавили trust-сигналы и подготовили brand materials."], ["Как работает", "Посетитель быстро видит услуги, proof, отзывы и переходит к простой заявке."], ["Результат", "У бизнеса появился более профессиональный и единый образ онлайн и офлайн."]] },
+      },
+      onepagegift: {
+        meta: "Web App",
+        title: "One Page Gift",
+        summary: "Мы сделали теплый web app для создания персональных one-page gift сайтов с фото, memories, AI-текстом, preview и одной ссылкой.",
+        extra: "",
+        result: "\u2192 app позиционирован для birthdays, anniversaries, love notes, invitations и быстрых thoughtful gifts",
+        tags: ["Web app", "Create flow", "AI текст", "Share link"],
+        link: "Открыть app",
+        detail: { intro: "One Page Gift помогает создать личную gift-страницу и отправить ее одной ссылкой.", sections: [["Что сделали", "Мы построили flow вокруг фото, memories, personal messages, preview и AI-assisted writing."], ["Как работает", "Пользователь вводит детали, добавляет контент, смотрит preview и получает shareable link."], ["Результат", "App подходит для быстрых, эмоциональных подарков: дни рождения, годовщины, love notes и invitations."]] },
+      },
+      keepsleep: {
+        meta: "App",
+        title: "KeepSleep",
+        summary: "Мы строим app для сохранения чеков: account, scan бумажных чеков, upload фото или файлов и хранение деталей в одном месте.",
+        extra: "",
+        result: "\u2192 пользователи смогут искать детали чеков и открывать оригинал, когда нужен proof of purchase",
+        tags: ["Receipt scan", "File upload", "OCR details", "Original receipt"],
+        status: "В разработке",
+        detail: { intro: "KeepSleep сохраняет чеки, чтобы пользователь не терял proof of purchase.", sections: [["Что строим", "Пользователь создает account, сканирует бумажные чеки или загружает фото/файлы чеков."], ["Как работает", "App читает чек, сохраняет важные детали и оставляет оригинал внутри аккаунта."], ["Результат", "Когда чек нужен позже, его можно найти по деталям и открыть оригинальный файл или фото."]] },
+      },
+      "lead-monitor": {
+        meta: "Автоматизация",
+        title: "Local job lead monitor",
+        summary: "Мы сделали agent-style automation для tradie, который тратил слишком много времени на проверку Facebook community groups.",
+        extra: "Workflow два раза в день проверяет группы, ищет посты, где locals спрашивают service recommendations, и отправляет summary в Telegram bot.",
+        result: "\u2192 меньше ручной проверки групп и быстрее ответ локальным клиентам",
+        tags: ["Lead monitor", "Keywords", "Telegram bot", "2 раза в день"],
+        detail: { intro: "Эта automation помогает local service business находить relevant posts без ручной проверки групп весь день.", sections: [["Что сделали", "Мы настроили workflow, который проверяет выбранные community groups и ищет запросы на service recommendations."], ["Как работает", "Два раза в день система сканирует группы, матчится по смыслу и отправляет Telegram summary."], ["Результат", "Бизнес тратит меньше времени на ручную проверку и быстрее отвечает людям, которые уже ищут помощь."]] },
+      },
+      "accounting-files": {
+        meta: "Автоматизация",
+        title: "Accounting file generator",
+        summary: "Мы сделали private workflow для accounting firm, где раньше три client files создавались вручную. Их система уже давала один PDF со всеми деталями, и мы сделали его single upload point.",
+        extra: "Теперь команда загружает PDF один раз, workflow читает детали и автоматически генерирует все три файла.",
+        result: "\u2192 размещено на личном VPS, чтобы sensitive client data оставалась под контролем фирмы",
+        tags: ["PDF upload", "Data extraction", "File generation", "Private VPS"],
+        detail: { intro: "Workflow заменил медленный manual process для accounting firm с sensitive client data.", sections: [["Что сделали", "Мы выяснили, что их система может экспортировать один PDF со всеми деталями для трех файлов, и построили upload workflow вокруг него."], ["Как работает", "Команда загружает один PDF. Workflow достает нужные данные и автоматически генерирует три файла."], ["Контроль данных", "Так как внутри personal client information, мы развернули workflow на их VPS, чтобы данные оставались под полным контролем фирмы."]] },
+      },
+    },
+  },
+  uz: {
+    modalKicker: "Loyiha tafsiloti",
+    modalCta: "Shunga o'xshash loyiha so'rash",
+    more: "Loyiha tafsiloti",
+    tagsLabel: "Qilingan ishlar",
+    projects: {
+      turon: { meta: "Loyiha", title: "Turon Roofing", summary: "Biz roofing biznesi uchun xizmatlar aniq ko'rinadigan, telefonda ishonch beradigan, quote formasi va local search asoslari bor toza website qurdik.", extra: "", result: "\u2192 bajarilgan ishlarni location bo'yicha ko'rsatish uchun project map qo'shildi", tags: ["Website", "Google setup", "Lead form", "Project map"], link: "Saytni ko'rish", detail: { intro: "Turon Roofingga professional ko'rinadigan, xizmatlarni tushuntiradigan va telefondan quote so'rashni oson qiladigan sayt kerak edi.", sections: [["Nima qildik", "Custom roofing website, aniq service sections, trust copy, mobile-friendly contact flow va project gallery strukturasini qurdik."], ["Qanday ishlaydi", "Customer xizmatlarni tez tushunadi, quote yuboradi va bajarilgan ishlarni map orqali ko'radi."], ["Natija", "Biznes online professionalroq ko'rinadi va local customerlar bog'lanishdan oldin proof ko'ra oladi."]] } },
+      blackstar: { meta: "Loyiha", title: "Black Star Roofing", summary: "Biz Sydney roofing sayti qurdik: Colorbond roofing, emergency repairs, guttering, reviews, project proof va tez quote flow.", extra: "", result: "\u2192 trade brand bir xil ko'rinishi uchun business card va t-shirt design ham qilindi", tags: ["Website", "Quote flow", "Business card", "T-shirt design"], link: "Saytni ko'rish", detail: { intro: "Black Star Roofingga kuchliroq trade brand va visitorlarni quote requestga olib boradigan website kerak edi.", sections: [["Nima qildik", "Asosiy roofing xizmatlari, trust signals va brand materiallar atrofida website qurdik."], ["Qanday ishlaydi", "Visitor xizmatlarni, proof va reviewlarni ko'radi, keyin oson quote flowga o'tadi."], ["Natija", "Biznes online va offline professional, bir xil brand ko'rinishiga ega bo'ldi."]] } },
+      onepagegift: { meta: "Web App", title: "One Page Gift", summary: "Biz foto, memories, AI bilan yozuvni yaxshilash, preview va bitta share linkli personal one-page gift site yaratish uchun iliq web app qurdik.", extra: "", result: "\u2192 app birthdays, anniversaries, love notes, invitations va tez thoughtful giftlar uchun position qilindi", tags: ["Web app", "Create flow", "AI writing", "Share link"], link: "Appni ko'rish", detail: { intro: "One Page Gift personal gift page yaratib, bitta link bilan ulashish uchun web app.", sections: [["Nima qildik", "Photo, memories, personal message, preview va AI-assisted writing atrofida app flow qurdik."], ["Qanday ishlaydi", "User gift details kiritadi, content qo'shadi, preview ko'radi va shareable link oladi."], ["Natija", "App birthday, anniversary, love note va invitation kabi tez, emotional giftlar uchun mos."]] } },
+      keepsleep: { meta: "App", title: "KeepSleep", summary: "Biz receipt saqlash appini quryapmiz: account yaratish, paper receipt scan qilish, photo yoki file receipt upload qilish va hamma detailni bir joyda saqlash.", extra: "", result: "\u2192 user receipt detaillarini search qilib, kerak bo'lganda original receiptni ochadi", tags: ["Receipt scan", "File upload", "OCR details", "Original receipt"], status: "Qurilmoqda", detail: { intro: "KeepSleep receiptlarni saqlaydi, user proof of purchase kerak bo'lganda yo'qotib qo'ymasligi uchun.", sections: [["Nima qurilyapti", "User account yaratadi, paper receipt scan qiladi yoki receipt photo/file upload qiladi."], ["Qanday ishlaydi", "App receiptni o'qiydi, muhim detailarni saqlaydi va original receiptni account ichida qoldiradi."], ["Natija", "Keyin receipt kerak bo'lsa, user search qiladi va original file yoki photoni ochadi."]] } },
+      "lead-monitor": { meta: "Automation", title: "Local job lead monitor", summary: "Biz Facebook community grouplarni qo'lda tekshirishga ko'p vaqt ketkazayotgan tradie uchun agent-style automation qurdik.", extra: "Workflow kuniga ikki marta group'larni tekshiradi, local odamlar service recommendation so'ragan postlarni topadi va Telegram bot summary yuboradi.", result: "\u2192 group'larni qo'lda tekshirish kamaydi, local customerlarga javob tezlashdi", tags: ["Lead monitor", "Keyword match", "Telegram bot", "Kuniga 2 marta"], detail: { intro: "Bu automation local service businessga Facebook grouplarni kun bo'yi qo'lda tekshirmasdan relevant postlarni topishga yordam beradi.", sections: [["Nima qildik", "Tanlangan community grouplarda service recommendation so'ralgan postlarni tekshiradigan workflow qurdik."], ["Qanday ishlaydi", "Kuniga ikki marta scan qiladi, relevant wordingni match qiladi va Telegram summary yuboradi."], ["Natija", "Business kamroq manual check qiladi va yordam izlayotgan local odamlarga tezroq javob beradi."]] } },
+      "accounting-files": { meta: "Automation", title: "Accounting file generator", summary: "Biz accounting firm uchun private workflow qurdik. Oldin uchta client file qo'lda tayyorlanardi. Ularning systemi hamma detail bor bitta PDF berishini topdik va shu PDFni single upload point qildik.", extra: "Endi team PDFni bir marta upload qiladi, workflow detailarni o'qib, uchta faylni avtomatik yaratadi.", result: "\u2192 sensitive client data firma nazoratida qolishi uchun personal VPSga joylashtirildi", tags: ["PDF upload", "Data extraction", "File generation", "Private VPS"], detail: { intro: "Bu workflow sensitive client data bilan ishlaydigan accounting firmdagi sekin manual processni almashtirdi.", sections: [["Nima qildik", "Ularning systemi uchta file uchun kerak detaillarni bitta PDFga export qilishini aniqladik va upload workflow qurdik."], ["Qanday ishlaydi", "Team bitta PDF upload qiladi. Workflow kerakli informationni chiqarib, uchta faylni avtomatik generatsiya qiladi."], ["Data nazorati", "Personal client information bo'lgani uchun workflow ularning VPSida ishlaydi, data to'liq firma nazoratida qoladi."]] } },
+    },
+  },
+};
+
 const serviceKeys = ["websites", "presence", "leads", "apps", "automation", "ai"];
 const serviceModal = document.getElementById("serviceModal");
 const serviceTitle = document.getElementById("serviceModalTitle");
@@ -2495,6 +2947,13 @@ const serviceText = document.getElementById("serviceModalText");
 const serviceList = document.getElementById("serviceModalList");
 const serviceKicker = document.getElementById("serviceModalKicker");
 const serviceCta = document.getElementById("serviceModalCta");
+const projectModal = document.getElementById("projectModal");
+const projectTitle = document.getElementById("projectModalTitle");
+const projectIntro = document.getElementById("projectModalIntro");
+const projectFlow = document.getElementById("projectModalFlow");
+const projectTags = document.getElementById("projectModalTags");
+const projectKicker = document.getElementById("projectModalKicker");
+const projectCta = document.getElementById("projectModalCta");
 let currentLang = localStorage.getItem("siteup-lang") || "en";
 if (!copy[currentLang]) currentLang = "en";
 
@@ -2511,6 +2970,48 @@ function setHtml(selector, value) {
 function setList(container, items) {
   if (!container) return;
   container.innerHTML = items.map((item) => `<li>${item}</li>`).join("");
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function getProjectText(key) {
+  return projectCopy[currentLang]?.projects[key] || projectCopy.en.projects[key];
+}
+
+function updateProjectCards() {
+  const projectText = projectCopy[currentLang] || projectCopy.en;
+  document.querySelectorAll("[data-project]").forEach((card) => {
+    const data = getProjectText(card.dataset.project);
+    if (!data) return;
+    const body = card.querySelector(".proj-body");
+    const paragraphs = Array.from(body.children).filter((el) => (
+      el.tagName === "P" && !el.classList.contains("proj-meta") && !el.classList.contains("result")
+    ));
+    card.setAttribute("aria-label", `${data.title}. ${projectText.more}`);
+    body.querySelector(".proj-meta").textContent = data.meta;
+    body.querySelector("h4").textContent = data.title;
+    if (paragraphs[0]) paragraphs[0].textContent = data.summary;
+    if (paragraphs[1]) {
+      paragraphs[1].textContent = data.extra || "";
+      paragraphs[1].hidden = !data.extra;
+    }
+    body.querySelector(".result").textContent = data.result;
+    const tags = body.querySelector(".proj-tags");
+    tags.setAttribute("aria-label", projectText.tagsLabel);
+    tags.innerHTML = data.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
+    const link = body.querySelector(".proj-link");
+    if (link && data.link) link.textContent = data.link;
+    const status = body.querySelector(".proj-status");
+    if (status && data.status) status.textContent = data.status;
+    body.querySelector(".proj-more").textContent = projectText.more;
+  });
 }
 
 function applyLanguage(lang) {
@@ -2578,8 +3079,10 @@ function applyLanguage(lang) {
   document.querySelector(".custom-pricing-foot .btn").innerHTML = `${t.custom.cta} <span class="arr">&rarr;</span>`;
 
   setHtml("#projects .sec-head h2", t.projectsHead);
+  setText("#projects .sec-num", `04 / ${t.nav[3]}`);
   setText("#projects .sec-head .note", t.projectsNote);
   document.querySelectorAll(".proj-group-title h3").forEach((h3, i) => { h3.textContent = t.projectGroups[i]; });
+  updateProjectCards();
 
   setHtml("#contact .sec-head h2", t.contactHead);
   setText(".contact-left .label", t.contactLabel);
@@ -2622,6 +3125,31 @@ function closeService() {
   document.body.style.overflow = "";
 }
 
+function openProject(key) {
+  const data = getProjectText(key);
+  const projectText = projectCopy[currentLang] || projectCopy.en;
+  if (!data) return;
+  projectKicker.textContent = projectText.modalKicker;
+  projectTitle.textContent = data.title;
+  projectIntro.textContent = data.detail.intro;
+  projectFlow.innerHTML = data.detail.sections.map(([title, body]) => (
+    `<article><h3>${escapeHtml(title)}</h3><p>${escapeHtml(body)}</p></article>`
+  )).join("");
+  projectTags.setAttribute("aria-label", projectText.tagsLabel);
+  projectTags.innerHTML = data.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
+  projectCta.innerHTML = `${projectText.modalCta} <span class="arr">&rarr;</span>`;
+  projectModal.classList.add("open");
+  projectModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  projectModal.querySelector(".service-close").focus();
+}
+
+function closeProject() {
+  projectModal.classList.remove("open");
+  projectModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
 document.querySelectorAll(".lang-btn").forEach((btn) => {
   btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
 });
@@ -2630,13 +3158,33 @@ document.querySelectorAll(".svc-row").forEach((row) => {
   row.addEventListener("click", () => openService(row.dataset.service));
 });
 
+document.querySelectorAll("[data-project]").forEach((card) => {
+  card.addEventListener("click", () => openProject(card.dataset.project));
+  card.addEventListener("keydown", (ev) => {
+    if (ev.key === "Enter" || ev.key === " ") {
+      ev.preventDefault();
+      openProject(card.dataset.project);
+    }
+  });
+});
+
+document.querySelectorAll(".proj-link").forEach((link) => {
+  link.addEventListener("click", (ev) => ev.stopPropagation());
+});
+
 document.querySelectorAll("[data-close-service]").forEach((el) => {
   el.addEventListener("click", closeService);
 });
 
+document.querySelectorAll("[data-close-project]").forEach((el) => {
+  el.addEventListener("click", closeProject);
+});
+
 serviceCta.addEventListener("click", closeService);
+projectCta.addEventListener("click", closeProject);
 document.addEventListener("keydown", (ev) => {
   if (ev.key === "Escape" && serviceModal.classList.contains("open")) closeService();
+  if (ev.key === "Escape" && projectModal.classList.contains("open")) closeProject();
 });
 
 applyLanguage(currentLang);
@@ -2651,9 +3199,25 @@ form.action = `https://formsubmit.co/${FORM_RECIPIENT}`;
 
 function val(d, k) { return String(d.get(k) || "").trim(); }
 
+function setHiddenField(name, value) {
+  let input = form.querySelector(`[name="${name}"]`);
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    form.appendChild(input);
+  }
+  input.value = value;
+}
+
+function openEmailFallback(subject, details) {
+  const mailto = `mailto:${FORM_RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(details)}`;
+  window.location.href = mailto;
+}
+
 form.addEventListener("submit", async (ev) => {
   ev.preventDefault();
-  const d = new FormData(form);
+  let d = new FormData(form);
   const name = val(d, "name");
   const business = val(d, "business");
   const phone = val(d, "phone");
@@ -2661,6 +3225,9 @@ form.addEventListener("submit", async (ev) => {
   const businessType = val(d, "businessType");
   const need = val(d, "need");
   const message = val(d, "message");
+  const honey = val(d, "_honey");
+
+  if (honey) return;
 
   if (!name || !business || !businessType || !need) {
     statusEl.textContent = copy[currentLang].form.errors.required;
@@ -2686,8 +3253,20 @@ form.addEventListener("submit", async (ev) => {
     `Message: ${message || "Not provided"}`,
   ].join("\n");
 
-  d.set("_subject", `Siteup consultation request from ${business || name}`);
-  d.set("Request details", details);
+  const subject = `Siteup consultation request from ${business || name}`;
+  setHiddenField("_subject", subject);
+  setHiddenField("_replyto", email || FORM_RECIPIENT);
+  setHiddenField("Request details", details);
+  setHiddenField("Submitted language", currentLang.toUpperCase());
+  setHiddenField("Submitted from", window.location.href);
+  d = new FormData(form);
+
+  if (window.location.protocol === "file:") {
+    statusEl.innerHTML = `${copy[currentLang].form.errors.fail}. FormSubmit only works from a web server. <a href="mailto:${FORM_RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(details)}">Open email draft</a>`;
+    statusEl.className = "cf-status err";
+    openEmailFallback(subject, details);
+    return;
+  }
 
   statusEl.textContent = copy[currentLang].form.errors.sending;
   statusEl.className = "cf-status";
@@ -2701,16 +3280,22 @@ form.addEventListener("submit", async (ev) => {
       body: d,
     });
 
-    if (!res.ok) throw new Error("Form submission failed");
+    let data = {};
+    try { data = await res.json(); } catch (jsonErr) {}
+
+    if (!res.ok || data.success === false) {
+      throw new Error(data.message || "Form submission failed");
+    }
 
     form.reset();
-    statusEl.textContent = copy[currentLang].form.errors.success;
+    statusEl.textContent = data.message && /confirm/i.test(data.message)
+      ? `${copy[currentLang].form.errors.success}. Please confirm FormSubmit in ${FORM_RECIPIENT} if this is the first submission.`
+      : copy[currentLang].form.errors.success;
     statusEl.className = "cf-status ok";
   } catch (err) {
-    const subject = encodeURIComponent(`Siteup consultation request from ${business || name}`);
-    const body = encodeURIComponent(details);
-    statusEl.innerHTML = `${copy[currentLang].form.errors.fail}: <a href="mailto:${FORM_RECIPIENT}?subject=${subject}&body=${body}">${FORM_RECIPIENT}</a>`;
+    statusEl.innerHTML = `${copy[currentLang].form.errors.fail}. <a href="mailto:${FORM_RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(details)}">Open email draft</a>`;
     statusEl.className = "cf-status err";
+    openEmailFallback(subject, details);
   } finally {
     form.classList.remove("is-sending");
     submitBtn.disabled = false;
