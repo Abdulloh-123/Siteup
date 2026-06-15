@@ -990,29 +990,51 @@ section { max-width: var(--max); margin: 0 auto; padding: 130px 28px 0; }
   margin-bottom: 18px;
 }
 
+.pkg-price-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.pkg-price-option {
+  min-width: 0;
+}
+
+.pkg-price-divider {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding-top: 18px;
+}
+
 .pkg-price {
-  font-size: 3.2rem;
+  font-size: clamp(1.85rem, 4vw, 2.55rem);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .pkg-price .cur {
-  font-size: 0.95rem;
+  font-size: 0.74rem;
   color: var(--green);
-  vertical-align: 0.9em;
+  vertical-align: 0.82em;
   font-weight: 500;
-  margin-right: 6px;
+  margin-right: 4px;
   letter-spacing: 0.04em;
 }
 
-.pkg-monthly {
-  margin-top: 12px;
+.pkg-price-label {
+  margin-top: 8px;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.64rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--dim);
 }
 
 .pkg-for {
@@ -1794,6 +1816,8 @@ footer {
   .svc-row { grid-template-columns: 44px 1fr 32px; }
   .svc-row p { grid-column: 2 / -1; margin-top: -6px; }
   .pkg { padding: 34px 24px 30px; }
+  .pkg-price-row { gap: 10px; }
+  .pkg-price-divider { padding-top: 14px; }
   .why-grid { grid-template-columns: 1fr; }
   .why-cell.lead { grid-column: auto; }
   .proj-grid.c3, .proj-grid.c2 { grid-template-columns: 1fr; }
@@ -2073,8 +2097,17 @@ footer {
     <div class="pkg-grid rv">
       <article class="pkg">
         <p class="pkg-name">Launch</p>
-        <p class="pkg-price"><span class="cur">AUD $</span>600</p>
-        <p class="pkg-monthly">AUD $100/month option</p>
+        <div class="pkg-price-row">
+          <div class="pkg-price-option">
+            <p class="pkg-price"><span class="cur">AUD&nbsp;</span>$600</p>
+            <p class="pkg-price-label">Set price</p>
+          </div>
+          <span class="pkg-price-divider">or</span>
+          <div class="pkg-price-option">
+            <p class="pkg-price"><span class="cur">AUD&nbsp;</span>$100</p>
+            <p class="pkg-price-label">Monthly</p>
+          </div>
+        </div>
         <p class="pkg-for">A website package for businesses that need a clean site they can manage.</p>
         <ul>
           <li>Custom business website</li>
@@ -2093,8 +2126,17 @@ footer {
       <article class="pkg feat">
         <span class="pkg-tag">Popular</span>
         <p class="pkg-name">Growth</p>
-        <p class="pkg-price"><span class="cur">AUD $</span>1,000</p>
-        <p class="pkg-monthly">AUD $140/month option</p>
+        <div class="pkg-price-row">
+          <div class="pkg-price-option">
+            <p class="pkg-price"><span class="cur">AUD&nbsp;</span>$1,000</p>
+            <p class="pkg-price-label">Set price</p>
+          </div>
+          <span class="pkg-price-divider">or</span>
+          <div class="pkg-price-option">
+            <p class="pkg-price"><span class="cur">AUD&nbsp;</span>$140</p>
+            <p class="pkg-price-label">Monthly</p>
+          </div>
+        </div>
         <p class="pkg-for">A website package for businesses that want to be easier to find online.</p>
         <ul>
           <li>Everything in Launch</li>
@@ -2111,8 +2153,17 @@ footer {
 
       <article class="pkg">
         <p class="pkg-name">Premium</p>
-        <p class="pkg-price"><span class="cur">AUD $</span>1,300</p>
-        <p class="pkg-monthly">AUD $170/month option</p>
+        <div class="pkg-price-row">
+          <div class="pkg-price-option">
+            <p class="pkg-price"><span class="cur">AUD&nbsp;</span>$1,300</p>
+            <p class="pkg-price-label">Set price</p>
+          </div>
+          <span class="pkg-price-divider">or</span>
+          <div class="pkg-price-option">
+            <p class="pkg-price"><span class="cur">AUD&nbsp;</span>$170</p>
+            <p class="pkg-price-label">Monthly</p>
+          </div>
+        </div>
         <p class="pkg-for">A website package for businesses that want a sharper brand and stronger proof.</p>
         <ul>
           <li>Everything in Growth</li>
@@ -2598,9 +2649,9 @@ const copy = {
     packageNote: "Website package prices are listed in AUD. Each package can be paid as a set project price or as a monthly plan. Apps, AI agents, custom systems, and workflow automations are priced after we understand what needs to be built and how complex it is. Each website package includes 30 days of post-launch bug fixes.",
     popular: "Popular",
     packages: [
-      ["Launch", "A website package for businesses that need a clean site they can manage.", "AUD $600 set price or AUD $100/month", ["Custom business website", "Mobile-friendly design", "Contact form", "Quote/request form", "Reviews/testimonials section", "Basic SEO setup", "Telegram website manager", "Project/gallery updates from Telegram", "30 days post-launch bug fixes"], ""],
-      ["Growth", "A website package for businesses that want to be easier to find online.", "AUD $1,000 set price or AUD $140/month", ["Everything in Launch", "Google Search setup", "Google indexing basics", "Google Business/Profile setup or connection", "Apple Maps setup", "Stronger online presence setup", "Lead notifications by email"], "We set up the basics so Google can find, index, and understand your business."],
-      ["Premium", "A website package for businesses that want a sharper brand and stronger proof.", "AUD $1,300 set price or AUD $170/month", ["Everything in Growth", "Logo design", "Brand colors and typography", "Business card design", "Flyer or door hanger design", "Shirt/hoodie mockup", "Truck decal mockup", "Brand mini-guide", "Approximate past-project map with clickable pins"], "Premium includes design files and mockups only. Ordering clothes, cards, decals, or printed materials is the customer's responsibility."],
+      ["Launch", "A website package for businesses that need a clean site they can manage.", ["$600", "$100", "Set price", "Monthly"], ["Custom business website", "Mobile-friendly design", "Contact form", "Quote/request form", "Reviews/testimonials section", "Basic SEO setup", "Telegram website manager", "Project/gallery updates from Telegram", "30 days post-launch bug fixes"], ""],
+      ["Growth", "A website package for businesses that want to be easier to find online.", ["$1,000", "$140", "Set price", "Monthly"], ["Everything in Launch", "Google Search setup", "Google indexing basics", "Google Business/Profile setup or connection", "Apple Maps setup", "Stronger online presence setup", "Lead notifications by email"], "We set up the basics so Google can find, index, and understand your business."],
+      ["Premium", "A website package for businesses that want a sharper brand and stronger proof.", ["$1,300", "$170", "Set price", "Monthly"], ["Everything in Growth", "Logo design", "Brand colors and typography", "Business card design", "Flyer or door hanger design", "Shirt/hoodie mockup", "Truck decal mockup", "Brand mini-guide", "Approximate past-project map with clickable pins"], "Premium includes design files and mockups only. Ordering clothes, cards, decals, or printed materials is the customer's responsibility."],
     ],
     custom: {
       label: "Apps / AI / Workflows",
@@ -2688,9 +2739,9 @@ const copy = {
     packageNote: "Цены на website packages указаны в AUD. Каждый пакет можно оплатить как фиксированную цену проекта или как помесячный план. Приложения, AI-агенты, custom systems и автоматизации оцениваются после того, как мы поймем задачу и сложность. Каждый сайт включает 30 дней исправления багов после запуска.",
     popular: "Популярно",
     packages: [
-      ["Launch", "Пакет сайта для бизнеса, которому нужен чистый сайт с управлением.", "AUD $600 фиксированно или AUD $100/мес", ["Индивидуальный сайт бизнеса", "Мобильный дизайн", "Контактная форма", "Форма заявки/quote", "Секция отзывов", "Базовая SEO-настройка", "Telegram-менеджер сайта", "Обновление проектов/галереи из Telegram", "30 дней исправления багов"], ""],
-      ["Growth", "Пакет сайта для бизнеса, который хочет, чтобы его легче находили онлайн.", "AUD $1,000 фиксированно или AUD $140/мес", ["Все из Launch", "Настройка Google Search", "Базовая индексация Google", "Настройка или подключение Google Business/Profile", "Настройка Apple Maps", "Усиленное онлайн-присутствие", "Email-уведомления о заявках"], "Мы настраиваем базу, чтобы Google мог найти, индексировать и понимать ваш бизнес."],
-      ["Premium", "Пакет сайта для бизнеса, которому нужен сильнее бренд и больше доверия.", "AUD $1,300 фиксированно или AUD $170/мес", ["Все из Growth", "Дизайн логотипа", "Цвета бренда и типографика", "Дизайн визитки", "Дизайн flyer или door hanger", "Mockup футболки/hoodie", "Mockup наклейки на truck", "Мини-гайд бренда", "Карта прошлых проектов с clickable pins"], "Premium включает только дизайн-файлы и mockups. Заказ одежды, визиток, наклеек и печатных материалов делает клиент."],
+      ["Launch", "Пакет сайта для бизнеса, которому нужен чистый сайт с управлением.", ["$600", "$100", "Фиксированно", "Помесячно"], ["Индивидуальный сайт бизнеса", "Мобильный дизайн", "Контактная форма", "Форма заявки/quote", "Секция отзывов", "Базовая SEO-настройка", "Telegram-менеджер сайта", "Обновление проектов/галереи из Telegram", "30 дней исправления багов"], ""],
+      ["Growth", "Пакет сайта для бизнеса, который хочет, чтобы его легче находили онлайн.", ["$1,000", "$140", "Фиксированно", "Помесячно"], ["Все из Launch", "Настройка Google Search", "Базовая индексация Google", "Настройка или подключение Google Business/Profile", "Настройка Apple Maps", "Усиленное онлайн-присутствие", "Email-уведомления о заявках"], "Мы настраиваем базу, чтобы Google мог найти, индексировать и понимать ваш бизнес."],
+      ["Premium", "Пакет сайта для бизнеса, которому нужен сильнее бренд и больше доверия.", ["$1,300", "$170", "Фиксированно", "Помесячно"], ["Все из Growth", "Дизайн логотипа", "Цвета бренда и типографика", "Дизайн визитки", "Дизайн flyer или door hanger", "Mockup футболки/hoodie", "Mockup наклейки на truck", "Мини-гайд бренда", "Карта прошлых проектов с clickable pins"], "Premium включает только дизайн-файлы и mockups. Заказ одежды, визиток, наклеек и печатных материалов делает клиент."],
     ],
     custom: {
       label: "Apps / AI / Workflows",
@@ -2778,9 +2829,9 @@ const copy = {
     packageNote: "Website paket narxlari AUDda ko'rsatilgan. Har bir paketni set project price yoki oylik plan sifatida olish mumkin. App, AI agent, custom system va workflow automationlar nima qurilishi va murakkabligiga qarab baholanadi. Har bir website paketda launchdan keyin 30 kun bug fix bor.",
     popular: "Tavsiya",
     packages: [
-      ["Launch", "Boshqarish mumkin bo'lgan toza sayt kerak bizneslar uchun.", "AUD $600 set narx yoki AUD $100/oy", ["Custom business website", "Mobile-friendly design", "Contact form", "Quote/request form", "Reviews/testimonials section", "Basic SEO setup", "Telegram website manager", "Telegramdan project/gallery update", "30 kun post-launch bug fix"], ""],
-      ["Growth", "Online osonroq topilishni xohlaydigan bizneslar uchun.", "AUD $1,000 set narx yoki AUD $140/oy", ["Launch ichidagi hammasi", "Google Search setup", "Google indexing basics", "Google Business/Profile setup yoki connection", "Apple Maps setup", "Kuchliroq online presence setup", "Email orqali lead notification"], "Google biznesingizni topishi, indexing qilishi va tushunishi uchun asosiy setup qilamiz."],
-      ["Premium", "Kuchliroq brand va ko'proq proof xohlaydigan bizneslar uchun.", "AUD $1,300 set narx yoki AUD $170/oy", ["Growth ichidagi hammasi", "Logo design", "Brand color va typography", "Business card design", "Flyer yoki door hanger design", "Shirt/hoodie mockup", "Truck decal mockup", "Brand mini-guide", "Clickable pinlar bilan taxminiy past-project map"], "Premium faqat design file va mockuplarni o'z ichiga oladi. Kiyim, card, decal yoki print materiallarni buyurtma qilish mijozning o'zida."],
+      ["Launch", "Boshqarish mumkin bo'lgan toza sayt kerak bizneslar uchun.", ["$600", "$100", "Set narx", "Oylik"], ["Custom business website", "Mobile-friendly design", "Contact form", "Quote/request form", "Reviews/testimonials section", "Basic SEO setup", "Telegram website manager", "Telegramdan project/gallery update", "30 kun post-launch bug fix"], ""],
+      ["Growth", "Online osonroq topilishni xohlaydigan bizneslar uchun.", ["$1,000", "$140", "Set narx", "Oylik"], ["Launch ichidagi hammasi", "Google Search setup", "Google indexing basics", "Google Business/Profile setup yoki connection", "Apple Maps setup", "Kuchliroq online presence setup", "Email orqali lead notification"], "Google biznesingizni topishi, indexing qilishi va tushunishi uchun asosiy setup qilamiz."],
+      ["Premium", "Kuchliroq brand va ko'proq proof xohlaydigan bizneslar uchun.", ["$1,300", "$170", "Set narx", "Oylik"], ["Growth ichidagi hammasi", "Logo design", "Brand color va typography", "Business card design", "Flyer yoki door hanger design", "Shirt/hoodie mockup", "Truck decal mockup", "Brand mini-guide", "Clickable pinlar bilan taxminiy past-project map"], "Premium faqat design file va mockuplarni o'z ichiga oladi. Kiyim, card, decal yoki print materiallarni buyurtma qilish mijozning o'zida."],
     ],
     custom: {
       label: "Apps / AI / Workflows",
@@ -3133,10 +3184,14 @@ function applyLanguage(lang) {
   if (tag) tag.textContent = t.popular;
   document.querySelectorAll(".pkg").forEach((pkg, i) => {
     pkg.querySelector(".pkg-name").textContent = t.packages[i][0];
-    pkg.querySelector(".pkg-price").innerHTML = `<span class="cur">AUD $</span>${["600", "1,000", "1,300"][i]}`;
     pkg.querySelector(".pkg-for").textContent = t.packages[i][1];
-    const monthly = pkg.querySelector(".pkg-monthly");
-    if (monthly) monthly.textContent = t.packages[i][2];
+    const priceData = t.packages[i][2];
+    const prices = pkg.querySelectorAll(".pkg-price");
+    const labels = pkg.querySelectorAll(".pkg-price-label");
+    if (prices[0]) prices[0].innerHTML = `<span class="cur">AUD&nbsp;</span>${priceData[0]}`;
+    if (prices[1]) prices[1].innerHTML = `<span class="cur">AUD&nbsp;</span>${priceData[1]}`;
+    if (labels[0]) labels[0].textContent = priceData[2];
+    if (labels[1]) labels[1].textContent = priceData[3];
     setList(pkg.querySelector("ul"), t.packages[i][3]);
     const fine = pkg.querySelector(".pkg-fine");
     if (fine) fine.textContent = t.packages[i][4];
