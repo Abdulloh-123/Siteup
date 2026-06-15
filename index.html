@@ -249,6 +249,9 @@ nav.main-nav a:hover::after { width: 100%; }
   display: flex;
   border: 1px solid var(--hair-strong);
   background: rgba(7, 10, 8, 0.72);
+  position: relative;
+  z-index: 5;
+  flex-shrink: 0;
 }
 
 .lang-btn {
@@ -265,7 +268,13 @@ nav.main-nav a:hover::after { width: 100%; }
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  touch-action: manipulation;
 }
+
+.lang-btn span { pointer-events: none; }
 
 .lang-btn:last-child { border-right: 0; }
 
@@ -1907,9 +1916,9 @@ footer {
     </nav>
     <div class="header-actions">
       <div class="lang-switch" aria-label="Choose language">
-        <button class="lang-btn active" type="button" data-lang="en"><span aria-hidden="true">🇬🇧</span><span>EN</span></button>
-        <button class="lang-btn" type="button" data-lang="ru"><span aria-hidden="true">🇷🇺</span><span>RU</span></button>
-        <button class="lang-btn" type="button" data-lang="uz"><span aria-hidden="true">🇺🇿</span><span>UZ</span></button>
+        <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true"><span aria-hidden="true">🇬🇧</span><span>EN</span></button>
+        <button class="lang-btn" type="button" data-lang="ru" aria-pressed="false"><span aria-hidden="true">🇷🇺</span><span>RU</span></button>
+        <button class="lang-btn" type="button" data-lang="uz" aria-pressed="false"><span aria-hidden="true">🇺🇿</span><span>UZ</span></button>
       </div>
       <a class="header-cta" href="#contact">Free Consultation</a>
     </div>
@@ -3080,8 +3089,26 @@ const projectFlow = document.getElementById("projectModalFlow");
 const projectTags = document.getElementById("projectModalTags");
 const projectKicker = document.getElementById("projectModalKicker");
 const projectCta = document.getElementById("projectModalCta");
-let currentLang = localStorage.getItem("siteup-lang") || "en";
-if (!copy[currentLang]) currentLang = "en";
+
+function normalizeLang(lang) {
+  return copy[lang] ? lang : "en";
+}
+
+function getStoredLang() {
+  try {
+    return localStorage.getItem("siteup-lang");
+  } catch (err) {
+    return null;
+  }
+}
+
+function saveLang(lang) {
+  try {
+    localStorage.setItem("siteup-lang", lang);
+  } catch (err) {}
+}
+
+let currentLang = normalizeLang(getStoredLang() || "en");
 
 function setText(selector, value) {
   const el = document.querySelector(selector);
@@ -3141,13 +3168,16 @@ function updateProjectCards() {
 }
 
 function applyLanguage(lang) {
-  const t = copy[lang] || copy.en;
+  lang = normalizeLang(lang);
+  const t = copy[lang];
   currentLang = lang;
-  localStorage.setItem("siteup-lang", lang);
+  saveLang(lang);
   document.documentElement.lang = lang;
 
   document.querySelectorAll(".lang-btn").forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.lang === lang);
+    const isActive = btn.dataset.lang === lang;
+    btn.classList.toggle("active", isActive);
+    btn.setAttribute("aria-pressed", String(isActive));
   });
 
   document.querySelectorAll(".main-nav a").forEach((a, i) => { a.textContent = t.nav[i]; });
@@ -3284,7 +3314,11 @@ function closeProject() {
 }
 
 document.querySelectorAll(".lang-btn").forEach((btn) => {
-  btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+  btn.addEventListener("click", (ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+    applyLanguage(btn.dataset.lang);
+  });
 });
 
 document.querySelectorAll(".svc-row").forEach((row) => {
