@@ -3120,6 +3120,20 @@ function setHtml(selector, value) {
   if (el) el.innerHTML = value;
 }
 
+function setAllText(selector, values) {
+  document.querySelectorAll(selector).forEach((el, i) => {
+    el.textContent = Array.isArray(values) ? values[i] : values;
+  });
+}
+
+function translateStep(fn) {
+  try {
+    fn();
+  } catch (err) {
+    console.warn("Siteup translation skipped a section:", err);
+  }
+}
+
 function setList(container, items) {
   if (!container) return;
   container.innerHTML = items.map((item) => `<li>${item}</li>`).join("");
@@ -3180,94 +3194,117 @@ function applyLanguage(lang) {
     btn.setAttribute("aria-pressed", String(isActive));
   });
 
-  document.querySelectorAll(".main-nav a").forEach((a, i) => { a.textContent = t.nav[i]; });
-  document.querySelectorAll(".foot-links a").forEach((a, i) => { a.textContent = t.nav[i]; });
-  document.querySelectorAll(".header-cta").forEach((a) => { a.textContent = t.headerCta; });
-  setText(".hero-label .label", t.heroLabel);
-  setHtml(".hero-h", t.heroTitle);
-  setText(".hero-sub", t.heroSub);
-  document.querySelector(".hero-ctas .btn-solid").innerHTML = `${t.primaryCta} <span class="arr">&rarr;</span>`;
-  setText(".hero-ctas .btn-line", t.packagesCta);
-  setText(".hero-call span", t.callCta);
-  document.querySelectorAll(".stat").forEach((stat, i) => {
-    stat.querySelector("b").textContent = t.stats[i][0];
-    stat.querySelector("span").textContent = t.stats[i][1];
+  translateStep(() => {
+    setAllText(".main-nav a", t.nav);
+    setAllText(".foot-links a", t.nav);
+    setAllText(".header-cta", t.headerCta);
   });
 
-  setHtml("#services .sec-head h2", t.servicesHead);
-  setText("#services .sec-head .note", t.servicesNote);
-  document.querySelectorAll(".svc-row").forEach((row, i) => {
-    row.querySelector("h3").textContent = t.services[i][0];
-    row.querySelector("p").textContent = t.services[i][1];
-  });
-  setHtml(".svc-footnote", t.servicesFoot);
-  serviceKicker.textContent = t.serviceKicker;
-  serviceCta.innerHTML = `${t.serviceCta} <span class="arr">&rarr;</span>`;
-
-  setHtml("#why .sec-head h2", t.whyHead);
-  setText("#why .sec-head .note", t.whyNote);
-  document.querySelectorAll(".why-cell").forEach((cell, i) => {
-    cell.querySelector("h3").textContent = t.why[i][0];
-    cell.querySelector("p:not(.why-no)").textContent = t.why[i][1];
+  translateStep(() => {
+    setText(".hero-label .label", t.heroLabel);
+    setHtml(".hero-h", t.heroTitle);
+    setText(".hero-sub", t.heroSub);
+    const heroPrimary = document.querySelector(".hero-ctas .btn-solid");
+    if (heroPrimary) heroPrimary.innerHTML = `${t.primaryCta} <span class="arr">&rarr;</span>`;
+    setText(".hero-ctas .btn-line", t.packagesCta);
+    setText(".hero-call span", t.callCta);
   });
 
-  setHtml("#packages .sec-head h2", t.packagesHead);
-  setText(".pkg-note-top", t.packageNote);
-  const tag = document.querySelector(".pkg-tag");
-  if (tag) tag.textContent = t.popular;
-  document.querySelectorAll(".pkg").forEach((pkg, i) => {
-    pkg.querySelector(".pkg-name").textContent = t.packages[i][0];
-    pkg.querySelector(".pkg-for").textContent = t.packages[i][1];
-    const priceData = t.packages[i][2];
-    const prices = pkg.querySelectorAll(".pkg-price");
-    const labels = pkg.querySelectorAll(".pkg-price-label");
-    if (prices[0]) prices[0].innerHTML = `<span class="cur">AUD</span>${priceData[0]}`;
-    if (prices[1]) prices[1].innerHTML = `<span class="cur">AUD</span>${priceData[1]}`;
-    if (labels[0]) labels[0].textContent = priceData[2];
-    if (labels[1]) labels[1].textContent = priceData[3];
-    setList(pkg.querySelector("ul"), t.packages[i][3]);
-    const fine = pkg.querySelector(".pkg-fine");
-    if (fine) fine.textContent = t.packages[i][4];
-    pkg.querySelector(".btn").textContent = t.primaryCta;
+  translateStep(() => {
+    document.querySelectorAll(".stat").forEach((stat, i) => {
+      stat.querySelector("b").textContent = t.stats[i][0];
+      stat.querySelector("span").textContent = t.stats[i][1];
+    });
   });
 
-  setText(".custom-pricing-copy .label", t.custom.label);
-  setText(".custom-pricing-copy h2", t.custom.title);
-  setText(".custom-pricing-copy p:not(.label)", t.custom.body);
-  document.querySelectorAll(".custom-price-item").forEach((item, i) => {
-    item.querySelector("h3").textContent = t.custom.items[i][0];
-    item.querySelector("p").textContent = t.custom.items[i][1];
+  translateStep(() => {
+    setHtml("#services .sec-head h2", t.servicesHead);
+    setText("#services .sec-head .note", t.servicesNote);
+    document.querySelectorAll(".svc-row").forEach((row, i) => {
+      row.querySelector("h3").textContent = t.services[i][0];
+      row.querySelector("p").textContent = t.services[i][1];
+    });
+    setHtml(".svc-footnote", t.servicesFoot);
+    serviceKicker.textContent = t.serviceKicker;
+    serviceCta.innerHTML = `${t.serviceCta} <span class="arr">&rarr;</span>`;
   });
-  setText(".custom-pricing-foot p", t.custom.foot);
-  document.querySelector(".custom-pricing-foot .btn").innerHTML = `${t.custom.cta} <span class="arr">&rarr;</span>`;
 
-  setHtml("#projects .sec-head h2", t.projectsHead);
-  setText("#projects .sec-num", `04 / ${t.nav[3]}`);
-  setText("#projects .sec-head .note", t.projectsNote);
-  document.querySelectorAll(".proj-group-title h3").forEach((h3, i) => { h3.textContent = t.projectGroups[i]; });
-  updateProjectCards();
-
-  setHtml("#contact .sec-head h2", t.contactHead);
-  setText(".contact-left .label", t.contactLabel);
-  setText(".contact-left h2", t.contactTitle);
-  setText(".contact-left .pitch", t.contactPitch);
-  document.querySelectorAll(".contact-meta span").forEach((span, i) => { span.textContent = t.contactMeta[i]; });
-  document.querySelectorAll(".cf-field label").forEach((label, i) => {
-    if (i === 6) label.innerHTML = `${t.form.labels[i]} <span class="opt">${t.form.optional}</span>`;
-    else label.textContent = t.form.labels[i];
+  translateStep(() => {
+    setHtml("#why .sec-head h2", t.whyHead);
+    setText("#why .sec-head .note", t.whyNote);
+    document.querySelectorAll(".why-cell").forEach((cell, i) => {
+      cell.querySelector("h3").textContent = t.why[i][0];
+      cell.querySelector("p:not(.why-no)").textContent = t.why[i][1];
+    });
   });
-  setText(".cf-note", t.form.note);
-  document.getElementById("cf-type").placeholder = t.form.typePlaceholder;
-  document.getElementById("cf-msg").placeholder = t.form.messagePlaceholder;
-  document.querySelector("#cForm .btn").innerHTML = `${t.primaryCta} <span class="arr">&rarr;</span>`;
-  const need = document.getElementById("cf-need");
-  const selected = need.selectedIndex;
-  need.innerHTML = t.form.options.map((label, i) => {
-    const attrs = i === 0 ? ' value="" disabled' : "";
-    return `<option${attrs}>${label}</option>`;
-  }).join("");
-  need.selectedIndex = selected > 0 ? selected : 0;
-  setText(".foot-bottom span:nth-child(2)", t.footer);
+
+  translateStep(() => {
+    setHtml("#packages .sec-head h2", t.packagesHead);
+    setText(".pkg-note-top", t.packageNote);
+    const tag = document.querySelector(".pkg-tag");
+    if (tag) tag.textContent = t.popular;
+    document.querySelectorAll(".pkg").forEach((pkg, i) => {
+      pkg.querySelector(".pkg-name").textContent = t.packages[i][0];
+      pkg.querySelector(".pkg-for").textContent = t.packages[i][1];
+      const priceData = t.packages[i][2];
+      const prices = pkg.querySelectorAll(".pkg-price");
+      const labels = pkg.querySelectorAll(".pkg-price-label");
+      if (prices[0]) prices[0].innerHTML = `<span class="cur">AUD</span>${priceData[0]}`;
+      if (prices[1]) prices[1].innerHTML = `<span class="cur">AUD</span>${priceData[1]}`;
+      if (labels[0]) labels[0].textContent = priceData[2];
+      if (labels[1]) labels[1].textContent = priceData[3];
+      setList(pkg.querySelector("ul"), t.packages[i][3]);
+      const fine = pkg.querySelector(".pkg-fine");
+      if (fine) fine.textContent = t.packages[i][4];
+      pkg.querySelector(".btn").textContent = t.primaryCta;
+    });
+  });
+
+  translateStep(() => {
+    setText(".custom-pricing-copy .label", t.custom.label);
+    setText(".custom-pricing-copy h2", t.custom.title);
+    setText(".custom-pricing-copy p:not(.label)", t.custom.body);
+    document.querySelectorAll(".custom-price-item").forEach((item, i) => {
+      item.querySelector("h3").textContent = t.custom.items[i][0];
+      item.querySelector("p").textContent = t.custom.items[i][1];
+    });
+    setText(".custom-pricing-foot p", t.custom.foot);
+    const customCta = document.querySelector(".custom-pricing-foot .btn");
+    if (customCta) customCta.innerHTML = `${t.custom.cta} <span class="arr">&rarr;</span>`;
+  });
+
+  translateStep(() => {
+    setHtml("#projects .sec-head h2", t.projectsHead);
+    setText("#projects .sec-num", `04 / ${t.nav[3]}`);
+    setText("#projects .sec-head .note", t.projectsNote);
+    document.querySelectorAll(".proj-group-title h3").forEach((h3, i) => { h3.textContent = t.projectGroups[i]; });
+    updateProjectCards();
+  });
+
+  translateStep(() => {
+    setHtml("#contact .sec-head h2", t.contactHead);
+    setText(".contact-left .label", t.contactLabel);
+    setText(".contact-left h2", t.contactTitle);
+    setText(".contact-left .pitch", t.contactPitch);
+    document.querySelectorAll(".contact-meta span").forEach((span, i) => { span.textContent = t.contactMeta[i]; });
+    document.querySelectorAll(".cf-field label").forEach((label, i) => {
+      if (i === 6) label.innerHTML = `${t.form.labels[i]} <span class="opt">${t.form.optional}</span>`;
+      else label.textContent = t.form.labels[i];
+    });
+    setText(".cf-note", t.form.note);
+    document.getElementById("cf-type").placeholder = t.form.typePlaceholder;
+    document.getElementById("cf-msg").placeholder = t.form.messagePlaceholder;
+    const formCta = document.querySelector("#cForm .btn");
+    if (formCta) formCta.innerHTML = `${t.primaryCta} <span class="arr">&rarr;</span>`;
+    const need = document.getElementById("cf-need");
+    const selected = need.selectedIndex;
+    need.innerHTML = t.form.options.map((label, i) => {
+      const attrs = i === 0 ? ' value="" disabled' : "";
+      return `<option${attrs}>${label}</option>`;
+    }).join("");
+    need.selectedIndex = selected > 0 ? selected : 0;
+    setText(".foot-bottom span:nth-child(2)", t.footer);
+  });
 }
 
 function openService(key) {
