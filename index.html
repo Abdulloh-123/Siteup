@@ -998,11 +998,21 @@ section { max-width: var(--max); margin: 0 auto; padding: 130px 28px 0; }
 }
 
 .pkg-price .cur {
-  font-size: 1.4rem;
+  font-size: 0.95rem;
   color: var(--green);
-  vertical-align: 0.65em;
+  vertical-align: 0.9em;
   font-weight: 500;
-  margin-right: 2px;
+  margin-right: 6px;
+  letter-spacing: 0.04em;
+}
+
+.pkg-monthly {
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green);
 }
 
 .pkg-for {
@@ -1926,7 +1936,7 @@ footer {
     <div class="stat-grid">
       <div class="stat"><b>1&ndash;2 wks</b><span>Typical launch</span></div>
       <div class="stat"><b>100%</b><span>Mobile-friendly</span></div>
-      <div class="stat"><b>One-time</b><span>Prices, no subscriptions</span></div>
+      <div class="stat"><b>AUD</b><span>Set or monthly pricing</span></div>
       <div class="stat"><b>30 days</b><span>Post-launch bug fixes</span></div>
     </div>
   </div>
@@ -2025,8 +2035,8 @@ footer {
 
       <div class="why-cell">
         <p class="why-no">REASON / 03</p>
-        <h3>One-time prices</h3>
-        <p>You pay once, you own it. No monthly subscriptions. After launch, support is paid per request.</p>
+        <h3>Flexible payment options</h3>
+        <p>Choose a set website price or a monthly plan, depending on what works better for the business.</p>
       </div>
 
       <div class="why-cell">
@@ -2048,21 +2058,23 @@ footer {
     <div class="sec-head rv">
       <div class="left">
         <p class="sec-num">03 / Packages</p>
-        <h2>Website packages.<br />One-time prices.</h2>
+        <h2>Website packages.<br />Set price or monthly.</h2>
       </div>
     </div>
 
     <p class="pkg-note-top rv">
-      Launch, Growth, and Premium are only for website projects. Apps, AI
-      agents, custom systems, and workflow automations are priced after we
-      understand what needs to be built and how complex it is. Each website
-      package includes 30 days of post-launch bug fixes.
+      Website package prices are listed in AUD. Each package can be paid as a
+      set project price or as a monthly plan. Apps, AI agents, custom systems,
+      and workflow automations are priced after we understand what needs to be
+      built and how complex it is. Each website package includes 30 days of
+      post-launch bug fixes.
     </p>
 
     <div class="pkg-grid rv">
       <article class="pkg">
         <p class="pkg-name">Launch</p>
-        <p class="pkg-price"><span class="cur">$</span>700</p>
+        <p class="pkg-price"><span class="cur">AUD $</span>600</p>
+        <p class="pkg-monthly">AUD $100/month option</p>
         <p class="pkg-for">A website package for businesses that need a clean site they can manage.</p>
         <ul>
           <li>Custom business website</li>
@@ -2081,7 +2093,8 @@ footer {
       <article class="pkg feat">
         <span class="pkg-tag">Popular</span>
         <p class="pkg-name">Growth</p>
-        <p class="pkg-price"><span class="cur">$</span>1,100</p>
+        <p class="pkg-price"><span class="cur">AUD $</span>1,000</p>
+        <p class="pkg-monthly">AUD $140/month option</p>
         <p class="pkg-for">A website package for businesses that want to be easier to find online.</p>
         <ul>
           <li>Everything in Launch</li>
@@ -2098,7 +2111,8 @@ footer {
 
       <article class="pkg">
         <p class="pkg-name">Premium</p>
-        <p class="pkg-price"><span class="cur">$</span>1,500</p>
+        <p class="pkg-price"><span class="cur">AUD $</span>1,300</p>
+        <p class="pkg-monthly">AUD $170/month option</p>
         <p class="pkg-for">A website package for businesses that want a sharper brand and stronger proof.</p>
         <ul>
           <li>Everything in Growth</li>
@@ -2342,7 +2356,7 @@ footer {
           your business and the best next step.
         </p>
         <div class="contact-meta">
-          <span>No pressure, no subscriptions</span>
+          <span>Set and monthly options available</span>
           <span>Plain answers about price and scope</span>
           <span>Reply within one business day</span>
           <span>admin@siteup.com.au</span>
@@ -2547,7 +2561,7 @@ const copy = {
     stats: [
       ["1-2 wks", "Typical launch"],
       ["100%", "Mobile-friendly"],
-      ["One-time", "Prices, no subscriptions"],
+      ["AUD", "Set or monthly pricing"],
       ["30 days", "Post-launch bug fixes"],
     ],
     servicesHead: "Built like software.<br />Explained like business.",
@@ -2576,17 +2590,17 @@ const copy = {
     why: [
       ["Update your website from Telegram", "Every Siteup website ships with a Telegram manager. Change your phone number, edit services, post new project photos, or turn a banner on - from your phone, live in seconds. No logins, no dashboards, no waiting on a developer."],
       ["Real development, not templates", "We build websites, apps, and automations as custom software - shaped around how your business actually works."],
-      ["One-time prices", "You pay once, you own it. No monthly subscriptions. After launch, support is paid per request."],
+      ["Flexible payment options", "Choose a set website price or a monthly plan, depending on what works better for the business."],
       ["Practical AI, plain language", "We look at your repetitive tasks and build automations that save time. No hype, no buzzwords."],
       ["Found correctly online", "Google, Apple Maps, and business listings set up so customers always see the right information."],
     ],
-    packagesHead: "Website packages.<br />One-time prices.",
-    packageNote: "Launch, Growth, and Premium are only for website projects. Apps, AI agents, custom systems, and workflow automations are priced after we understand what needs to be built and how complex it is. Each website package includes 30 days of post-launch bug fixes.",
+    packagesHead: "Website packages.<br />Set price or monthly.",
+    packageNote: "Website package prices are listed in AUD. Each package can be paid as a set project price or as a monthly plan. Apps, AI agents, custom systems, and workflow automations are priced after we understand what needs to be built and how complex it is. Each website package includes 30 days of post-launch bug fixes.",
     popular: "Popular",
     packages: [
-      ["Launch", "A website package for businesses that need a clean site they can manage.", ["Custom business website", "Mobile-friendly design", "Contact form", "Quote/request form", "Reviews/testimonials section", "Basic SEO setup", "Telegram website manager", "Project/gallery updates from Telegram", "30 days post-launch bug fixes"], ""],
-      ["Growth", "A website package for businesses that want to be easier to find online.", ["Everything in Launch", "Google Search setup", "Google indexing basics", "Google Business/Profile setup or connection", "Apple Maps setup", "Stronger online presence setup", "Lead notifications by email"], "We set up the basics so Google can find, index, and understand your business."],
-      ["Premium", "A website package for businesses that want a sharper brand and stronger proof.", ["Everything in Growth", "Logo design", "Brand colors and typography", "Business card design", "Flyer or door hanger design", "Shirt/hoodie mockup", "Truck decal mockup", "Brand mini-guide", "Approximate past-project map with clickable pins"], "Premium includes design files and mockups only. Ordering clothes, cards, decals, or printed materials is the customer's responsibility."],
+      ["Launch", "A website package for businesses that need a clean site they can manage.", "AUD $600 set price or AUD $100/month", ["Custom business website", "Mobile-friendly design", "Contact form", "Quote/request form", "Reviews/testimonials section", "Basic SEO setup", "Telegram website manager", "Project/gallery updates from Telegram", "30 days post-launch bug fixes"], ""],
+      ["Growth", "A website package for businesses that want to be easier to find online.", "AUD $1,000 set price or AUD $140/month", ["Everything in Launch", "Google Search setup", "Google indexing basics", "Google Business/Profile setup or connection", "Apple Maps setup", "Stronger online presence setup", "Lead notifications by email"], "We set up the basics so Google can find, index, and understand your business."],
+      ["Premium", "A website package for businesses that want a sharper brand and stronger proof.", "AUD $1,300 set price or AUD $170/month", ["Everything in Growth", "Logo design", "Brand colors and typography", "Business card design", "Flyer or door hanger design", "Shirt/hoodie mockup", "Truck decal mockup", "Brand mini-guide", "Approximate past-project map with clickable pins"], "Premium includes design files and mockups only. Ordering clothes, cards, decals, or printed materials is the customer's responsibility."],
     ],
     custom: {
       label: "Apps / AI / Workflows",
@@ -2607,7 +2621,7 @@ const copy = {
     contactLabel: "Free Consultation",
     contactTitle: "Plain answers. Real next steps.",
     contactPitch: "Get a clean website, show up correctly online, and make it easier for customers to contact you. Send a quick request and we will review your business and the best next step.",
-    contactMeta: ["No pressure, no subscriptions", "Plain answers about price and scope", "Reply within one business day", "admin@siteup.com.au"],
+    contactMeta: ["Set and monthly options available", "Plain answers about price and scope", "Reply within one business day", "admin@siteup.com.au"],
     form: {
       labels: ["Name", "Business name", "Phone", "Email", "Business type", "What do you need?", "Message"],
       optional: "/ optional",
@@ -2637,7 +2651,7 @@ const copy = {
     stats: [
       ["1-2 нед.", "Обычный запуск"],
       ["100%", "Удобно на телефоне"],
-      ["Разово", "Цены без подписок"],
+      ["AUD", "Фиксированно или помесячно"],
       ["30 дней", "Исправление багов после запуска"],
     ],
     servicesHead: "Сделано как софт.<br />Объяснено как бизнес.",
@@ -2666,17 +2680,17 @@ const copy = {
     why: [
       ["Обновляйте сайт из Telegram", "Каждый сайт Siteup идет с Telegram-менеджером. Можно менять телефон, услуги, фото проектов или баннер прямо с телефона, и изменения появятся сразу."],
       ["Реальная разработка, не шаблоны", "Мы создаем сайты, приложения и автоматизации как индивидуальный софт под то, как реально работает бизнес."],
-      ["Разовая оплата", "Вы платите один раз и владеете результатом. Без подписок. После запуска поддержка оплачивается за запрос."],
+      ["Гибкая оплата", "Можно выбрать фиксированную цену за сайт или помесячный план, в зависимости от того, что удобнее бизнесу."],
       ["Практичный AI простым языком", "Мы смотрим повторяющиеся задачи и строим автоматизации, которые экономят время. Без хайпа."],
       ["Вас правильно находят онлайн", "Google, Apple Maps и бизнес-листинги настроены так, чтобы клиенты видели правильную информацию."],
     ],
-    packagesHead: "Пакеты сайтов.<br />Разовая оплата.",
-    packageNote: "Launch, Growth и Premium только для сайтов. Приложения, AI-агенты, custom systems и автоматизации оцениваются после того, как мы поймем задачу и сложность. Каждый сайт включает 30 дней исправления багов после запуска.",
+    packagesHead: "Пакеты сайтов.<br />Фиксированно или помесячно.",
+    packageNote: "Цены на website packages указаны в AUD. Каждый пакет можно оплатить как фиксированную цену проекта или как помесячный план. Приложения, AI-агенты, custom systems и автоматизации оцениваются после того, как мы поймем задачу и сложность. Каждый сайт включает 30 дней исправления багов после запуска.",
     popular: "Популярно",
     packages: [
-      ["Launch", "Пакет сайта для бизнеса, которому нужен чистый сайт с управлением.", ["Индивидуальный сайт бизнеса", "Мобильный дизайн", "Контактная форма", "Форма заявки/quote", "Секция отзывов", "Базовая SEO-настройка", "Telegram-менеджер сайта", "Обновление проектов/галереи из Telegram", "30 дней исправления багов"], ""],
-      ["Growth", "Пакет сайта для бизнеса, который хочет, чтобы его легче находили онлайн.", ["Все из Launch", "Настройка Google Search", "Базовая индексация Google", "Настройка или подключение Google Business/Profile", "Настройка Apple Maps", "Усиленное онлайн-присутствие", "Email-уведомления о заявках"], "Мы настраиваем базу, чтобы Google мог найти, индексировать и понимать ваш бизнес."],
-      ["Premium", "Пакет сайта для бизнеса, которому нужен сильнее бренд и больше доверия.", ["Все из Growth", "Дизайн логотипа", "Цвета бренда и типографика", "Дизайн визитки", "Дизайн flyer или door hanger", "Mockup футболки/hoodie", "Mockup наклейки на truck", "Мини-гайд бренда", "Карта прошлых проектов с clickable pins"], "Premium включает только дизайн-файлы и mockups. Заказ одежды, визиток, наклеек и печатных материалов делает клиент."],
+      ["Launch", "Пакет сайта для бизнеса, которому нужен чистый сайт с управлением.", "AUD $600 фиксированно или AUD $100/мес", ["Индивидуальный сайт бизнеса", "Мобильный дизайн", "Контактная форма", "Форма заявки/quote", "Секция отзывов", "Базовая SEO-настройка", "Telegram-менеджер сайта", "Обновление проектов/галереи из Telegram", "30 дней исправления багов"], ""],
+      ["Growth", "Пакет сайта для бизнеса, который хочет, чтобы его легче находили онлайн.", "AUD $1,000 фиксированно или AUD $140/мес", ["Все из Launch", "Настройка Google Search", "Базовая индексация Google", "Настройка или подключение Google Business/Profile", "Настройка Apple Maps", "Усиленное онлайн-присутствие", "Email-уведомления о заявках"], "Мы настраиваем базу, чтобы Google мог найти, индексировать и понимать ваш бизнес."],
+      ["Premium", "Пакет сайта для бизнеса, которому нужен сильнее бренд и больше доверия.", "AUD $1,300 фиксированно или AUD $170/мес", ["Все из Growth", "Дизайн логотипа", "Цвета бренда и типографика", "Дизайн визитки", "Дизайн flyer или door hanger", "Mockup футболки/hoodie", "Mockup наклейки на truck", "Мини-гайд бренда", "Карта прошлых проектов с clickable pins"], "Premium включает только дизайн-файлы и mockups. Заказ одежды, визиток, наклеек и печатных материалов делает клиент."],
     ],
     custom: {
       label: "Apps / AI / Workflows",
@@ -2697,7 +2711,7 @@ const copy = {
     contactLabel: "Бесплатная консультация",
     contactTitle: "Простые ответы. Реальные шаги.",
     contactPitch: "Получите чистый сайт, правильное онлайн-присутствие и более удобный способ для клиентов связаться с вами. Отправьте запрос, и мы посмотрим лучший следующий шаг.",
-    contactMeta: ["Без давления и подписок", "Понятные ответы по цене и объему", "Ответ в течение одного рабочего дня", "admin@siteup.com.au"],
+    contactMeta: ["Фиксированная и помесячная оплата", "Понятные ответы по цене и объему", "Ответ в течение одного рабочего дня", "admin@siteup.com.au"],
     form: {
       labels: ["Имя", "Название бизнеса", "Телефон", "Email", "Тип бизнеса", "Что вам нужно?", "Сообщение"],
       optional: "/ необязательно",
@@ -2727,7 +2741,7 @@ const copy = {
     stats: [
       ["1-2 hafta", "Odatdagi launch"],
       ["100%", "Telefonga mos"],
-      ["Bir marta", "Obuna yo'q"],
+      ["AUD", "Set yoki oylik narx"],
       ["30 kun", "Launchdan keyin bug fix"],
     ],
     servicesHead: "Software kabi quriladi.<br />Biznes kabi tushuntiriladi.",
@@ -2756,17 +2770,17 @@ const copy = {
     why: [
       ["Saytni Telegramdan yangilang", "Har bir Siteup sayti Telegram manager bilan keladi. Telefon raqam, xizmatlar, project fotolari yoki bannerlarni telefondan o'zgartirasiz, saytga darhol chiqadi."],
       ["Template emas, real development", "Biz website, app va automationlarni biznesingiz qanday ishlashiga mos custom software sifatida quramiz."],
-      ["Bir martalik narxlar", "Bir marta to'laysiz, natija sizniki. Oylik obuna yo'q. Launchdan keyin support request bo'yicha pullik."],
+      ["Moslashuvchan to'lov", "Website uchun set project price yoki oylik plan tanlash mumkin, biznesingizga qaysi biri qulay bo'lsa."],
       ["Oddiy tilda amaliy AI", "Takroriy ishlaringizni ko'rib, vaqt tejaydigan automation quramiz. Shovqin emas, foyda."],
       ["Online to'g'ri topilasiz", "Google, Apple Maps va business listinglar mijozlar to'g'ri ma'lumot ko'rishi uchun sozlanadi."],
     ],
-    packagesHead: "Website paketlar.<br />Bir martalik narx.",
-    packageNote: "Launch, Growth va Premium faqat website projectlar uchun. App, AI agent, custom system va workflow automationlar nima qurilishi va murakkabligiga qarab baholanadi. Har bir website paketda launchdan keyin 30 kun bug fix bor.",
+    packagesHead: "Website paketlar.<br />Set yoki oylik narx.",
+    packageNote: "Website paket narxlari AUDda ko'rsatilgan. Har bir paketni set project price yoki oylik plan sifatida olish mumkin. App, AI agent, custom system va workflow automationlar nima qurilishi va murakkabligiga qarab baholanadi. Har bir website paketda launchdan keyin 30 kun bug fix bor.",
     popular: "Tavsiya",
     packages: [
-      ["Launch", "Boshqarish mumkin bo'lgan toza sayt kerak bizneslar uchun.", ["Custom business website", "Mobile-friendly design", "Contact form", "Quote/request form", "Reviews/testimonials section", "Basic SEO setup", "Telegram website manager", "Telegramdan project/gallery update", "30 kun post-launch bug fix"], ""],
-      ["Growth", "Online osonroq topilishni xohlaydigan bizneslar uchun.", ["Launch ichidagi hammasi", "Google Search setup", "Google indexing basics", "Google Business/Profile setup yoki connection", "Apple Maps setup", "Kuchliroq online presence setup", "Email orqali lead notification"], "Google biznesingizni topishi, indexing qilishi va tushunishi uchun asosiy setup qilamiz."],
-      ["Premium", "Kuchliroq brand va ko'proq proof xohlaydigan bizneslar uchun.", ["Growth ichidagi hammasi", "Logo design", "Brand color va typography", "Business card design", "Flyer yoki door hanger design", "Shirt/hoodie mockup", "Truck decal mockup", "Brand mini-guide", "Clickable pinlar bilan taxminiy past-project map"], "Premium faqat design file va mockuplarni o'z ichiga oladi. Kiyim, card, decal yoki print materiallarni buyurtma qilish mijozning o'zida."],
+      ["Launch", "Boshqarish mumkin bo'lgan toza sayt kerak bizneslar uchun.", "AUD $600 set narx yoki AUD $100/oy", ["Custom business website", "Mobile-friendly design", "Contact form", "Quote/request form", "Reviews/testimonials section", "Basic SEO setup", "Telegram website manager", "Telegramdan project/gallery update", "30 kun post-launch bug fix"], ""],
+      ["Growth", "Online osonroq topilishni xohlaydigan bizneslar uchun.", "AUD $1,000 set narx yoki AUD $140/oy", ["Launch ichidagi hammasi", "Google Search setup", "Google indexing basics", "Google Business/Profile setup yoki connection", "Apple Maps setup", "Kuchliroq online presence setup", "Email orqali lead notification"], "Google biznesingizni topishi, indexing qilishi va tushunishi uchun asosiy setup qilamiz."],
+      ["Premium", "Kuchliroq brand va ko'proq proof xohlaydigan bizneslar uchun.", "AUD $1,300 set narx yoki AUD $170/oy", ["Growth ichidagi hammasi", "Logo design", "Brand color va typography", "Business card design", "Flyer yoki door hanger design", "Shirt/hoodie mockup", "Truck decal mockup", "Brand mini-guide", "Clickable pinlar bilan taxminiy past-project map"], "Premium faqat design file va mockuplarni o'z ichiga oladi. Kiyim, card, decal yoki print materiallarni buyurtma qilish mijozning o'zida."],
     ],
     custom: {
       label: "Apps / AI / Workflows",
@@ -2787,7 +2801,7 @@ const copy = {
     contactLabel: "Bepul konsultatsiya",
     contactTitle: "Oddiy javoblar. Aniq keyingi qadamlar.",
     contactPitch: "Toza website oling, online to'g'ri ko'rining va mijozlar siz bilan bog'lanishini oson qiling. Qisqa request yuboring, biz biznesingizni ko'rib, eng yaxshi keyingi qadamni aytamiz.",
-    contactMeta: ["Bosimsiz, obunasiz", "Narx va scope bo'yicha oddiy javoblar", "Bir ish kuni ichida javob", "admin@siteup.com.au"],
+    contactMeta: ["Set va oylik variantlar bor", "Narx va scope bo'yicha oddiy javoblar", "Bir ish kuni ichida javob", "admin@siteup.com.au"],
     form: {
       labels: ["Ism", "Biznes nomi", "Telefon", "Email", "Biznes turi", "Nima kerak?", "Xabar"],
       optional: "/ ixtiyoriy",
@@ -3119,10 +3133,13 @@ function applyLanguage(lang) {
   if (tag) tag.textContent = t.popular;
   document.querySelectorAll(".pkg").forEach((pkg, i) => {
     pkg.querySelector(".pkg-name").textContent = t.packages[i][0];
+    pkg.querySelector(".pkg-price").innerHTML = `<span class="cur">AUD $</span>${["600", "1,000", "1,300"][i]}`;
     pkg.querySelector(".pkg-for").textContent = t.packages[i][1];
-    setList(pkg.querySelector("ul"), t.packages[i][2]);
+    const monthly = pkg.querySelector(".pkg-monthly");
+    if (monthly) monthly.textContent = t.packages[i][2];
+    setList(pkg.querySelector("ul"), t.packages[i][3]);
     const fine = pkg.querySelector(".pkg-fine");
-    if (fine) fine.textContent = t.packages[i][3];
+    if (fine) fine.textContent = t.packages[i][4];
     pkg.querySelector(".btn").textContent = t.primaryCta;
   });
 
