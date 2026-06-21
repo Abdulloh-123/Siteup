@@ -1,0 +1,11 @@
+/* ============================================================
+   SITEUP DESIGN SYSTEM — global entry point
+   Consumers link THIS one file. It only @imports; no rules live here.
+   System codename: "Precision Studio" — quiet, technical, premium.
+   ============================================================ */
+
+@import url("./tokens/fonts.css");
+@import url("./tokens/colors.css");
+@import url("./tokens/typography.css");
+@import url("./tokens/spacing.css");
+@import url("./tokens/effects.css");

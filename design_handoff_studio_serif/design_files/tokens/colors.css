@@ -1,0 +1,79 @@
+/* ============================================================
+   COLORS — Siteup "Studio Serif"
+   Warm cream paper, ink text, terracotta (clay) primary accent,
+   deep pine for trust / "done" states. Ochre + slate round out a
+   controlled sequence set for numbered items (stats, services).
+   Base values first, then semantic aliases.
+   ============================================================ */
+
+:root {
+  /* ---- surfaces (base) ---- */
+  --bg: #f3efe6;          /* page — warm cream paper */
+  --bg-2: #fbf8f2;        /* raised card / panel — near-white warm */
+  --bg-3: #ece7db;        /* sunken inset / subtle fill */
+  --paper: #ffffff;       /* pure white — product mock screens */
+  --on-accent: #fbf6ee;   /* ink/text on clay or ink fills */
+
+  /* ---- ink (base) ---- */
+  --ink: #1a1714;         /* primary text — warm near-black */
+  --dim: #4d463f;         /* secondary text */
+  --faint: #948c80;       /* tertiary / mono captions */
+
+  /* ---- hairlines (base) ---- */
+  --hair: rgba(26, 23, 20, 0.10);
+  --hair-strong: rgba(26, 23, 20, 0.17);
+
+  /* ---- accents (base) ---- */
+  --clay: #c9482e;        /* primary brand accent — terracotta */
+  --clay-deep: #a93a22;   /* hover / pressed */
+  --pine: #14564b;        /* secondary — deep pine, trust / "done" */
+  --pine-deep: #0f4138;
+  --ochre: #b3792a;       /* tertiary sequence */
+  --slate: #3e5c72;       /* quaternary sequence */
+
+  --clay-dim: rgba(201, 72, 46, 0.10);    /* tinted clay fill */
+  --clay-line: rgba(201, 72, 46, 0.40);   /* clay hairline */
+  --clay-glow: rgba(201, 72, 46, 0.30);   /* button glow shadow */
+  --pine-dim: rgba(20, 86, 75, 0.10);     /* tinted pine fill */
+
+  /* ---- signature gradient (subtle, used sparingly) ---- */
+  --grad: linear-gradient(118deg, #cf4e30, #b53c22); /* @kind color */
+  --grad-text: linear-gradient(100deg, #14564b 0%, #c9482e 120%); /* @kind color */
+
+  /* ============================================================
+     SEMANTIC ALIASES — reach for these in product code
+     ============================================================ */
+  --surface-page: var(--bg);
+  --surface-card: var(--bg-2);
+  --surface-raised: var(--bg-2);
+  --surface-inset: var(--bg-3);
+  --surface-pure: var(--paper);
+
+  --text-strong: var(--ink);
+  --text-body: var(--dim);
+  --text-muted: var(--faint);
+  --text-on-accent: var(--on-accent);
+
+  --border-hair: var(--hair);
+  --border-hair-strong: var(--hair-strong);
+  --border-accent: var(--clay);
+
+  --accent: var(--clay);
+  --accent-deep: var(--clay-deep);
+  --accent-fill: var(--clay-dim);
+  --accent-2: var(--pine);
+  --accent-3: var(--ochre);
+  --accent-4: var(--slate);
+
+  --focus-ring: var(--clay);
+
+  /* ---- legacy aliases (back-compat with prior component code) ---- */
+  --green: var(--clay);
+  --green-dim: var(--clay-dim);
+  --green-line: var(--clay-line);
+  --green-glow: var(--clay-glow);
+  --cyan: var(--pine);
+  --violet: var(--ochre);
+  --amber: var(--slate);
+  --black-ink: var(--on-accent);
+}

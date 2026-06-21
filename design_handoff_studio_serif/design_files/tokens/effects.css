@@ -1,0 +1,59 @@
+/* ============================================================
+   EFFECTS — Studio Serif: shadows, blur, motion, backgrounds
+   Light system. Soft warm shadows give cards a gentle lift; the
+   clay glow appears only on primary buttons. Backgrounds stay
+   quiet — a faint warm grid + soft ambient wash on cream.
+   ============================================================ */
+
+:root {
+  /* ---- elevation ---- */
+  --shadow-sm: 0 1px 2px rgba(26, 23, 20, 0.06);
+  --shadow-card: 0 1px 2px rgba(26, 23, 20, 0.05), 0 14px 30px -18px rgba(26, 23, 20, 0.22); /* resting card */
+  --shadow-raise: 0 2px 4px rgba(26, 23, 20, 0.06), 0 22px 44px -22px rgba(26, 23, 20, 0.3); /* card hover */
+  --shadow-panel: 0 24px 60px -28px rgba(26, 23, 20, 0.4);  /* hero artifact / mock */
+  --shadow-modal: 0 30px 80px -24px rgba(26, 23, 20, 0.34); /* dialogs */
+  --shadow-btn: 0 12px 26px -10px rgba(201, 72, 46, 0.5);   /* primary button hover glow */
+
+  /* ---- glass / blur ---- */
+  --blur-header: blur(14px); /* @kind other */
+  --blur-modal: blur(8px); /* @kind other */
+  --glass-header: rgba(243, 239, 230, 0.8);
+  --glass-backdrop: rgba(26, 23, 20, 0.32);
+
+  /* ---- motion ---- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --dur-fast: 0.25s; /* @kind other */
+  --dur: 0.35s; /* @kind other */
+  --dur-slow: 0.9s; /* @kind other */
+  --lift: translateY(-2px); /* @kind other */
+
+  /* ---- background fields (apply to fixed full-screen layers) ---- */
+  /* faint warm grid */
+  --field-grid:
+    linear-gradient(rgba(26, 23, 20, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 23, 20, 0.05) 1px, transparent 1px); /* @kind other */
+  --field-grid-size: 56px 56px; /* @kind other */
+  /* soft warm ambient wash */
+  --field-glow:
+    radial-gradient(820px 520px at 50% -12%, rgba(201, 72, 46, 0.06), transparent 64%),
+    radial-gradient(680px 460px at 92% 6%, rgba(20, 86, 75, 0.05), transparent 60%),
+    radial-gradient(720px 500px at 3% 82%, rgba(179, 121, 42, 0.05), transparent 60%); /* @kind other */
+}
+
+/* ---- reusable background layers (optional helpers) ---- */
+.su-field-glow {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background: var(--field-glow), var(--bg);
+}
+
+.su-field-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--field-grid);
+  background-size: var(--field-grid-size);
+  -webkit-mask-image: radial-gradient(1100px 720px at 50% 0%, #000 26%, transparent 78%);
+  mask-image: radial-gradient(1100px 720px at 50% 0%, #000 26%, transparent 78%);
+}

@@ -1,0 +1,709 @@
+<!-- @dsCard group="Website" viewport="1280x860" name="Siteup — Landing page" subtitle="Full single-page marketing site, interactive" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Siteup — Website UI Kit</title>
+<link rel="icon" href="../../assets/favicon.svg" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  ::selection { background: rgba(201,72,46,0.18); }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 500; letter-spacing: -0.01em; line-height: 1.06; }
+  .su-serif { font-family: var(--font-serif); font-style: italic; font-weight: 500; color: var(--pine); }
+
+  /* header */
+  .su-header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid transparent; transition: background .4s ease, border-color .4s ease; }
+  .su-header.scrolled { background: var(--glass-header); backdrop-filter: var(--blur-header); -webkit-backdrop-filter: var(--blur-header); border-bottom-color: var(--hair); }
+  .su-header-in { max-width: var(--max-w); margin: 0 auto; padding: 18px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .su-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-serif); font-weight: 500; font-size: 1.6rem; letter-spacing: -0.01em; color: var(--ink); }
+  .su-logo svg { display: block; }
+  .su-logo .dot { color: var(--clay); }
+  .su-nav { display: flex; gap: 30px; }
+  .su-nav a { font-size: 0.93rem; color: var(--dim); transition: color .25s; position: relative; }
+  .su-nav a::after { content: ""; position: absolute; left: 0; bottom: -5px; width: 0; height: 1.5px; background: var(--clay); transition: width .3s var(--ease); }
+  .su-nav a:hover { color: var(--ink); } .su-nav a:hover::after { width: 100%; }
+  .su-header-actions { display: flex; align-items: center; gap: 14px; }
+  .su-lang { display: flex; border: 1px solid var(--hair-strong); border-radius: var(--radius-sm); overflow: hidden; }
+  .su-lang-btn { border: 0; border-right: 1px solid var(--hair); background: transparent; color: var(--faint); font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.08em; padding: 9px 9px; cursor: pointer; transition: background .25s, color .25s; }
+  .su-lang-btn:last-child { border-right: 0; }
+  .su-lang-btn:hover, .su-lang-btn.active { background: var(--clay-dim); color: var(--clay); }
+  .su-header-cta { font-family: var(--font-sans); font-size: 0.92rem; font-weight: 500; color: var(--on-accent); background: var(--ink); padding: 11px 19px; border-radius: var(--radius-sm); transition: background .3s, transform .3s var(--ease); white-space: nowrap; }
+  .su-header-cta:hover { background: var(--clay); transform: translateY(-1px); }
+
+  /* hero */
+  .su-hero { max-width: var(--max-w); margin: 0 auto; padding: 110px 28px 0; position: relative; }
+  .su-tick { position: absolute; width: 13px; height: 13px; opacity: 0.4; }
+  .su-tick::before, .su-tick::after { content: ""; position: absolute; background: var(--faint); }
+  .su-tick::before { left: 50%; top: 0; width: 1px; height: 100%; }
+  .su-tick::after { top: 50%; left: 0; height: 1px; width: 100%; }
+  .su-tick.tl { top: 88px; left: 28px; } .su-tick.tr { top: 88px; right: 28px; }
+  .su-hero-h { font-family: var(--font-serif); font-size: clamp(2.7rem, 6.6vw, 5.1rem); font-weight: 500; line-height: 1.04; letter-spacing: -0.01em; max-width: 15em; }
+  .su-hero-h .su-serif { font-size: 1em; }
+  .su-hero-row { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: end; margin-top: 40px; }
+  .su-hero-sub { color: var(--dim); font-size: 1.08rem; max-width: 480px; font-weight: 400; line-height: 1.6; }
+  .su-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+  .su-hero-call { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.04em; color: var(--dim); border: 1px solid var(--hair-strong); padding: 13px 16px; border-radius: var(--radius-sm); transition: border-color .3s, color .3s, background .3s, transform .3s var(--ease); }
+  .su-hero-call b { color: var(--clay); font-weight: 500; }
+  .su-hero-call:hover { border-color: var(--clay); color: var(--ink); background: var(--clay-dim); transform: translateY(-2px); }
+
+  .su-term-wrap { max-width: var(--max-w); margin: 76px auto 0; padding: 0 28px; }
+  .su-stat-strip { max-width: var(--max-w); margin: 86px auto 0; padding: 0 28px; }
+  .su-stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+  .su-stat-grid > div { border-left: 1px solid var(--hair); }
+  .su-stat-grid > div:first-child { border-left: none; }
+
+  /* sections */
+  .su-section { max-width: var(--max-w); margin: 0 auto; padding: 130px 28px 0; }
+  .su-section > div:first-child { margin-bottom: 56px; }
+
+  /* services */
+  .su-svc-list { border-top: 1px solid var(--hair); }
+  .su-svc-row { display: grid; grid-template-columns: 80px 1.1fr 1.6fr 48px; gap: 28px; align-items: center; padding: 32px 8px; width: 100%; border: 0; border-bottom: 1px solid var(--hair); background: transparent; color: inherit; font: inherit; text-align: left; position: relative; transition: padding .35s var(--ease); cursor: pointer; }
+  .su-svc-row::before { content: ""; position: absolute; left: 0; bottom: -1px; width: 0; height: 2px; background: var(--grad); transition: width .5s var(--ease); }
+  .su-svc-row:hover::before { width: 100%; }
+  .su-svc-row:hover { padding-left: 18px; }
+  .su-svc-no { font-family: var(--font-mono); font-size: 0.78rem; }
+  .su-svc-row h3 { font-family: var(--font-sans); font-size: 1.3rem; font-weight: 500; letter-spacing: -0.01em; transition: color .3s; }
+  .su-svc-row:hover h3 { color: var(--clay); }
+  .su-svc-row p { color: var(--dim); font-size: 0.95rem; font-weight: 400; }
+  .su-svc-arr { color: var(--faint); transition: color .3s, transform .35s var(--ease); }
+  .su-svc-arr svg { width: 18px; height: 18px; }
+  .su-svc-row:hover .su-svc-arr { color: var(--clay); transform: translate(4px, -4px); }
+  .su-svc-foot { margin-top: 36px; color: var(--dim); font-size: 0.98rem; font-weight: 400; max-width: 680px; }
+  .su-svc-foot em { font-family: var(--font-serif); font-style: italic; color: var(--pine); font-size: 1.08em; }
+
+  /* modal */
+  .su-modal { position: fixed; inset: 0; z-index: 140; display: grid; place-items: center; padding: 22px; opacity: 0; pointer-events: none; transition: opacity .28s; }
+  .su-modal.open { opacity: 1; pointer-events: auto; }
+  .su-modal-bd { position: absolute; inset: 0; background: var(--glass-backdrop); backdrop-filter: var(--blur-modal); }
+  .su-dialog { position: relative; width: min(100%, 560px); border: 1px solid var(--hair-strong); border-radius: var(--radius-md); background: radial-gradient(420px 220px at 8% 0%, var(--clay-dim), transparent 68%), var(--paper); padding: 32px; box-shadow: var(--shadow-modal); }
+  .su-dialog h2 { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.6rem, 5vw, 2.3rem); margin: 14px 42px 12px 0; }
+  .su-dialog p { color: var(--dim); font-weight: 400; }
+  .su-dialog-x { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--hair); border-radius: var(--radius-sm); background: transparent; color: var(--ink); font-size: 1.25rem; cursor: pointer; transition: border-color .25s, color .25s; }
+  .su-dialog-x:hover { border-color: var(--clay); color: var(--clay); }
+  .su-dialog-list { list-style: none; display: grid; gap: 10px; margin: 22px 0 26px; }
+  .su-dialog-list li { position: relative; padding-left: 22px; color: var(--dim); font-size: 0.93rem; font-weight: 400; }
+  .su-dialog-list li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 7px; height: 7px; border-radius: 2px; background: var(--clay); }
+
+  /* why */
+  .su-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: var(--radius-md); overflow: hidden; }
+  .su-why { background: var(--bg-2); padding: 36px 30px; min-height: 230px; display: flex; flex-direction: column; transition: background .35s; }
+  .su-why:hover { background: var(--paper); }
+  .su-why.lead { grid-row: span 2; background: linear-gradient(168deg, var(--pine), var(--pine-deep)); color: var(--on-accent); justify-content: space-between; }
+  .su-why.lead:hover { background: linear-gradient(168deg, var(--pine), var(--pine-deep)); }
+  .su-why-no { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; color: var(--faint); margin-bottom: 22px; text-transform: uppercase; }
+  .su-why h3 { font-family: var(--font-sans); font-size: 1.18rem; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 12px; }
+  .su-why.lead h3 { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 500; }
+  .su-why p { color: var(--dim); font-size: 0.93rem; font-weight: 400; }
+  .su-why.lead .su-why-no { color: rgba(251,246,238,0.55); }
+  .su-why.lead p { color: rgba(251,246,238,0.82); }
+  .su-tg { margin-top: 30px; border: 1px solid rgba(251,246,238,0.18); border-radius: var(--radius-sm); background: rgba(0,0,0,0.16); padding: 16px; font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.9; }
+  .su-tg-msg { display: flex; gap: 10px; align-items: flex-start; margin-top: 10px; }
+  .su-tg-msg:first-child { margin-top: 0; }
+  .su-tg-who { flex: none; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; font-size: 0.58rem; background: rgba(251,246,238,0.12); color: rgba(251,246,238,0.7); }
+  .su-tg-msg.bot .su-tg-who { background: rgba(251,246,238,0.22); color: var(--on-accent); }
+  .su-tg-msg span:last-child { color: rgba(251,246,238,0.7); } .su-tg-msg.bot span:last-child { color: var(--on-accent); }
+  .su-tg .ok { color: #7fd9c0; }
+
+  /* packages */
+  .su-pkg-note { color: var(--dim); font-size: 0.98rem; font-weight: 400; max-width: 660px; margin: -32px 0 52px; }
+  .su-pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: var(--radius-md); overflow: hidden; }
+  .su-pkg { background: var(--bg-2); padding: 44px 34px 38px; display: flex; flex-direction: column; position: relative; transition: background .35s; }
+  .su-pkg:hover { background: var(--paper); }
+  .su-pkg.feat { background: radial-gradient(380px 260px at 50% -12%, var(--clay-dim), transparent 70%), var(--paper); }
+  .su-pkg-name { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); margin-bottom: 18px; }
+  .su-pkg-price { font-family: var(--font-serif); font-size: 3.4rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1; }
+  .su-pkg-price .cur { font-size: 1.4rem; color: var(--clay); vertical-align: 0.65em; font-weight: 500; margin-right: 2px; }
+  .su-pkg-for { margin-top: 14px; color: var(--dim); font-size: 0.93rem; font-weight: 400; min-height: 2.8em; }
+  .su-pkg ul { list-style: none; margin: 28px 0; flex: 1; display: grid; gap: 12px; align-content: start; }
+  .su-pkg li { position: relative; padding-left: 22px; font-size: 0.9rem; color: var(--dim); font-weight: 400; }
+  .su-pkg li::before { content: "+"; position: absolute; left: 0; top: 0; font-family: var(--font-mono); color: var(--clay); }
+  .su-pkg-fine { font-size: 0.8rem; color: var(--faint); font-weight: 400; border-left: 2px solid var(--clay); padding-left: 12px; margin-bottom: 26px; }
+
+  /* custom pricing */
+  .su-custom { margin-top: 120px; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); background: radial-gradient(560px 260px at 16% 20%, var(--clay-dim), transparent 70%), radial-gradient(620px 280px at 86% 65%, var(--pine-dim), transparent 72%); position: relative; overflow: hidden; }
+  .su-custom-in { max-width: var(--max-w); margin: 0 auto; padding: 72px 28px; display: grid; grid-template-columns: 0.95fr 1.1fr; gap: 46px; align-items: center; }
+  .su-custom-copy h2 { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.9rem, 4vw, 3rem); margin-top: 14px; max-width: 600px; line-height: 1.08; }
+  .su-custom-copy p { color: var(--dim); font-weight: 400; margin-top: 16px; }
+  .su-custom-list { display: grid; gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: var(--radius-md); overflow: hidden; }
+  .su-custom-item { background: var(--bg-2); padding: 24px; display: grid; grid-template-columns: 42px 1fr; gap: 18px; transition: background .35s; }
+  .su-custom-item:hover { background: var(--paper); }
+  .su-custom-item > span { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--clay); border-radius: var(--radius-sm); color: var(--clay); font-family: var(--font-mono); font-size: 0.68rem; }
+  .su-custom-item h3 { font-family: var(--font-sans); font-weight: 500; font-size: 1.15rem; margin-bottom: 6px; }
+  .su-custom-item p { color: var(--dim); font-size: 0.92rem; font-weight: 400; }
+  .su-custom-foot { grid-column: 1 / -1; border-top: 1px solid var(--hair); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+  .su-custom-foot p { color: var(--dim); font-weight: 400; max-width: 720px; }
+
+  /* projects */
+  .su-proj-group { margin-bottom: 70px; }
+  .su-proj-gt { display: flex; align-items: center; gap: 18px; margin-bottom: 26px; }
+  .su-proj-gt h3 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 500; }
+  .su-proj-gt .count { font-family: var(--font-mono); font-size: 0.66rem; color: var(--faint); }
+  .su-proj-gt .line { flex: 1; height: 1px; background: var(--hair); }
+  .su-proj-grid { display: grid; gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: var(--radius-md); overflow: hidden; }
+  .su-proj-grid.c2 { grid-template-columns: repeat(2, 1fr); }
+  .su-proj { background: var(--bg-2); transition: background .35s; }
+  .su-proj:not(.featured) { padding: 30px; }
+  .su-proj:hover { background: var(--paper); }
+  .su-proj-visual { height: 150px; border: 1px solid var(--hair); border-radius: var(--radius-sm); margin-bottom: 24px; position: relative; overflow: hidden; background-color: var(--bg-3); background-image: var(--field-grid); background-size: 24px 24px; display: grid; place-items: center; }
+  .su-proj.featured { padding: 0; overflow: hidden; }
+  .su-proj-video, .su-proj-image { height: 250px; border-bottom: 1px solid var(--hair); background: var(--bg-3); }
+  .su-proj-video video, .su-proj-image img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .su-proj-body { padding: 26px 28px 30px; }
+  .su-proj:not(.featured) .su-proj-body { padding: 0; }
+  .su-proj-meta { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--clay); margin-bottom: 10px; }
+  .su-proj h4 { font-family: var(--font-sans); font-size: 1.1rem; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .su-proj p { color: var(--dim); font-size: 0.92rem; font-weight: 400; margin-bottom: 8px; }
+  .su-result { font-family: var(--font-mono); font-size: 0.72rem; color: var(--pine) !important; margin-top: 4px; }
+  .su-proj-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .su-proj-link { display: inline-flex; margin-top: 18px; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--clay); border-bottom: 1px solid var(--clay-line); }
+  .su-proj-link:hover { color: var(--ink); border-color: var(--ink); }
+  .su-pv-frame { width: 70%; border: 1px solid var(--hair-strong); border-radius: var(--radius-sm); background: var(--paper); padding: 10px; display: grid; gap: 6px; transition: transform .4s var(--ease), border-color .4s; box-shadow: var(--shadow-card); }
+  .su-proj:hover .su-pv-frame { transform: translateY(-4px); border-color: var(--clay-line); }
+  .su-pv-frame i { display: block; height: 7px; border-radius: 2px; background: var(--hair); }
+  .su-pv-frame i.hero-bar { height: 26px; }
+  .su-pv-frame i.w60 { width: 60%; } .su-pv-frame i.w40 { width: 40%; }
+
+  /* contact */
+  .su-contact { display: grid; grid-template-columns: 1fr 1.15fr; gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: var(--radius-md); overflow: hidden; }
+  .su-contact-left { background: radial-gradient(420px 300px at 12% -5%, var(--clay-dim), transparent 65%), var(--bg-3); padding: 50px 44px; display: flex; flex-direction: column; }
+  .su-contact-left h2 { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.7rem, 3vw, 2.5rem); margin: 16px 0 18px; line-height: 1.06; }
+  .su-contact-phone { display: inline-flex; width: fit-content; margin-top: 12px; font-family: var(--font-mono); font-size: 0.86rem; letter-spacing: 0.04em; color: var(--clay); border-bottom: 1px solid var(--clay-line); transition: color .25s, border-color .25s; }
+  .su-contact-phone:hover { color: var(--ink); border-color: var(--ink); }
+  .su-pitch { color: var(--dim); font-weight: 400; font-size: 0.98rem; max-width: 400px; }
+  .su-contact-meta { margin-top: auto; padding-top: 40px; display: grid; gap: 10px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--dim); }
+  .su-contact-meta span::before { content: "— "; color: var(--clay); }
+  .su-contact-form { background: var(--bg-2); padding: 50px 44px; display: grid; gap: 20px; }
+  .su-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .su-cf-note { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; color: var(--faint); margin-top: -8px; }
+  .su-cf-status { font-size: 0.85rem; min-height: 1.4em; font-family: var(--font-mono); }
+  .su-cf-status.ok { color: var(--pine); } .su-cf-status.err { color: #b4452e; }
+
+  /* footer */
+  .su-footer { margin-top: 140px; border-top: 1px solid var(--hair); }
+  .su-foot-in { max-width: var(--max-w); margin: 0 auto; padding: 60px 28px 0; }
+  .su-foot-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding-bottom: 50px; }
+  .su-foot-word { font-family: var(--font-serif); font-size: clamp(3rem, 9vw, 6.5rem); font-weight: 500; letter-spacing: -0.02em; line-height: 0.95; color: rgba(26,23,20,0.1); user-select: none; }
+  .su-foot-word .dot { color: rgba(201,72,46,0.55); }
+  .su-foot-links { display: grid; gap: 12px; padding-top: 12px; }
+  .su-foot-links a { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); transition: color .25s; }
+  .su-foot-links a:hover { color: var(--clay); }
+  .su-foot-bottom { border-top: 1px solid var(--hair); padding: 22px 0; display: flex; align-items: center; justify-content: space-between; gap: 14px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); flex-wrap: wrap; }
+
+  @media (max-width: 1000px) {
+    .su-nav { display: none; }
+    .su-hero-row { grid-template-columns: 1fr; gap: 30px; } .su-hero-ctas { justify-content: flex-start; }
+    .su-stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .su-why-grid { grid-template-columns: 1fr 1fr; } .su-why.lead { grid-row: auto; grid-column: span 2; }
+    .su-pkg-grid, .su-custom-in, .su-contact { grid-template-columns: 1fr; }
+    .su-proj-grid.c2 { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+/* ===== Chrome.jsx (inlined for Design System card sandbox) ===== */
+/* ============================================================
+   Siteup website — chrome: Header + Footer + background fields
+   Composes DS Button. Exposes Header, Footer, BgFields on window.
+   ============================================================ */
+const { Button: SUButton } = window.SiteupDesignSystem_838203;
+
+function BgFields() {
+  return (
+    <>
+      <div className="su-field-glow" aria-hidden="true" />
+      <div className="su-field-grid" aria-hidden="true" />
+    </>
+  );
+}
+
+function Header({ onNav }) {
+  const [scrolled, setScrolled] = React.useState(false);
+  const [lang, setLang] = React.useState("en");
+  React.useEffect(() => {
+    const root = document.querySelector(".site-scroll") || window;
+    const el = document.querySelector(".site-scroll");
+    const onScroll = () => setScrolled((el ? el.scrollTop : window.scrollY) > 10);
+    root.addEventListener("scroll", onScroll, { passive: true });
+    return () => root.removeEventListener("scroll", onScroll);
+  }, []);
+  const nav = ["Services", "Why Siteup", "Packages", "Projects", "Contact"];
+  return (
+    <header className={"su-header" + (scrolled ? " scrolled" : "")}>
+      <div className="su-header-in">
+        <a className="su-logo" href="#top" onClick={(e) => { e.preventDefault(); onNav("top"); }}>
+          <svg width="30" height="27" viewBox="0 0 132 120" aria-hidden="true">
+            <path d="M40 30 L28 30 L28 90 L40 90" fill="none" stroke="var(--clay)" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M92 30 L104 30 L104 90 L92 90" fill="none" stroke="var(--clay)" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+            <text x="44" y="90" fontFamily="var(--font-serif)" fontSize="86" fontStyle="italic" fontWeight="500" fill="var(--ink)">S</text>
+          </svg>
+          Siteup<span className="dot">.</span>
+        </a>
+        <nav className="su-nav">
+          {nav.map((n) => (
+            <a key={n} href={"#" + n} onClick={(e) => { e.preventDefault(); onNav(n.toLowerCase().split(" ")[0]); }}>{n}</a>
+          ))}
+        </nav>
+        <div className="su-header-actions">
+          <div className="su-lang">
+            {["EN", "RU", "UZ"].map((l) => (
+              <button key={l} type="button" className={"su-lang-btn" + (lang === l.toLowerCase() ? " active" : "")} onClick={() => setLang(l.toLowerCase())}>{l}</button>
+            ))}
+          </div>
+          <a className="su-header-cta" href="#contact" onClick={(e) => { e.preventDefault(); onNav("contact"); }}>Free Consultation</a>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="su-footer">
+      <div className="su-foot-in">
+        <div className="su-foot-top">
+          <p className="su-foot-word">Siteup<span className="dot">.</span></p>
+          <nav className="su-foot-links">
+            <a href="#services">Services</a>
+            <a href="#why">Why Siteup</a>
+            <a href="#packages">Packages</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </div>
+        <div className="su-foot-bottom">
+          <span>Terms &amp; Agreements</span>
+          <span>© 2026 Siteup — websites and digital systems for local businesses</span>
+          <span>Privacy Policy</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+Object.assign(window, { BgFields, Header, Footer });
+
+</script>
+<script type="text/babel">
+/* ===== Hero.jsx (inlined for Design System card sandbox) ===== */
+/* ============================================================
+   Hero + animated Terminal + stat strip
+   Composes DS Button, Kicker, Terminal, Stat.
+   ============================================================ */
+const { Button: HBtn, Kicker: HKicker, Terminal: HTerminal, Stat: HStat } = window.SiteupDesignSystem_838203;
+
+const TERM_SCRIPT = [
+  { text: '~/clients $ siteup launch "your-business"', tone: "cmd" },
+  { text: "  building custom website ... done", tone: "dim" },
+  { text: "  ✓ website ........... live & mobile-friendly", tone: "ok" },
+  { text: "  ✓ google business ... found & verified", tone: "ok" },
+  { text: "  ✓ lead capture ...... quote form connected", tone: "ok" },
+  { text: "  ✓ telegram manager .. edit your site from your phone", tone: "ok" },
+  { text: "  this month: 27 leads · avg. reply 4 min", tone: "dim" },
+  { text: "~/clients $ ▋", tone: "prompt" },
+];
+
+function useTyped(lines, active) {
+  const [n, setN] = React.useState(active ? 0 : lines.length);
+  React.useEffect(() => {
+    if (!active) { setN(lines.length); return; }
+    if (n >= lines.length) return;
+    const t = setTimeout(() => setN((x) => x + 1), n === 0 ? 500 : 420);
+    return () => clearTimeout(t);
+  }, [n, active]);
+  return lines.slice(0, n);
+}
+
+function Hero({ onNav }) {
+  const ref = React.useRef(null);
+  const [seen, setSeen] = React.useState(false);
+  React.useEffect(() => {
+    const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { setSeen(true); io.disconnect(); } }, { threshold: 0.3 });
+    if (ref.current) io.observe(ref.current);
+    return () => io.disconnect();
+  }, []);
+  const shown = useTyped(TERM_SCRIPT, seen);
+
+  return (
+    <>
+      <div className="su-hero">
+        <span className="su-tick tl" aria-hidden="true" />
+        <span className="su-tick tr" aria-hidden="true" />
+        <div style={{ marginBottom: 36 }}><HKicker rule>Digital development studio</HKicker></div>
+        <h1 className="su-hero-h">
+          Websites and <span className="su-serif">digital systems</span> for local businesses.
+        </h1>
+        <div className="su-hero-row">
+          <p className="su-hero-sub">
+            Siteup builds professional websites, online presence setups, custom apps, and
+            practical AI workflows for construction companies, service businesses, and growing
+            local brands.
+          </p>
+          <div className="su-hero-ctas">
+            <HBtn variant="solid" arrow onClick={() => onNav("contact")}>Request Free Consultation</HBtn>
+            <HBtn variant="line" onClick={() => onNav("packages")}>View Packages</HBtn>
+            <a className="su-hero-call" href="tel:0405512447"><span>Call us</span><b>0405512447</b></a>
+          </div>
+        </div>
+      </div>
+
+      <div className="su-term-wrap" ref={ref}>
+        <HTerminal title="siteup — client launch" status="Live" lines={shown} />
+      </div>
+
+      <div className="su-stat-strip">
+        <div className="su-stat-grid">
+          <HStat value={<>1–2 wks</>} label="Typical launch" color="var(--clay)" />
+          <HStat value="100%" label="Mobile-friendly" color="var(--pine)" />
+          <HStat value="One-time" label="Prices, no subscriptions" color="var(--ochre)" />
+          <HStat value="30 days" label="Post-launch bug fixes" color="var(--slate)" />
+        </div>
+      </div>
+    </>
+  );
+}
+
+window.Hero = Hero;
+
+</script>
+<script type="text/babel">
+/* ===== Sections.jsx (inlined for Design System card sandbox) ===== */
+/* ============================================================
+   Content sections — Services (+modal), Why, Packages,
+   Custom pricing, Projects, Contact form.
+   Composes DS SectionHeading, Card, Button, Badge, Tag, Kicker, Field, Select.
+   ============================================================ */
+const DS = window.SiteupDesignSystem_838203;
+const { SectionHeading, Card, Button, Badge, Tag, Kicker, Field, Select } = DS;
+
+/* ---------- Services ---------- */
+const SERVICES = [
+  ["01", "Websites", "Custom, mobile-friendly websites built around the business, services, and customer trust.", "var(--green)",
+    "A professional website that explains the business clearly, builds trust fast, and makes it easy for customers to request work.",
+    ["Custom layout for your services", "Mobile-first design and fast contact flow", "Project gallery, reviews, and trust signals"]],
+  ["02", "Online Presence Setup", "Google setup, indexing, Apple Maps, and business listing basics so customers can find correct information.", "var(--cyan)",
+    "We set up the basics that help customers find accurate business information on search and maps.",
+    ["Google Search setup and indexing basics", "Google Business/Profile setup or connection", "Apple Maps and listing information cleanup"]],
+  ["03", "Lead Capture Systems", "Quote forms, contact flows, and email notifications that make customer requests easier to handle.", "var(--violet)",
+    "A simple request system that turns website visitors into organized customer inquiries.",
+    ["Quote and contact forms", "Email notifications with request details", "Clear routing so the owner can reply faster"]],
+  ["04", "Custom Apps", "Dashboards, portals, and internal tools built around the way the business actually works.", "var(--amber)",
+    "Small business tools built around the actual workflow instead of a generic template.",
+    ["Dashboards and portals", "Customer or staff tools", "Internal systems for tracking work"]],
+  ["05", "Workflow Automation", "Automations that reduce repetitive tasks, organize information, and keep work moving.", "var(--green)",
+    "We look at repetitive work and build automations that save time, reduce mistakes, and keep the operation moving.",
+    ["Connect forms, emails, spreadsheets, and tools", "Automated reminders and follow-ups", "Cleaner admin processes for daily work"]],
+  ["06", "Custom AI Agents", "Practical AI helpers for business tasks like summaries, drafts, organization, and repeatable processes.", "var(--cyan)",
+    "Practical AI workflows for tasks that can be summarized, drafted, organized, or repeated.",
+    ["AI summaries and drafts", "Customer note organization", "Agentic workflows for repeatable tasks"]],
+];
+
+function Services({ onNav }) {
+  const [open, setOpen] = React.useState(null);
+  const svc = open != null ? SERVICES[open] : null;
+  return (
+    <section id="services" className="su-section">
+      <SectionHeading number="01 / Services" title={<>Built like software.<br />Explained like business.</>} note="Everything your business needs to look professional and run smoother online." />
+      <div className="su-svc-list">
+        {SERVICES.map((s, i) => (
+          <button key={s[0]} className="su-svc-row" type="button" onClick={() => setOpen(i)}>
+            <span className="su-svc-no" style={{ color: s[3] }}>/{s[0]}</span>
+            <h3>{s[1]}</h3>
+            <p>{s[2]}</p>
+            <span className="su-svc-arr" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M5 15L15 5M7 5h8v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </span>
+          </button>
+        ))}
+      </div>
+      <p className="su-svc-foot"><em>On automation:</em> we review how your business handles repetitive tasks, then build custom automations and AI helpers to save time, reduce manual work, and keep your team organized.</p>
+
+      <div className={"su-modal" + (svc ? " open" : "")} onClick={(e) => { if (e.target.classList.contains("su-modal") || e.target.classList.contains("su-modal-bd")) setOpen(null); }}>
+        <div className="su-modal-bd" />
+        {svc && (
+          <div className="su-dialog" role="dialog" aria-modal="true">
+            <button className="su-dialog-x" type="button" onClick={() => setOpen(null)} aria-label="Close">×</button>
+            <Kicker color={svc[3]}>Service detail</Kicker>
+            <h2>{svc[1]}</h2>
+            <p>{svc[4]}</p>
+            <ul className="su-dialog-list">{svc[5].map((d) => <li key={d}>{d}</li>)}</ul>
+            <Button variant="solid" arrow onClick={() => { setOpen(null); onNav("contact"); }}>Request Free Consultation</Button>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Why Siteup ---------- */
+function WhySiteup() {
+  return (
+    <section id="why" className="su-section">
+      <SectionHeading number="02 / Why Siteup" title={<>Why businesses<br />choose us.</>} note="We are a tech development company. We build systems, not just pages." />
+      <div className="su-why-grid">
+        <div className="su-why lead">
+          <div>
+            <p className="su-why-no">Reason / 01</p>
+            <h3>Update your website from Telegram</h3>
+            <p>Every Siteup website ships with a Telegram manager. Change your phone number, edit services, post new project photos, or turn a banner on — from your phone, live in seconds. No logins, no dashboards, no waiting on a developer.</p>
+          </div>
+          <div className="su-tg">
+            <div className="su-tg-msg"><span className="su-tg-who">You</span><span>Add new project: kitchen remodel, Oakdale</span></div>
+            <div className="su-tg-msg bot"><span className="su-tg-who">S</span><span><span className="ok">✓</span> Project published. Live on your site now.</span></div>
+            <div className="su-tg-msg"><span className="su-tg-who">You</span><span>Change phone number to (555) 014-0199</span></div>
+            <div className="su-tg-msg bot"><span className="su-tg-who">S</span><span><span className="ok">✓</span> Updated everywhere on the site.</span></div>
+          </div>
+        </div>
+        {[
+          ["02", "Real development, not templates", "We build websites, apps, and automations as custom software — shaped around how your business actually works.", "var(--cyan)"],
+          ["03", "One-time prices", "You pay once, you own it. No monthly subscriptions. After launch, support is paid per request.", "var(--violet)"],
+          ["04", "Practical AI, plain language", "We look at your repetitive tasks and build automations that save time. No hype, no buzzwords.", "var(--amber)"],
+          ["05", "Found correctly online", "Google, Apple Maps, and business listings set up so customers always see the right information.", "var(--green)"],
+        ].map((c) => (
+          <div className="su-why" key={c[0]}>
+            <p className="su-why-no" style={{ color: c[3] }}>Reason / {c[0]}</p>
+            <h3>{c[1]}</h3>
+            <p>{c[2]}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Packages ---------- */
+const PACKAGES = [
+  ["Launch", "700", "A website package for businesses that need a clean site they can manage.",
+    ["Custom business website", "Mobile-friendly design", "Contact form", "Quote/request form", "Reviews/testimonials section", "Basic SEO setup", "Telegram website manager", "Project/gallery updates from Telegram", "30 days post-launch bug fixes"], "", false],
+  ["Growth", "1,100", "A website package for businesses that want to be easier to find online.",
+    ["Everything in Launch", "Google Search setup", "Google indexing basics", "Google Business/Profile setup or connection", "Apple Maps setup", "Stronger online presence setup", "Lead notifications by email"], "We set up the basics so Google can find, index, and understand your business.", true],
+  ["Premium", "1,500", "A website package for businesses that want a sharper brand and stronger proof.",
+    ["Everything in Growth", "Logo design", "Brand colors and typography", "Business card design", "Flyer or door hanger design", "Shirt/hoodie mockup", "Truck decal mockup", "Brand mini-guide", "Approximate past-project map with clickable pins"], "Premium includes design files and mockups only. Ordering printed materials is the customer's responsibility.", false],
+];
+
+function Packages({ onNav }) {
+  return (
+    <section id="packages" className="su-section">
+      <SectionHeading number="03 / Packages" title={<>Website packages.<br />One-time prices.</>} />
+      <p className="su-pkg-note">Launch, Growth, and Premium are only for website projects. Apps, AI agents, custom systems, and workflow automations are priced after we understand what needs to be built. Each website package includes 30 days of post-launch bug fixes.</p>
+      <div className="su-pkg-grid">
+        {PACKAGES.map((p) => (
+          <article className={"su-pkg" + (p[5] ? " feat" : "")} key={p[0]}>
+            {p[5] && <Badge style={{ position: "absolute", top: 0, right: 0 }}>Popular</Badge>}
+            <p className="su-pkg-name">{p[0]}</p>
+            <p className="su-pkg-price"><span className="cur">$</span>{p[1]}</p>
+            <p className="su-pkg-for">{p[2]}</p>
+            <ul>{p[3].map((li) => <li key={li}>{li}</li>)}</ul>
+            {p[4] && <p className="su-pkg-fine">{p[4]}</p>}
+            <Button variant={p[5] ? "solid" : "line"} onClick={() => onNav("contact")} style={{ justifyContent: "center" }}>Request Free Consultation</Button>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Custom pricing ---------- */
+function CustomPricing({ onNav }) {
+  const items = [
+    ["01", "Custom Apps", "Dashboards, portals, mobile-friendly tools, and internal systems built around your workflow."],
+    ["02", "AI Agents", "Practical AI helpers for summaries, drafts, organization, customer notes, and repeatable tasks."],
+    ["03", "Automated Workflows", "Automations that connect steps, reduce manual work, send reminders, and keep operations moving."],
+  ];
+  return (
+    <section className="su-custom">
+      <div className="su-custom-in">
+        <div className="su-custom-copy">
+          <Kicker>Apps / AI / Workflows</Kicker>
+          <h2>Custom products are priced after we understand the build.</h2>
+          <p>Website packages have fixed prices. Apps, AI agents, internal systems, and automated workflows are different: the price depends on what the product needs to do, how many steps it has, what tools it connects with, and how complex the business process is.</p>
+        </div>
+        <div className="su-custom-list">
+          {items.map((it) => (
+            <article className="su-custom-item" key={it[0]}>
+              <span>{it[0]}</span>
+              <div><h3>{it[1]}</h3><p>{it[2]}</p></div>
+            </article>
+          ))}
+        </div>
+        <div className="su-custom-foot">
+          <p>First we review the idea, workflow, tools, and complexity. Then you get a clear custom quote before anything is built.</p>
+          <Button variant="solid" arrow onClick={() => onNav("contact")}>Request Custom Quote</Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Projects ---------- */
+function PvFrame({ phone, hue }) {
+  return (
+    <div className={"su-pv-frame" + (phone ? " phone" : "")}>
+      <i className="hero-bar" style={{ background: `linear-gradient(110deg, ${hue})` }} />
+      <i className="w60" /><i /><i className="w40" /><i />
+    </div>
+  );
+}
+
+function Projects() {
+  return (
+    <section id="projects" className="su-section">
+      <SectionHeading number="04 / Projects" title={<>Projects built for<br />real businesses.</>} note="Live websites with the practical deliverables Siteup built around each business." />
+
+      <div className="su-proj-group">
+        <div className="su-proj-gt"><h3>Websites</h3><span className="count">×2</span><span className="line" /></div>
+        <div className="su-proj-grid c2">
+          <article className="su-proj">
+            <div className="su-proj-visual"><PvFrame hue="rgba(201,72,46,0.3), rgba(20,86,75,0.16)" /></div>
+            <div className="su-proj-body">
+              <p className="su-proj-meta">Project</p>
+              <h4>Turon Roofing</h4>
+              <p>A clean roofing website focused on service clarity, mobile trust, quote enquiries, and stronger local search basics.</p>
+              <p className="su-result">→ special projects map added to show completed work by location</p>
+              <div className="su-proj-tags"><Tag>Website</Tag><Tag>Google setup</Tag><Tag>Lead form</Tag><Tag>Projects map</Tag></div>
+              <a className="su-proj-link" href="https://turonroofing.com.au" target="_blank" rel="noopener">View live site</a>
+            </div>
+          </article>
+          <article className="su-proj">
+            <div className="su-proj-visual"><PvFrame hue="rgba(20,86,75,0.28), rgba(179,121,42,0.18)" /></div>
+            <div className="su-proj-body">
+              <p className="su-proj-meta">Project</p>
+              <h4>Black Star Roofing</h4>
+              <p>A Sydney roofing site around Colorbond roofing, emergency repairs, guttering, reviews, project proof, and a fast quote flow.</p>
+              <p className="su-result">→ business card and t-shirt designs completed for a consistent trade brand</p>
+              <div className="su-proj-tags"><Tag>Website</Tag><Tag>Quote flow</Tag><Tag>Business card</Tag><Tag>T-shirt design</Tag></div>
+              <a className="su-proj-link" href="https://blackstarroofing.com.au" target="_blank" rel="noopener">View live site</a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div className="su-proj-group">
+        <div className="su-proj-gt"><h3>Apps</h3><span className="count">×1</span><span className="line" /></div>
+        <article className="su-proj featured">
+          <div className="su-proj-video"><video src="../../assets/projects/onepagegift.mp4" muted loop autoPlay playsInline preload="metadata" /></div>
+          <div className="su-proj-body">
+            <p className="su-proj-meta">Web App</p>
+            <h4>One Page Gift</h4>
+            <p>A warm web app for creating personal one-page gift sites with photos, memories, AI-polished writing, previews, and one shareable link.</p>
+            <p className="su-result">→ positioned for birthdays, anniversaries, love notes, invitations, and last-minute thoughtful gifts</p>
+            <div className="su-proj-tags"><Tag>Web app</Tag><Tag>Create flow</Tag><Tag>AI writing</Tag><Tag>Shareable link</Tag></div>
+            <a className="su-proj-link" href="https://onepagegift.com" target="_blank" rel="noopener">View live app</a>
+          </div>
+        </article>
+      </div>
+
+      <div className="su-proj-group">
+        <div className="su-proj-gt"><h3>Automations</h3><span className="count">×1</span><span className="line" /></div>
+        <article className="su-proj featured">
+          <div className="su-proj-image"><img src="../../assets/projects/automation-lead-monitor.png" alt="Automation scanning local posts and sending Telegram lead alerts" loading="lazy" /></div>
+          <div className="su-proj-body">
+            <p className="su-proj-meta">Automation</p>
+            <h4>Local job lead monitor</h4>
+            <p>An agent-style automation for a tradie who was spending too much time checking local Facebook community groups for people asking for service recommendations.</p>
+            <p>The workflow runs twice a day, checks the connected groups, looks for posts asking for services like roofing or plumbing, and sends a Telegram bot summary.</p>
+            <p className="su-result">→ fewer manual group checks, faster response to local customers</p>
+            <div className="su-proj-tags"><Tag>Lead monitor</Tag><Tag>Keyword matching</Tag><Tag>Telegram bot</Tag><Tag>Twice daily</Tag></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Contact ---------- */
+function Contact() {
+  const [status, setStatus] = React.useState({ msg: "", kind: "" });
+  function submit(e) {
+    e.preventDefault();
+    const f = e.target;
+    const need = ["name", "business", "businessType", "need"].every((n) => f[n] && f[n].value.trim());
+    const contact = (f.phone.value.trim() || f.email.value.trim());
+    if (!need) return setStatus({ msg: "// please fill in your name, business name, business type, and what you need", kind: "err" });
+    if (!contact) return setStatus({ msg: "// please add either your phone number or email", kind: "err" });
+    setStatus({ msg: "// sending your request...", kind: "" });
+    setTimeout(() => { setStatus({ msg: "// thanks — your request has been sent", kind: "ok" }); f.reset(); }, 900);
+  }
+  return (
+    <section id="contact" className="su-section">
+      <SectionHeading number="05 / Contact" title={<>Tell us what your business<br />needs <span className="su-serif">online.</span></>} />
+      <div className="su-contact">
+        <div className="su-contact-left">
+          <Kicker>Free Consultation</Kicker>
+          <a className="su-contact-phone" href="tel:0405512447">0405512447</a>
+          <h2>Plain answers. Real next steps.</h2>
+          <p className="su-pitch">Get a clean website, show up correctly online, and make it easier for customers to contact you. Send a quick request and we will review your business and the best next step.</p>
+          <div className="su-contact-meta">
+            <span>No pressure, no subscriptions</span>
+            <span>Plain answers about price and scope</span>
+            <span>Reply within one business day</span>
+            <span>admin@siteup.com.au</span>
+          </div>
+        </div>
+        <form className="su-contact-form" onSubmit={submit} noValidate>
+          <div className="su-split">
+            <Field label="Name" name="name" />
+            <Field label="Business name" name="business" />
+          </div>
+          <div className="su-split">
+            <Field label="Phone" name="phone" type="tel" />
+            <Field label="Email" name="email" type="email" />
+          </div>
+          <p className="su-cf-note">// phone or email is required so we can contact you</p>
+          <Field label="Business type" name="businessType" placeholder="Construction company, cleaning service, restaurant..." />
+          <Select label="What do you need?" name="need" options={["New Website", "Online Presence / Leads", "Website Redesign", "App", "Automated Workflow", "Other"]} />
+          <Field label="Message" name="message" optional textarea rows={3} placeholder="Write anything else you want us to know." />
+          <Button variant="solid" arrow type="submit">Request Free Consultation</Button>
+          <p className={"su-cf-status " + status.kind}>{status.msg}</p>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { Services, WhySiteup, Packages, CustomPricing, Projects, Contact });
+
+</script>
+<script type="text/babel">
+  const { BgFields, Header, Footer, Hero, Services, WhySiteup, Packages, CustomPricing, Projects, Contact } = window;
+  function App() {
+    const onNav = (id) => {
+      const map = { top: "top", services: "services", why: "why", packages: "packages", projects: "projects", contact: "contact" };
+      const el = document.getElementById(map[id] || id);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 70;
+        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+      }
+    };
+    return (
+      <>
+        <BgFields />
+        <Header onNav={onNav} />
+        <main id="top">
+          <Hero onNav={onNav} />
+          <Services onNav={onNav} />
+          <WhySiteup />
+          <Packages onNav={onNav} />
+          <CustomPricing onNav={onNav} />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

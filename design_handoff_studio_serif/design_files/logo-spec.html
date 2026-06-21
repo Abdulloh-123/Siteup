@@ -1,0 +1,193 @@
+<!-- @dsCard group="Brand" viewport="940x760" name="Logo — full spec" subtitle="The Bracket: lockup, mark, clear space, colorways, do/don't" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Siteup — Logo Specification</title>
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  .doc { max-width: 940px; margin: 0 auto; padding: 56px 44px 80px; }
+  .eyebrow { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay); margin: 0 0 14px; }
+  h1 { font-family: var(--font-serif); font-weight: 500; font-size: 2.6rem; letter-spacing: -0.01em; margin: 0 0 12px; }
+  h1 .dot { color: var(--clay); }
+  .lede { color: var(--dim); font-size: 1.05rem; max-width: 60ch; margin: 0 0 8px; line-height: 1.6; }
+  section { margin-top: 56px; }
+  .sec-h { display: flex; align-items: baseline; gap: 14px; border-top: 1px solid var(--hair); padding-top: 18px; margin-bottom: 26px; }
+  .sec-h .no { font-family: var(--font-mono); font-size: 0.72rem; color: var(--faint); letter-spacing: 0.1em; }
+  .sec-h h2 { font-family: var(--font-serif); font-weight: 500; font-size: 1.4rem; margin: 0; }
+  .sec-h .note { margin-left: auto; font-family: var(--font-mono); font-size: 0.66rem; color: var(--faint); letter-spacing: 0.04em; }
+
+  .lockup-stage { background: var(--bg-2); border: 1px solid var(--hair); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: 60px; display: grid; place-items: center; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: var(--radius-md); overflow: hidden; }
+  .grid2 > div { background: var(--bg-2); padding: 40px 34px; display: flex; flex-direction: column; gap: 18px; }
+  .cell-cap { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); }
+  .stack { display: flex; align-items: center; justify-content: center; flex: 1; min-height: 120px; }
+
+  /* colorways */
+  .ways { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: var(--radius-md); overflow: hidden; }
+  .way { padding: 34px 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .way .label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .way.cream { background: var(--bg-2); } .way.cream .label { color: var(--faint); }
+  .way.paper { background: var(--paper); } .way.paper .label { color: var(--faint); }
+  .way.ink { background: var(--ink); } .way.ink .label { color: #bcae9e; }
+  .way.clay { background: var(--clay); } .way.clay .label { color: #f6d9cf; }
+
+  /* clear space + sizing */
+  .cs-wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: var(--radius-md); overflow: hidden; }
+  .cs-wrap > div { background: var(--bg-2); padding: 36px; }
+  .cs-stage { position: relative; background: var(--paper); border-radius: var(--radius-sm); padding: 34px; display: grid; place-items: center; }
+  .sizes { display: flex; align-items: flex-end; gap: 30px; flex-wrap: wrap; }
+  .size-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .size-item .cap { font-family: var(--font-mono); font-size: 0.58rem; color: var(--faint); letter-spacing: 0.05em; }
+  .min-note { margin-top: 22px; font-size: 0.86rem; color: var(--dim); line-height: 1.6; }
+  .min-note b { color: var(--ink); }
+
+  /* do / don't */
+  .dd { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--hair); border: 1px solid var(--hair); border-radius: var(--radius-md); overflow: hidden; }
+  .dd .item { background: var(--bg-2); padding: 28px 22px; display: flex; flex-direction: column; gap: 14px; }
+  .dd .demo { background: var(--paper); border-radius: var(--radius-sm); min-height: 96px; display: grid; place-items: center; padding: 16px; }
+  .dd .tag { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+  .dd .tag.do { color: var(--pine); } .dd .tag.dont { color: var(--clay); }
+  .dd .tag .g { width: 16px; height: 16px; border-radius: 999px; display: grid; place-items: center; font-size: 0.7rem; }
+  .dd .tag.do .g { background: var(--pine-dim); } .dd .tag.dont .g { background: var(--clay-dim); }
+  .dd p { margin: 0; font-size: 0.84rem; color: var(--dim); line-height: 1.55; }
+
+  .wm { font-family: var(--font-serif); font-weight: 500; letter-spacing: -0.01em; line-height: 1; }
+  .wm .dot { color: var(--clay); }
+  svg { display: block; }
+</style>
+</head>
+<body>
+<div class="doc">
+  <p class="eyebrow">Siteup / Brand · Logo</p>
+  <h1>The Bracket<span class="dot">.</span></h1>
+  <p class="lede">An editorial italic <em>S</em> held inside a developer's clay brackets — the studio's letterform set like type, built like software. The wordmark pairs it with <strong>Siteup</strong> and its terracotta full-stop.</p>
+
+  <!-- Primary lockup -->
+  <section>
+    <div class="sec-h"><span class="no">01</span><h2>Primary lockup</h2><span class="note">mark + wordmark · default</span></div>
+    <div class="lockup-stage">
+      <svg width="420" height="80" viewBox="0 0 340 64" aria-label="Siteup logo">
+        <path d="M19 16 L10 16 L10 48 L19 48" fill="none" stroke="var(--clay)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M59 16 L68 16 L68 48 L59 48" fill="none" stroke="var(--clay)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="25" y="47" font-family="var(--font-serif)" font-size="46" font-style="italic" font-weight="500" fill="var(--ink)">S</text>
+        <text x="92" y="46" font-family="var(--font-serif)" font-size="48" font-weight="500" letter-spacing="-0.5" fill="var(--ink)">Siteup<tspan fill="var(--clay)">.</tspan></text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Mark + wordmark -->
+  <section>
+    <div class="sec-h"><span class="no">02</span><h2>Mark &amp; wordmark</h2><span class="note">use standalone when space is tight</span></div>
+    <div class="grid2">
+      <div>
+        <span class="cell-cap">The mark — favicon, app icon, avatar</span>
+        <div class="stack">
+          <svg width="150" height="136" viewBox="0 0 132 120" aria-label="Siteup mark">
+            <path d="M34 30 L22 30 L22 90 L34 90" fill="none" stroke="var(--clay)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M106 30 L118 30 L118 90 L106 90" fill="none" stroke="var(--clay)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="44" y="90" font-family="var(--font-serif)" font-size="86" font-style="italic" font-weight="500" fill="var(--ink)">S</text>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <span class="cell-cap">The wordmark — body text, footers, tight horizontals</span>
+        <div class="stack">
+          <span class="wm" style="font-size: 3.2rem">Siteup<span class="dot">.</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Colorways -->
+  <section>
+    <div class="sec-h"><span class="no">03</span><h2>Colorways</h2><span class="note">ink S + clay brackets is primary</span></div>
+    <div class="ways">
+      <div class="way cream">
+        <svg width="92" height="84" viewBox="0 0 132 120"><path d="M34 30 L22 30 L22 90 L34 90" fill="none" stroke="var(--clay)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M106 30 L118 30 L118 90 L106 90" fill="none" stroke="var(--clay)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><text x="44" y="90" font-family="var(--font-serif)" font-size="86" font-style="italic" font-weight="500" fill="var(--ink)">S</text></svg>
+        <span class="label">On cream</span>
+      </div>
+      <div class="way paper">
+        <svg width="92" height="84" viewBox="0 0 132 120"><path d="M34 30 L22 30 L22 90 L34 90" fill="none" stroke="var(--clay)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M106 30 L118 30 L118 90 L106 90" fill="none" stroke="var(--clay)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><text x="44" y="90" font-family="var(--font-serif)" font-size="86" font-style="italic" font-weight="500" fill="var(--ink)">S</text></svg>
+        <span class="label">On white</span>
+      </div>
+      <div class="way ink">
+        <svg width="92" height="84" viewBox="0 0 132 120"><path d="M34 30 L22 30 L22 90 L34 90" fill="none" stroke="var(--clay)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M106 30 L118 30 L118 90 L106 90" fill="none" stroke="var(--clay)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><text x="44" y="90" font-family="var(--font-serif)" font-size="86" font-style="italic" font-weight="500" fill="#fbf6ee">S</text></svg>
+        <span class="label">On ink</span>
+      </div>
+      <div class="way clay">
+        <svg width="92" height="84" viewBox="0 0 132 120"><path d="M34 30 L22 30 L22 90 L34 90" fill="none" stroke="#fbf6ee" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M106 30 L118 30 L118 90 L106 90" fill="none" stroke="#fbf6ee" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><text x="44" y="90" font-family="var(--font-serif)" font-size="86" font-style="italic" font-weight="500" fill="#fbf6ee">S</text></svg>
+        <span class="label">On clay (mono)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clear space + sizing -->
+  <section>
+    <div class="sec-h"><span class="no">04</span><h2>Clear space &amp; sizing</h2><span class="note">breathing room = bracket height</span></div>
+    <div class="cs-wrap">
+      <div>
+        <span class="cell-cap">Clear space — keep one bracket-height (▢) of clear space on all sides</span>
+        <div class="cs-stage" style="margin-top:16px">
+          <svg width="320" height="180" viewBox="0 0 320 180" aria-label="Clear space diagram">
+            <rect x="40" y="40" width="240" height="100" fill="none" stroke="rgba(26,23,20,0.18)" stroke-width="1" stroke-dasharray="5 5"/>
+            <g transform="translate(96,58)">
+              <path d="M20 6 L12 6 L12 58 L20 58" fill="none" stroke="var(--clay)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M108 6 L116 6 L116 58 L108 58" fill="none" stroke="var(--clay)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="34" y="56" font-family="var(--font-serif)" font-size="54" font-style="italic" font-weight="500" fill="var(--ink)">S</text>
+            </g>
+            <rect x="40" y="14" width="16" height="16" fill="var(--clay-dim)" stroke="var(--clay)" stroke-width="1"/>
+            <text x="62" y="26" font-family="var(--font-mono)" font-size="9" fill="var(--faint)">= clear space</text>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <span class="cell-cap">Minimum sizes</span>
+        <div class="sizes" style="margin-top:18px">
+          <div class="size-item">
+            <svg width="64" height="58" viewBox="0 0 132 120"><path d="M34 30 L22 30 L22 90 L34 90" fill="none" stroke="var(--clay)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M106 30 L118 30 L118 90 L106 90" fill="none" stroke="var(--clay)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><text x="44" y="90" font-family="var(--font-serif)" font-size="86" font-style="italic" font-weight="500" fill="var(--ink)">S</text></svg>
+            <span class="cap">mark · 24px min</span>
+          </div>
+          <div class="size-item">
+            <span class="wm" style="font-size: 1.1rem">Siteup<span class="dot">.</span></span>
+            <span class="cap">wordmark · 90px wide min</span>
+          </div>
+        </div>
+        <p class="min-note">Below 24px the brackets crowd the <b>S</b> — drop to the wordmark, or use the solid app-icon chip. Never let the brackets touch the letterform.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Do / Don't -->
+  <section>
+    <div class="sec-h"><span class="no">05</span><h2>Do &amp; don't</h2></div>
+    <div class="dd">
+      <div class="item">
+        <span class="tag do"><span class="g">✓</span> Do</span>
+        <div class="demo">
+          <svg width="120" height="34" viewBox="0 0 340 64"><path d="M19 16 L10 16 L10 48 L19 48" fill="none" stroke="var(--clay)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M59 16 L68 16 L68 48 L59 48" fill="none" stroke="var(--clay)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><text x="25" y="47" font-family="var(--font-serif)" font-size="46" font-style="italic" font-weight="500" fill="var(--ink)">S</text><text x="92" y="46" font-family="var(--font-serif)" font-size="48" font-weight="500" letter-spacing="-0.5" fill="var(--ink)">Siteup<tspan fill="var(--clay)">.</tspan></text></svg>
+        </div>
+        <p>Keep clay brackets with an ink (or cream) <b>S</b>. Maintain the bracket spacing.</p>
+      </div>
+      <div class="item">
+        <span class="tag dont"><span class="g">×</span> Don't</span>
+        <div class="demo">
+          <svg width="120" height="40" viewBox="0 0 132 120"><path d="M48 30 L40 30 L40 90 L48 90" fill="none" stroke="#3e5c72" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M84 30 L92 30 L92 90 L84 90" fill="none" stroke="#3e5c72" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><text x="48" y="90" font-family="var(--font-serif)" font-size="86" font-weight="500" fill="var(--ink)">S</text></svg>
+        </div>
+        <p>Don't recolor the brackets, tighten them onto the letter, or set the <b>S</b> upright (it stays italic).</p>
+      </div>
+      <div class="item">
+        <span class="tag dont"><span class="g">×</span> Don't</span>
+        <div class="demo" style="background: var(--bg-3)">
+          <svg width="120" height="34" viewBox="0 0 340 64" style="filter: blur(0)"><g transform="skewX(-12)"><path d="M19 16 L10 16 L10 48 L19 48" fill="none" stroke="var(--clay)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M59 16 L68 16 L68 48 L59 48" fill="none" stroke="var(--clay)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><text x="25" y="47" font-family="var(--font-serif)" font-size="46" font-style="italic" font-weight="500" fill="var(--ink)">S</text><text x="92" y="46" font-family="var(--font-serif)" font-size="48" font-weight="500" fill="var(--ink)">Siteup</text></g></svg>
+        </div>
+        <p>Don't skew, stretch, add shadows, or drop the terracotta full-stop from the wordmark.</p>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

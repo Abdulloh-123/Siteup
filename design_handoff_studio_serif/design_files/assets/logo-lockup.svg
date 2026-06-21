@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 64" width="340" height="64" role="img" aria-label="Siteup">
+  <path d="M19 16 L10 16 L10 48 L19 48" fill="none" stroke="#c9482e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M59 16 L68 16 L68 48 L59 48" fill="none" stroke="#c9482e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path>
+  <text x="25" y="47" font-family="Newsreader, Georgia, &#39;Times New Roman&#39;, serif" font-size="46" font-style="italic" font-weight="500" fill="#1a1714">S</text>
+  <text x="92" y="46" font-family="Newsreader, Georgia, &#39;Times New Roman&#39;, serif" font-size="48" font-weight="500" letter-spacing="-0.5" fill="#1a1714">Siteup<tspan fill="#c9482e">.</tspan></text>
+</svg>
